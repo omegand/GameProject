@@ -6,13 +6,8 @@ public class MovementScript : MonoBehaviour
 {
     CharacterController cont;
     public float speed = 5f;
-    public float gravity;
-    private float VVelocity;
-    private float JForce = 5f;
-    float horizontal;
-    float vertical;
-    float SmoothVelocity;
     public Transform Cam;
+    float SmoothV;
     void Start()
     {
         cont = GetComponent<CharacterController>();
@@ -20,19 +15,14 @@ public class MovementScript : MonoBehaviour
 
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
-        if (cont.isGrounded)
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        if (movement.magnitude > 0) 
         {
-            VVelocity = -gravity * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.Space))
-                VVelocity = JForce;
+            float tangle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + Cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, tangle, ref SmoothV, 0.1f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            Vector3 FMov = Quaternion.Euler(0f,tangle , 0f) * Vector3.forward;
+            cont.Move(FMov * speed * Time.deltaTime);
         }
-        else VVelocity -= gravity * Time.deltaTime;
-        Vector3 movement = new Vector3(horizontal, VVelocity, vertical);
-        Vector3 adjustedmovement = Cam.TransformDirection(movement);
-        cont.Move(adjustedmovement * speed * Time.deltaTime);
-
     }
 }
