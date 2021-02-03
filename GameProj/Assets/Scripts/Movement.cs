@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
         {
             float angle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + Cam.eulerAngles.y;
             Vector3 FMov = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-            transform.rotation = Quaternion.LookRotation(FMov);
+            transform.rotation = Quaternion.LookRotation(FMov*-1);
             cont.Move(FMov * speed * Time.deltaTime);
         }
         if (Input.GetKeyDown(KeyCode.Space) && Grounded) VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
