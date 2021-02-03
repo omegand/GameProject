@@ -24,7 +24,6 @@ public class Movement : MonoBehaviour
     {
         Grounded = Physics.CheckSphere(Ground.position, GCheckRadius, WhatIsGround);
         if (Grounded && VVel.y < 0) VVel.y = -1f;
-        Debug.Log(Grounded);
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (movement.magnitude > 0)
         {
