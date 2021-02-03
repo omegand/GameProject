@@ -11,13 +11,14 @@ public class ScrollingText : MonoBehaviour
     private bool auto;
     private bool allowed;
     private int index = 0;
-    public TextMeshProUGUI TextMesh;
+     TextMeshProUGUI TextMesh;
     public string[] sentences;
-    public GameObject DialogCanvas;
-    public GameObject particles;
-
+     GameObject DialogCanvas;
+    private bool finished;
     void Start()
     {
+        DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
+        TextMesh = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
         DialogCanvas.SetActive(false);
     }
     private void Update()
@@ -48,19 +49,18 @@ public class ScrollingText : MonoBehaviour
             index++;
             TextMesh.text = "";
             StartCoroutine(Typing());
+            finished = true;
         }
         else
         {
             TextMesh.text = "";
             DialogCanvas.SetActive(false);
-            Instantiate(particles, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("veikia");
-        if (other.CompareTag("Player") && !DialogCanvas.activeSelf)
+        if (other.CompareTag("Player") && !DialogCanvas.activeSelf && !finished)
         {
             DialogCanvas.SetActive(true);
             StartCoroutine(Typing());
