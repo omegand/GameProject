@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     {
         Grounded = Physics.CheckSphere(Ground.position, GCheckRadius, WhatIsGround);
         if (Grounded && VVel.y < 0) VVel.y = -1f;
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         if (movement.magnitude > 0)
         {
             float angle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + Cam.eulerAngles.y;
@@ -35,5 +35,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Grounded) VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
         VVel.y += gravity * Time.deltaTime;
         cont.Move(VVel * Time.deltaTime);
+        if (movement.magnitude < 0) cont.velocity.Set(0, 0, 0);
+
     }
 }
