@@ -8,16 +8,24 @@ public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
 
-    GameObject player;
-    GameObject enemy;
-    Transform playerT;
-    Transform enemyT;
-    Stats enemyS;
-    Stats playerS;
-    public TextMeshProUGUI TextMesh;
+    private GameObject player;
+    private GameObject enemy;
+    private Transform playerT;
+    private Transform enemyT;
+    private Stats enemyS;
+    private Stats playerS;
+    public TextMeshProUGUI HPText;
+    public TextMeshProUGUI NameText;
+    public TextMeshProUGUI LVLText;
+
     public Slider enemyHP;
     public BattleState state;
     void Start()
+    {
+        startingAct();
+
+    }
+    void startingAct()
     {
         state = BattleState.START;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -27,11 +35,22 @@ public class Battle : MonoBehaviour
         player.transform.position = playerT.position;
         enemy.transform.position = enemyT.position;
         enemyS = enemy.GetComponent<Stats>();
+        NameText.text = enemyS.Namee;
+        LVLText.text = "LVL - " + enemyS.level.ToString();
+        state = BattleState.PTURN;
+        Player();
     }
     void Update()
     {
-        TextMesh.text = enemyS.currenthp + " / " + enemyS.maxhp;
+        HPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
         enemyHP.value = enemyS.currenthp / enemyS.maxhp;
+    }
+    void Player()
+    {
+
+    }
+    public void Attack()
+    {
     }
 
 
