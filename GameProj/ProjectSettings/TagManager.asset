@@ -8,6 +8,8 @@ TagManager:
   - MP
   - Health
   - Enemy
+  - StationP
+  - StationE
   layers:
   - Default
   - TransparentFX
