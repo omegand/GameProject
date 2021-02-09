@@ -18,11 +18,15 @@ public class Battle : MonoBehaviour
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI LVLText;
-     TextMeshProUGUI ScreenText;
+    public TextMeshProUGUI LVLTextP;
+
+    TextMeshProUGUI ScreenText;
+    
 
     private ParticleSystem DPart;
 
     public Slider enemyHP;
+    public Slider playerHP;
     public BattleState state;
     void Start()
     {
@@ -48,6 +52,8 @@ public class Battle : MonoBehaviour
 
         NameText.text = enemyS.Namee;
         LVLText.text = "LVL - " + enemyS.level.ToString();
+        LVLTextP.text = playerS.level.ToString();
+
         DPart = Resources.Load<ParticleSystem>("Particles/Explosion");
         ScreenText = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
         ScreenText.text = "The battle has started.";
@@ -59,6 +65,7 @@ public class Battle : MonoBehaviour
     {
         HPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
         enemyHP.value = enemyS.currenthp / enemyS.maxhp;
+        playerHP.value = playerS.currenthp / playerS.maxhp;
     }
     IEnumerator PlayerTurn()
     {
