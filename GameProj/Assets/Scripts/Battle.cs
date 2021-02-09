@@ -21,7 +21,7 @@ public class Battle : MonoBehaviour
     public TextMeshProUGUI LVLTextP;
 
     TextMeshProUGUI ScreenText;
-    
+    TrackSwitcher tracks;
 
     private ParticleSystem DPart;
 
@@ -35,6 +35,7 @@ public class Battle : MonoBehaviour
     }
     void startingAct()
     {
+        tracks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TrackSwitcher>();
         state = BattleState.START;
         canvas = GameObject.FindGameObjectWithTag("Actions");
 
@@ -43,6 +44,9 @@ public class Battle : MonoBehaviour
 
         playerT = GameObject.FindGameObjectWithTag("StationP").GetComponent<Transform>();
         enemyT = GameObject.FindGameObjectWithTag("StationE").GetComponent<Transform>();
+
+        tracks.ChangeLookAt(playerT);
+
 
         player.transform.position = playerT.position;
         enemy.transform.position = enemyT.position;
@@ -70,8 +74,10 @@ public class Battle : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         yield return new WaitForSeconds(2f);
+        tracks.ChangeLookAt(playerT);
         ScreenText.text = "Choose an action.";
         canvas.SetActive(true);
+
     }
   
     void EndBattle() 
@@ -90,6 +96,7 @@ public class Battle : MonoBehaviour
     }
     void EnemyTurn() {
         ScreenText.text = "Enemy attacks for "+enemyS.dmg+" damage";
+        tracks.ChangeLookAt(enemyT);
 
         bool dead = playerS.Damage(enemyS.dmg);
         if (dead)
