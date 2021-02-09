@@ -7,12 +7,11 @@ using Random = System.Random;
 
 public class TrackSwitcher : MonoBehaviour
 {
-    int currenttrack;
-    int newtrack;
-    Random rand = new Random();
-
-    CinemachineDollyCart cart;
-    CinemachineVirtualCamera vcam;
+ private int currenttrack;
+ private int newtrack;
+ private Random rand = new Random();
+ private CinemachineDollyCart cart;
+ private CinemachineVirtualCamera vcam;
 
 
 
@@ -26,10 +25,11 @@ public class TrackSwitcher : MonoBehaviour
         Reset();
     }
 
-    private void Reset()
+    public void Reset()
     {
         StopAllCoroutines();
         cart.m_Path = tracks[0];
+        cart.m_Position = 0;
         StartCoroutine(Change());
     }
     IEnumerator Change()
@@ -49,4 +49,5 @@ public class TrackSwitcher : MonoBehaviour
     {
         vcam.m_LookAt = target;
     }
+
 }

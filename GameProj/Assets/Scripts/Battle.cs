@@ -38,6 +38,7 @@ public class Battle : MonoBehaviour
         tracks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TrackSwitcher>();
         state = BattleState.START;
         canvas = GameObject.FindGameObjectWithTag("Actions");
+        canvas.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
@@ -62,7 +63,6 @@ public class Battle : MonoBehaviour
         ScreenText = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
         ScreenText.text = "The battle has started.";
         state = BattleState.PTURN;
-        canvas.SetActive(false);
         StartCoroutine(PlayerTurn());
     }
     void Update()
@@ -79,41 +79,57 @@ public class Battle : MonoBehaviour
         canvas.SetActive(true);
 
     }
-  
-    void EndBattle() 
+
+    void EndBattle()
     {
-        if (state == BattleState.WON) 
+        if (state == BattleState.WON)
         {
             ScreenText.text = "You won!";
             Instantiate(DPart, enemyT.position, Quaternion.identity);
             Destroy(enemy);
         }
-        if (state == BattleState.LOST) 
+        if (state == BattleState.LOST)
         {
             Instantiate(DPart, playerT.position, Quaternion.identity);
             ScreenText.text = "You lost.";
         }
     }
-    void EnemyTurn() {
-        ScreenText.text = "Enemy attacks for "+enemyS.dmg+" damage";
+    IEnumerator EnemyTurn()
+    {
+        ScreenText.text = "Enemy attacks...";
         tracks.ChangeLookAt(enemyT);
-
-        bool dead = playerS.Damage(enemyS.dmg);
-        if (dead)
-        {
-            state = BattleState.LOST;
-            EndBattle();
-        }
+        yield return new WaitForSeconds(2f);
+        if (playerS.defending) { playerS.defending = false; StartCoroutine(PlayerTurn());  } 
         else
         {
-            state = BattleState.PTURN;
-            StartCoroutine(PlayerTurn());
+            bool dead = playerS.Damage(enemyS.dmg);
+            if (dead)
+            {
+                state = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.PTURN;
+                StartCoroutine(PlayerTurn());
+            }
         }
+
     }
 
     public void AttackButton()
     {
         canvas.SetActive(false);
+        StartCoroutine(AttackIE());
+    }
+    public void DefendButton()
+    {
+        canvas.SetActive(false);
+        StartCoroutine(Defend(playerS));
+    }
+    IEnumerator AttackIE()
+    {
+        yield return new WaitForSeconds(2f);
         bool dead = enemyS.Damage(playerS.dmg);
         if (dead)
         {
@@ -123,8 +139,15 @@ public class Battle : MonoBehaviour
         else
         {
             state = BattleState.ETURN;
-            EnemyTurn();
+            StartCoroutine(EnemyTurn());
         }
+
+    }
+    IEnumerator Defend(Stats stats)
+    {
+        stats.defending = true;
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(EnemyTurn());
     }
 
 
