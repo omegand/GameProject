@@ -19,18 +19,9 @@ public class DamageScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
-        if (other.tag.Equals("Enemy"))
+        if (other.tag.Equals("Player"))
         {
-            health.health = 0;
-
-            if(health.health <= 0)
-            {
-               // Image health = GameObject.FindGameObjectWithTag("Health").GetComponentInChildren<Image>();
-               // health.color = new Color(114, 0, 0);
-                Slider slider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
-                slider.value = 0;
-            }
+            health.UpdateHealth(10.0f);
         }
     }
 }
