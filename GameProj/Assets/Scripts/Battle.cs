@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
@@ -87,12 +88,18 @@ public class Battle : MonoBehaviour
             ScreenText.text = "You won!";
             Instantiate(DPart, enemyT.position, Quaternion.identity);
             Destroy(enemy);
+            foreach (var item in SceneManager.GetSceneByBuildIndex(0).GetRootGameObjects())
+            {
+                item.SetActive(true);
+            }
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
         }
         if (state == BattleState.LOST)
         {
             Instantiate(DPart, playerT.position, Quaternion.identity);
             ScreenText.text = "You lost.";
         }
+        
     }
     IEnumerator EnemyTurn()
     {
