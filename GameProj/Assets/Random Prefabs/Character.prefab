@@ -3209,11 +3209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd17b7e76e9b63a4c941862431a13db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  level: 0
-  dmg: 0
-  maxhp: 0
-  currenthp: 0
+  Namee: Hero
+  level: 1
+  dmg: 22
+  maxhp: 100
+  currenthp: 100
+  defending: 0
 --- !u!1 &7669631284357061195
 GameObject:
   m_ObjectHideFlags: 0

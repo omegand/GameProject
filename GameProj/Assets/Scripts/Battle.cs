@@ -31,11 +31,12 @@ public class Battle : MonoBehaviour
     public BattleState state;
     void Start()
     {
-        startingAct();
+        StartCoroutine(startingAct()) ;
 
     }
-    void startingAct()
+    IEnumerator startingAct()
     {
+        yield return new WaitForSeconds(1f);
         tracks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TrackSwitcher>();
         state = BattleState.START;
         canvas = GameObject.FindGameObjectWithTag("Actions");
@@ -47,7 +48,10 @@ public class Battle : MonoBehaviour
         playerT = GameObject.FindGameObjectWithTag("StationP").GetComponent<Transform>();
         enemyT = GameObject.FindGameObjectWithTag("StationE").GetComponent<Transform>();
 
+
+
         tracks.ChangeLookAt(playerT);
+
 
 
         player.transform.position = playerT.position;
@@ -92,7 +96,9 @@ public class Battle : MonoBehaviour
             {
                 item.SetActive(true);
             }
+            Destroy(enemy);
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
+
         }
         if (state == BattleState.LOST)
         {

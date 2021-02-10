@@ -14,9 +14,9 @@ public class BattleSwitcher : MonoBehaviour
             SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
             foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
             {
-                item.SetActive(false);
+                if (!item.CompareTag("Player") && !item.CompareTag("Enemy"))
+                    item.SetActive(false);
             }
-            Destroy(gameObject);
           // SceneManager.MoveGameObjectToScene(this.gameObject, 1);
            // SceneManager.MoveGameObjectToScene(other.gameObject, 1);
 
