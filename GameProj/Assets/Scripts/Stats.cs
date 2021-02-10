@@ -9,4 +9,13 @@ public class Stats : MonoBehaviour
     public int dmg;
     public float maxhp;
     public float currenthp;
+    public bool defending = false;
+
+
+    public bool Damage(float dmg) 
+    {
+        currenthp -= dmg;
+        if (currenthp <= 0) return true;
+        else return false; 
+    }
 }
