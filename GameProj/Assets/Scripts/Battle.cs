@@ -27,20 +27,18 @@ public class Battle : MonoBehaviour
     private Slider enemyHPSlider;
     public BattleState state;
     bool started = false;
-    private void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        savedPos = player.transform.position;
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
-    }
+
     void Start()
     {
-
         startingAct();
-
     }
     void startingAct()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        savedPos = player.transform.position;
+        player.GetComponent<CharacterController>().enabled = false; 
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+
         //camera and canvas
         tracks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TrackSwitcher>();
         state = BattleState.START;
@@ -76,7 +74,6 @@ public class Battle : MonoBehaviour
         if (started)
         {
             player.transform.position = playerT.position;
-            Debug.Log("ok");
             enemyHPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
             enemyHPSlider.value = enemyS.currenthp / enemyS.maxhp;
         }
@@ -104,6 +101,8 @@ public class Battle : MonoBehaviour
             }
             started = false;
             player.transform.position = savedPos;
+            player.GetComponent<CharacterController>().enabled = true ;
+
 
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
 
