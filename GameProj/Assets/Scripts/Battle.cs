@@ -25,7 +25,6 @@ public class Battle : MonoBehaviour
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
     private Slider enemyHPSlider;
-    public Slider playerHP;
     public BattleState state;
     bool started = false;
     private void Awake()
@@ -77,9 +76,9 @@ public class Battle : MonoBehaviour
         if (started)
         {
             player.transform.position = playerT.position;
+            Debug.Log("ok");
             enemyHPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
             enemyHPSlider.value = enemyS.currenthp / enemyS.maxhp;
-            playerHP.value = playerS.currenthp / playerS.maxhp;
         }
 
     }

@@ -21,7 +21,8 @@ public class DamageScript : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            health.UpdateHealth(10.0f);
+            //health.UpdateHealth(10.0f);
+            Debug.Log("Ištryniau kekw");
         }
     }
 }

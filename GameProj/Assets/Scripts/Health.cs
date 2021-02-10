@@ -6,20 +6,17 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float health;
+    private Stats stats;
 
     private Image healthImage;
-    private float MaxHealth;
     private Slider slider;
     Gradient gradient;
     void Start()
     {
+        stats = GetComponent<Stats>();
         slider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
         healthImage = GameObject.Find("Health_Bar").GetComponent<Image>();
         gradient = new Gradient();
-
-        MaxHealth = health;
 
         GradientColorKey[] colorKeys;
         GradientAlphaKey[] alphaKey;
@@ -39,25 +36,16 @@ public class Health : MonoBehaviour
         gradient.SetKeys(colorKeys, alphaKey);
 
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
-    public void UpdateHealth(float value)
-    {
-        health -= value;
-        float nextHealth = health / MaxHealth;
+        float nextHealth = stats.currenthp / stats.maxhp;
         Color color = gradient.Evaluate(nextHealth) * 255;
         color.r = (float)Math.Round(color.r, 0);
         color.g = (float)Math.Round(color.g, 0);
         color.b = (float)Math.Round(color.b, 0);
         color.a = (float)Math.Round(color.a, 0);
-        Debug.Log((byte)color.r);
         healthImage.color = new Color32((byte)color.r, (byte)color.g, (byte)color.b, (byte)color.a);
-
-        slider.value = health / MaxHealth;
-
+        slider.value = stats.currenthp / stats.maxhp;
+        Debug.Log("sup");  
     }
 }

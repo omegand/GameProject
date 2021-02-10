@@ -15,7 +15,6 @@ public class Movement : MonoBehaviour
     bool Grounded;
     private float GCheckRadius = 0.4f;
 
-    public Vector3 SavedPosition;
 
     private Animator animator;
 
