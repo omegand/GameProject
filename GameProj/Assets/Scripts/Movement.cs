@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public float speed = 8f;
     public Transform Cam;
     public float JumpForce = 4f;
-    float gravity = -22f;
+    float gravity = -25f;
     CharacterController cont;
     Vector3 VVel;
     bool Grounded;
@@ -25,10 +25,10 @@ public class Movement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Grounded = Physics.CheckSphere(Ground.position, GCheckRadius, WhatIsGround);
-        if (Grounded && VVel.y < 0) VVel.y = 1f;
+        if (Grounded && VVel.y < 0) VVel.y = -1f;
         Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         if (movement.magnitude > 0)
         {
@@ -45,7 +45,6 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Grounded) VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
         VVel.y += gravity * Time.deltaTime;
         cont.Move(VVel * Time.deltaTime);
-        if (movement.magnitude < 0) cont.velocity.Set(0, 0, 0);
 
     }
 }
