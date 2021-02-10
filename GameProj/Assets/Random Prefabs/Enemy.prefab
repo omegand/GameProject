@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 922746678383897922}
   - component: {fileID: 922746678383897923}
   m_Layer: 5
-  m_Name: HP Text
+  m_Name: EnemyHpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 922746678627215509}
   - component: {fileID: 922746678627215507}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: EnemyHpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 922746679504743722}
   - component: {fileID: 922746679504743721}
   m_Layer: 5
-  m_Name: LVL Text
+  m_Name: EnemyLVLText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 922746679666841641}
   - component: {fileID: 922746679666841642}
   m_Layer: 5
-  m_Name: Name Text
+  m_Name: EnemyNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,6 +792,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8407295323425218114}
   - component: {fileID: 7977678029957432027}
+  - component: {fileID: 1482632469}
+  - component: {fileID: 1482632470}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -806,7 +808,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3117271554075284957}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -833,6 +835,32 @@ MonoBehaviour:
   maxhp: 100
   currenthp: 99
   defending: 0
+--- !u!136 &1482632469
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117271554075284957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.5559263
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.77796316, z: 0}
+--- !u!114 &1482632470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117271554075284957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f05d2e285836845abc765ac614e9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7924140706066250789
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +872,6 @@ GameObject:
   - component: {fileID: 1810618885764079538}
   - component: {fileID: 1149897827182088606}
   - component: {fileID: 1611075337227827815}
-  - component: {fileID: 3327657007848038010}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -913,17 +940,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &3327657007848038010
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7924140706066250789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

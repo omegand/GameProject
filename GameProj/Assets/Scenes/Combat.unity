@@ -941,8 +941,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1228534959}
   m_Layer: 0
-  m_Name: Enemy Spawn
-  m_TagString: StationE
+  m_Name: EnemyStation
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1460,18 +1460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1625569742 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8143117789262940409, guid: dd45b59a84a4b6148a6bacecc672037e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8143117789810045239}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1677739927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1538,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677739927}
-  m_LocalRotation: {x: -0.21227735, y: 0.4543072, z: 0.11241967, w: 0.8578492}
+  m_LocalRotation: {x: -0.21227734, y: 0.4543072, z: 0.112419665, w: 0.8578492}
   m_LocalPosition: {x: -0.9460971, y: -0.15734659, z: -10.642716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1829,11 +1817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8eb451c25b50945b1e0b60e8dd3bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPText: {fileID: 0}
-  NameText: {fileID: 0}
-  LVLText: {fileID: 0}
-  LVLTextP: {fileID: 1625569742}
-  enemyHP: {fileID: 0}
   playerHP: {fileID: 1510857888}
   state: 0
 --- !u!4 &1810302056
@@ -1990,8 +1973,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2042593377}
   m_Layer: 0
-  m_Name: Character spawn
-  m_TagString: StationP
+  m_Name: PlayerStation
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

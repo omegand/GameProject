@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     Vector3 VVel;
     bool Grounded;
     private float GCheckRadius = 0.4f;
+    public Vector3 SavedPosition;
 
     void Start()
     {

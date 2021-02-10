@@ -9,16 +9,13 @@ public class BattleSwitcher : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-           // Scene sceneToLoad = SceneManager.("Assets/Scenes/Combat");
-          //  Debug.Log(sceneToLoad.name);
-            SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
             foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
             {
                 if (!item.CompareTag("Player") && !item.CompareTag("Enemy"))
                     item.SetActive(false);
             }
-          // SceneManager.MoveGameObjectToScene(this.gameObject, 1);
-           // SceneManager.MoveGameObjectToScene(other.gameObject, 1);
+            SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+
 
         }
     }
