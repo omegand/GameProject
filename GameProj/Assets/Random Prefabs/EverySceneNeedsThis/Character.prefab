@@ -3470,6 +3470,7 @@ MonoBehaviour:
   speed: 8
   Cam: {fileID: 0}
   JumpForce: 4
+  gravity: -50
 --- !u!114 &2076084321032264044
 MonoBehaviour:
   m_ObjectHideFlags: 0
