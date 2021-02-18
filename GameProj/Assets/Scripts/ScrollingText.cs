@@ -11,9 +11,9 @@ public class ScrollingText : MonoBehaviour
     private bool auto;
     private bool allowed;
     private int index = 0;
-     TextMeshProUGUI TextMesh;
+    TextMeshProUGUI TextMesh;
     public string[] sentences;
-     GameObject DialogCanvas;
+    GameObject DialogCanvas;
     private bool finished;
     void Start()
     {
