@@ -8,33 +8,34 @@ public class ScrollingText : MonoBehaviour
     [SerializeField]
     private float TypingSpeed;
     [SerializeField]
+    private GameObject DialogCanvas;
+    [SerializeField]
     private bool auto;
     private bool allowed;
     private int index = 0;
     TextMeshProUGUI TextMesh;
     public string[] sentences;
-    GameObject DialogCanvas;
     private bool finished;
     void Start()
     {
-        DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
-        TextMesh = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
+        TextMesh = DialogCanvas.GetComponentInChildren<TextMeshProUGUI>();
         DialogCanvas.SetActive(false);
     }
     private void Update()
     {
-
         if (auto && allowed) NextSentence();
         if (Input.GetKeyDown(KeyCode.C) && allowed) NextSentence();
     }
-    IEnumerator Typing()
+    IEnumerator Typing(int value)
     {
-        foreach (var item in sentences[index])
+        string sentence = sentences[index].Replace("{0}", value.ToString());
+        Debug.Log(sentence);
+        foreach (var item in sentence)
         {
             TextMesh.text += item;
             yield return new WaitForSeconds(TypingSpeed);
         }
-        StartCoroutine(Pause());
+       // StartCoroutine(Pause());
     }
     IEnumerator Pause()
     {
@@ -48,7 +49,7 @@ public class ScrollingText : MonoBehaviour
         {
             index++;
             TextMesh.text = "";
-            StartCoroutine(Typing());
+           // StartCoroutine(Typing());
             finished = true;
         }
         else
@@ -63,7 +64,15 @@ public class ScrollingText : MonoBehaviour
         if (other.CompareTag("Player") && !DialogCanvas.activeSelf && !finished)
         {
             DialogCanvas.SetActive(true);
-            StartCoroutine(Typing());
+            //StartCoroutine(Typing());
+        }
+    }
+    public void StartSentence(int value)
+    {
+        if(!DialogCanvas.activeSelf && !finished)
+        {
+            DialogCanvas.SetActive(true);
+            StartCoroutine(Typing(value));
         }
     }
 }

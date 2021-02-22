@@ -26,15 +26,20 @@ public class HealthPickup : MonoBehaviour
             double giveHealth = playerHealth.healthUntilMax();
             if(giveHealth > 0)
             {
+                double gavedHealth = 0;
                 if(giveHealth > GiveHealth)
                 {
+                    gavedHealth = GiveHealth;
                     playerHealth.SetHealth(GiveHealth);
                 }
                 else
                 {
+                    gavedHealth = giveHealth;
                     playerHealth.SetHealth(giveHealth);
                 }
                 Destroy(gameObject);
+                gameObject.GetComponent<ScrollingText>().StartSentence((int)gavedHealth);
+
             }
         }
     }
