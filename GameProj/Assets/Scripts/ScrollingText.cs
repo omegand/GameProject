@@ -26,10 +26,9 @@ public class ScrollingText : MonoBehaviour
         if (auto && allowed) NextSentence();
         if (Input.GetKeyDown(KeyCode.C) && allowed) NextSentence();
     }
-    IEnumerator Typing(int value)
+    IEnumerator Typing(string value)
     {
-        string sentence = sentences[index].Replace("{0}", value.ToString());
-        Debug.Log(sentence);
+        string sentence = sentences[index].Replace("{0}", value);
         foreach (var item in sentence)
         {
             TextMesh.text += item;
@@ -67,7 +66,7 @@ public class ScrollingText : MonoBehaviour
             //StartCoroutine(Typing());
         }
     }
-    public void StartSentence(int value)
+    public void StartSentence(string value)
     {
         if(!DialogCanvas.activeSelf && !finished)
         {

@@ -8,10 +8,16 @@ public class HealthPickup : MonoBehaviour
     [Range(1, 30)]
     [SerializeField]
     private double GiveHealth;
+    [SerializeField]
+    private GameObject Health_PickupText;
+
+    private ScrollingText scrollingText;
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = GameObject.Find("Character").GetComponent<Health>();
+        Health_PickupText = GameObject.Find("Health_PickupText");
+        scrollingText = Health_PickupText.GetComponent<ScrollingText>();
     }
 
     // Update is called once per frame
@@ -38,7 +44,7 @@ public class HealthPickup : MonoBehaviour
                     playerHealth.SetHealth(giveHealth);
                 }
                 Destroy(gameObject);
-                gameObject.GetComponent<ScrollingText>().StartSentence((int)gavedHealth);
+                scrollingText.StartSentence(gavedHealth.ToString());
 
             }
         }
