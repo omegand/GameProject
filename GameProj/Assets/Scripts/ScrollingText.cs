@@ -6,35 +6,36 @@ using UnityEngine.SceneManagement;
 public class ScrollingText : MonoBehaviour
 {
     [SerializeField]
-    private float TypingSpeed;
+    float TypingSpeed;
     [SerializeField]
-    private GameObject DialogCanvas;
-    [SerializeField]
-    private bool auto;
-    private bool allowed;
-    private int index = 0;
+    bool auto;
+
+    GameObject DialogCanvas;
+    bool allowed;
+    int index = 0;
     TextMeshProUGUI TextMesh;
-    public string[] sentences;
-    private bool finished;
-    void Start()
+    string[] sentences;
+
+    void Awake()
     {
-        TextMesh = DialogCanvas.GetComponentInChildren<TextMeshProUGUI>();
-        DialogCanvas.SetActive(false);
+        DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
+        TextMesh = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        Reset();
     }
     private void Update()
     {
         if (auto && allowed) NextSentence();
         if (Input.GetKeyDown(KeyCode.C) && allowed) NextSentence();
     }
-    IEnumerator Typing(string value)
+    IEnumerator Typing()
     {
-        string sentence = sentences[index].Replace("{0}", value);
+        string sentence = sentences[index];
         foreach (var item in sentence)
         {
             TextMesh.text += item;
             yield return new WaitForSeconds(TypingSpeed);
         }
-       // StartCoroutine(Pause());
+        StartCoroutine(Pause());
     }
     IEnumerator Pause()
     {
@@ -48,30 +49,28 @@ public class ScrollingText : MonoBehaviour
         {
             index++;
             TextMesh.text = "";
-           // StartCoroutine(Typing());
-            finished = true;
+            StartCoroutine(Typing());
         }
         else
         {
-            TextMesh.text = "";
-            DialogCanvas.SetActive(false);
-            
+            Reset();
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void StartSentence(string[] values)
     {
-        if (other.CompareTag("Player") && !DialogCanvas.activeSelf && !finished)
+        if (!DialogCanvas.activeSelf)
         {
+            sentences = values;
             DialogCanvas.SetActive(true);
-            //StartCoroutine(Typing());
+            StartCoroutine(Typing());
         }
     }
-    public void StartSentence(string value)
+    void Reset() 
     {
-        if(!DialogCanvas.activeSelf && !finished)
-        {
-            DialogCanvas.SetActive(true);
-            StartCoroutine(Typing(value));
-        }
+        TextMesh.text = "";
+        index = 0;
+        allowed = false;
+        DialogCanvas.SetActive(false);
     }
 }

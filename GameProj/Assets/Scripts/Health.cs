@@ -47,16 +47,5 @@ public class Health : MonoBehaviour
         healthImage.color = new Color32((byte)color.r, (byte)color.g, (byte)color.b, (byte)color.a);
         slider.value = stats.currenthp / stats.maxhp;
     }
-    public double healthUntilMax()
-    {
-        if(stats.currenthp < stats.maxhp)
-        {
-            return stats.maxhp - stats.currenthp;
-        }
-        return 0;
-    }
-    public void SetHealth(double ammount)
-    {
-        stats.currenthp += (float)ammount;
-    }
+
 }

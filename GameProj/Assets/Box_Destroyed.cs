@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class Box_Destroyed : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField]
-    public GameObject HealthPickup;
-    public GameObject boxExplode;
-
-    private Vector3 boxCenter;
+    GameObject HealthPickup;
+    ParticleSystem boxExplode;
+    Vector3 boxCenter;
     void Start()
     {
+        HealthPickup = Resources.Load<GameObject>("Prefabs/Bottle_Health");
+        boxExplode = Resources.Load<ParticleSystem>("Particles/BoxDestroy");
         boxCenter = GetComponent<BoxCollider>().center;
-        boxExplode = Instantiate(GameObject.Find("BoxDestroy_Particle"));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

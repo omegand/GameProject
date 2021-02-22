@@ -18,4 +18,12 @@ public class Stats : MonoBehaviour
         if (currenthp <= 0) return true;
         else return false; 
     }
+    public void Heal(int value)
+    {
+        if (value > maxhp - currenthp)
+        {
+            currenthp = maxhp;
+        }
+        else currenthp += value;
+    }
 }
