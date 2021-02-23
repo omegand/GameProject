@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("walking", false);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && Jumps > 0) 
+        if (Input.GetKeyDown(KeyCode.Space) && Jumps > 0)
         {
             VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
             Jumps--;
@@ -54,5 +54,10 @@ public class Movement : MonoBehaviour
         VVel.y += gravity * Time.deltaTime;
         cont.Move(VVel * Time.deltaTime);
 
+    }
+    public void SetIdle()
+    {
+        animator.SetBool("walking", false);
+        this.enabled = false;
     }
 }
