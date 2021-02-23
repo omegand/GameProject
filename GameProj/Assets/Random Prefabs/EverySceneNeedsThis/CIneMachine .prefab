@@ -494,9 +494,9 @@ MonoBehaviour:
     m_Radius: 3
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
-  - {fileID: 2928037399533800827}
-  - {fileID: 4923232585075799788}
-  - {fileID: 4239144818832308877}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5582411401962822946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,7 +509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc94d7f7ce7d1d4f951d08417a14970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraLook: {fileID: 0}
 --- !u!1 &5596985066909712827
 GameObject:
   m_ObjectHideFlags: 0
