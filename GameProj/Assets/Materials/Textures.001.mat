@@ -394,7 +394,7 @@ Material:
     - _AORemapMin3: 0
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
-    - _AlbedoAffectEmissive: 0
+    - _AlbedoAffectEmissive: 1
     - _AlbedoMode: 1
     - _AlphaCutoff: 1
     - _AlphaCutoffEnable: 1
@@ -473,8 +473,8 @@ Material:
     - _EMISSION_WEIGHT: 1
     - _Emissive: 0
     - _EmissiveColorMode: 1
-    - _EmissiveExposureWeight: 0
-    - _EmissiveIntensity: 1
+    - _EmissiveExposureWeight: 1
+    - _EmissiveIntensity: 0.03
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
@@ -560,7 +560,7 @@ Material:
     - _MaskmapMetal: 0
     - _MaskmapSmoothness: 1
     - _MaterialID: 1
-    - _Metallic: 0
+    - _Metallic: 0.3
     - _Metallic0: 0
     - _Metallic1: 0
     - _Metallic2: 0
@@ -597,7 +597,7 @@ Material:
     - _RefractionModel: 0
     - _RequireSplitLighting: 0
     - _SSRefractionProjectionModel: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.1
     - _Smoothness0: 0.5
     - _Smoothness1: 0.5
     - _Smoothness2: 0.5
@@ -678,7 +678,7 @@ Material:
     - _UVEmissive: 0
     - _UVSec: 0
     - _UseDensityMode: 0
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _UseHeightBasedBlend: 0
     - _UseMainLayerInfluence: 0
     - _UseShadowThreshold: 0
@@ -707,9 +707,9 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 0.03, g: 0.03, b: 0.03, a: 0.03}
     - _EmissiveColorHDR: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissiveColorLDR: {r: 1, g: 0, b: 0, a: 1}
+    - _EmissiveColorLDR: {r: 1, g: 1, b: 1, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
