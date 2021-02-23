@@ -27,16 +27,20 @@ public class Battle : MonoBehaviour
     private Slider enemyHPSlider;
     public BattleState state;
     bool started = false;
+    System.Random rand;
 
     void Start()
     {
+        rand = new System.Random();
         startingAct();
+
     }
     void startingAct()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         savedPos = player.transform.position;
-        player.GetComponent<CharacterController>().enabled = false; 
+        player.GetComponent<CharacterController>().enabled = false;
+        player.GetComponent<Movement>().enabled = false;
         enemy = GameObject.FindGameObjectWithTag("Enemy");
 
         //camera and canvas
@@ -54,7 +58,7 @@ public class Battle : MonoBehaviour
         EnemyLVLText = GameObject.Find("EnemyLVLText").GetComponent<TextMeshProUGUI>();
         //positions
         tracks.ChangeLookAt(playerT);
-        
+
         player.transform.position = playerT.position;
         enemy.transform.position = enemyT.position;
         enemyS = enemy.GetComponent<Stats>();
@@ -101,7 +105,8 @@ public class Battle : MonoBehaviour
             }
             started = false;
             player.transform.position = savedPos;
-            player.GetComponent<CharacterController>().enabled = true ;
+            player.GetComponent<CharacterController>().enabled = true;
+            player.GetComponent<Movement>().enabled = true;
 
 
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
@@ -119,21 +124,24 @@ public class Battle : MonoBehaviour
         ScreenText.text = "Enemy attacks...";
         tracks.ChangeLookAt(enemyT);
         yield return new WaitForSeconds(2f);
-        if (playerS.defending) { playerS.defending = false; StartCoroutine(PlayerTurn()); }
+        double damage = DamageModifier();
+        if (playerS.defending)
+        {
+            playerS.defending = false;
+            damage = damage / rand.Next(2, 6);
+        }
+        bool dead = playerS.Damage((float)damage);
+        if (dead)
+        {
+            state = BattleState.LOST;
+            EndBattle();
+        }
         else
         {
-            bool dead = playerS.Damage(enemyS.dmg);
-            if (dead)
-            {
-                state = BattleState.LOST;
-                EndBattle();
-            }
-            else
-            {
-                state = BattleState.PTURN;
-                StartCoroutine(PlayerTurn());
-            }
+            state = BattleState.PTURN;
+            StartCoroutine(PlayerTurn());
         }
+
 
     }
 
@@ -150,7 +158,9 @@ public class Battle : MonoBehaviour
     IEnumerator AttackIE()
     {
         yield return new WaitForSeconds(2f);
-        bool dead = enemyS.Damage(playerS.dmg);
+        double damage = DamageModifier();
+
+        bool dead = enemyS.Damage((float)damage);
         if (dead)
         {
             state = BattleState.WON;
@@ -163,6 +173,18 @@ public class Battle : MonoBehaviour
         }
 
     }
+
+    private double DamageModifier()
+    {
+        int increase = rand.Next(0, 2);
+        Debug.Log(increase);
+        int chance = rand.Next(1, 25);
+        double damage;
+        if (increase == 1) damage = playerS.dmg * (1 + (double)chance / 100);
+        else damage = playerS.dmg * (1 - (double)chance / 100);
+        return damage;
+    }
+
     IEnumerator Defend(Stats stats)
     {
         stats.defending = true;

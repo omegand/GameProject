@@ -14,6 +14,7 @@ public class Stats : MonoBehaviour
 
     public bool Damage(float dmg) 
     {
+        Debug.Log(dmg.ToString() + " bruh");
         currenthp -= dmg;
         if (currenthp <= 0) return true;
         else return false; 
