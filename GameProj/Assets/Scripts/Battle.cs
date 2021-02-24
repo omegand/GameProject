@@ -63,6 +63,7 @@ public class Battle : MonoBehaviour
 
         tracks.ChangeLookAt(playerT);
         player.transform.position = playerT.position;
+        player.transform.rotation = Quaternion.identity;
         enemy.transform.position = enemyT.position;
         enemyS = enemy.GetComponent<Stats>();
         playerS = player.GetComponent<Stats>();
@@ -78,7 +79,6 @@ public class Battle : MonoBehaviour
     }
     void Update()
     {
-        player.transform.position = playerT.position;
         enemyHPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
         enemyHPSlider.value = enemyS.currenthp / enemyS.maxhp;
     }
