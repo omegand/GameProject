@@ -8,6 +8,7 @@ using Random = System.Random;
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
+    GameObject selectedEnemy;
     private GameObject player;
     private Vector3 savedPos;
     private GameObject enemy;
@@ -25,6 +26,7 @@ public class Battle : MonoBehaviour
     private ParticleSystem DPart;
     private Slider enemyHPSlider;
     private BattleState state;
+    bool waitingforclick = false;
     Random rand;
 
     void Start()
@@ -42,7 +44,7 @@ public class Battle : MonoBehaviour
 
         //camera and canvas
 
-        tracks = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TrackSwitcher>();
+        tracks = GameObject.Find("Camera").GetComponent<TrackSwitcher>();
         state = BattleState.START;
         canvas = GameObject.FindGameObjectWithTag("Actions");
         canvas.SetActive(false);
@@ -79,6 +81,11 @@ public class Battle : MonoBehaviour
     }
     void Update()
     {
+        if (waitingforclick && Input.GetMouseButtonDown(0))
+        {
+            print("yes"); 
+            GetMouseInfo();
+        }
         enemyHPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
         enemyHPSlider.value = enemyS.currenthp / enemyS.maxhp;
     }
@@ -146,7 +153,9 @@ public class Battle : MonoBehaviour
     public void AttackButton()
     {
         canvas.SetActive(false);
-        StartCoroutine(AttackIE());
+        ScreenText.text = $"Choose the enemy to attack";
+        waitingforclick = true;
+        // StartCoroutine(AttackIE());
     }
     public void DefendButton()
     {
@@ -188,5 +197,16 @@ public class Battle : MonoBehaviour
         if (increase == 1) damage = basedmg * (1 + (double)chance / 100);
         else damage = basedmg * (1 - (double)chance / 100);
         return damage;
+    }
+    public LayerMask layers;
+    public void GetMouseInfo()
+    {
+        RaycastHit hit;
+        Ray ray;
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, 100f, layers))
+        {
+            print($"o kurva {hit.transform.gameObject.name}");
+        }
     }
 }
