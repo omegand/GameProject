@@ -24,7 +24,7 @@ public class Battle : MonoBehaviour
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
     private Slider enemyHPSlider;
-    public BattleState state;
+    private BattleState state;
     Random rand;
 
     void Start()
