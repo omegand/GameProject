@@ -17,14 +17,9 @@ public class Battle : MonoBehaviour
     private Stats enemyS;
     private Stats playerS;
     private GameObject canvas;
-    private TextMeshProUGUI enemyHPText;
-    private TextMeshProUGUI NameText;
-    private TextMeshProUGUI EnemyLVLText;
-    private TextMeshProUGUI LVLTextP;
     private TextMeshProUGUI ScreenText;
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
-    private Slider enemyHPSlider;
     private BattleState state;
     bool waitingforclick = false;
     Random rand;
@@ -37,41 +32,28 @@ public class Battle : MonoBehaviour
     }
     void startingAct()
     {
+        state = BattleState.START;
+
         player = GameObject.FindGameObjectWithTag("Player");
         savedPos = player.transform.position;
         player.GetComponent<Movement>().SetIdle();
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
-
-        //camera and canvas
-
         tracks = GameObject.Find("Camera").GetComponent<TrackSwitcher>();
-        state = BattleState.START;
+
+
         canvas = GameObject.FindGameObjectWithTag("Actions");
         canvas.SetActive(false);
 
-        //Player/Enemy
         playerT = GameObject.Find("PlayerStation").GetComponent<Transform>();
-        enemyT = GameObject.Find("EnemyStation").GetComponent<Transform>();
-
-        //UI
-
-        enemyHPSlider = GameObject.Find("EnemyHpSlider").GetComponent<Slider>();
-        enemyHPText = GameObject.Find("EnemyHpText").GetComponent<TextMeshProUGUI>();
-        NameText = GameObject.Find("EnemyNameText").GetComponent<TextMeshProUGUI>();
-        EnemyLVLText = GameObject.Find("EnemyLVLText").GetComponent<TextMeshProUGUI>();
-        LVLTextP = GameObject.Find("Level_Text").GetComponent<TextMeshProUGUI>();
-
-        //positions
-
         tracks.ChangeLookAt(playerT);
         player.transform.position = playerT.position;
         player.transform.rotation = Quaternion.identity;
-        enemy.transform.position = enemyT.position;
-        enemyS = enemy.GetComponent<Stats>();
+
+        //enemy = GameObject.FindGameObjectWithTag("Enemy");
+        //enemyT = GameObject.Find("EnemyStation").GetComponent<Transform>();
+        //enemy.transform.position = enemyT.position;
+        //enemyS = enemy.GetComponent<Stats>();
+
         playerS = player.GetComponent<Stats>();
-        NameText.text = enemyS.Namee;
-        EnemyLVLText.text = "LVL - " + enemyS.level.ToString();
-        LVLTextP.text = playerS.level.ToString();
 
         DPart = Resources.Load<ParticleSystem>("Particles/Explosion");
         ScreenText = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
@@ -86,8 +68,7 @@ public class Battle : MonoBehaviour
             print("yes"); 
             GetMouseInfo();
         }
-        enemyHPText.text = enemyS.currenthp + " / " + enemyS.maxhp;
-        enemyHPSlider.value = enemyS.currenthp / enemyS.maxhp;
+
     }
     IEnumerator PlayerTurn()
     {
@@ -183,7 +164,7 @@ public class Battle : MonoBehaviour
     IEnumerator Defend(Stats stats)
     {
         stats.defending = true;
-        ScreenText.text = $"{stats.Namee} is blocking...";
+        ScreenText.text = $"{stats.objectname} is blocking...";
         yield return new WaitForSeconds(1f);
         StartCoroutine(EnemyTurn());
     }

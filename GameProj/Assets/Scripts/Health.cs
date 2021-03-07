@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     private Stats stats;
-
     private Image healthImage;
     private Slider slider;
     Gradient gradient;
+    private TextMeshProUGUI LVLTextP;
+
     void Start()
     {
+        LVLTextP = GameObject.Find("Level_Text").GetComponent<TextMeshProUGUI>();
+        LVLTextP.text = stats.level.ToString();
         stats = GetComponent<Stats>();
         slider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
         healthImage = GameObject.Find("Health_Bar").GetComponent<Image>();
