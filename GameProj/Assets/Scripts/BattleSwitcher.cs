@@ -11,10 +11,11 @@ public class BattleSwitcher : MonoBehaviour
         {
             foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
             {
-                if (!item.CompareTag("Player") && !item.CompareTag("Enemy"))
+                if (!item.CompareTag("Player"))
                     item.SetActive(false);
             }
             SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            Destroy(this.gameObject);
 
 
         }

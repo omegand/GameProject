@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,9 +13,8 @@ public class Battle : MonoBehaviour
     GameObject selectedEnemy;
     private GameObject player;
     private Vector3 savedPos;
-    private GameObject enemy;
-    private Transform playerT;
-    private Transform enemyT;
+    private Transform playerStation;
+    private Transform enemyStation;
     private Stats enemyS;
     private Stats playerS;
     private GameObject canvas;
@@ -21,12 +22,26 @@ public class Battle : MonoBehaviour
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
     private BattleState state;
+    private Object[] enemies;
     bool waitingforclick = false;
+    public int enemyCount;
     Random rand;
-
-    void Start()
+    private void Awake()
     {
         rand = new Random();
+        enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
+        enemies = Resources.LoadAll("Enemies", typeof(GameObject));
+        Vector3 pos = enemyStation.position;
+        pos.x -= enemyCount;
+        for (int i = 0; i < enemyCount; i++)
+        {
+
+            Instantiate(enemies[rand.Next(0, enemies.Length)], pos, Quaternion.identity);
+            pos.x += enemyCount;
+        }
+    }
+    void Start()
+    {
         startingAct();
 
     }
@@ -43,16 +58,10 @@ public class Battle : MonoBehaviour
         canvas = GameObject.FindGameObjectWithTag("Actions");
         canvas.SetActive(false);
 
-        playerT = GameObject.Find("PlayerStation").GetComponent<Transform>();
-        tracks.ChangeLookAt(playerT);
-        player.transform.position = playerT.position;
+        playerStation = GameObject.Find("PlayerStation").GetComponent<Transform>();
+        tracks.ChangeLookAt(playerStation);
+        player.transform.position = playerStation.position;
         player.transform.rotation = Quaternion.identity;
-
-        //enemy = GameObject.FindGameObjectWithTag("Enemy");
-        //enemyT = GameObject.Find("EnemyStation").GetComponent<Transform>();
-        //enemy.transform.position = enemyT.position;
-        //enemyS = enemy.GetComponent<Stats>();
-
         playerS = player.GetComponent<Stats>();
 
         DPart = Resources.Load<ParticleSystem>("Particles/Explosion");
@@ -65,7 +74,6 @@ public class Battle : MonoBehaviour
     {
         if (waitingforclick && Input.GetMouseButtonDown(0))
         {
-            print("yes"); 
             GetMouseInfo();
         }
 
@@ -73,7 +81,7 @@ public class Battle : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         yield return new WaitForSeconds(2f);
-        tracks.ChangeLookAt(playerT);
+        tracks.ChangeLookAt(playerStation);
         ScreenText.text = "Choose an action.";
         canvas.SetActive(true);
 
@@ -85,8 +93,6 @@ public class Battle : MonoBehaviour
         if (state == BattleState.WON)
         {
             ScreenText.text = "You won!";
-            Instantiate(DPart, enemyT.position, Quaternion.identity);
-            Destroy(enemy);
             yield return new WaitForSeconds(1f);
             foreach (var item in SceneManager.GetSceneByBuildIndex(0).GetRootGameObjects())
             {
@@ -99,7 +105,7 @@ public class Battle : MonoBehaviour
         }
         if (state == BattleState.LOST)
         {
-            Instantiate(DPart, playerT.position, Quaternion.identity);
+            Instantiate(DPart, playerStation.position, Quaternion.identity);
             ScreenText.text = "You lost.";
             yield return new WaitForSeconds(1f);
 
@@ -110,7 +116,7 @@ public class Battle : MonoBehaviour
     {
         double damage = DamageModifier(enemyS.dmg);
         ScreenText.text = $"Enemy attacks...";
-        tracks.ChangeLookAt(enemyT);
+        tracks.ChangeLookAt(enemyStation);
         yield return new WaitForSeconds(2f);
         if (playerS.defending)
         {
@@ -135,24 +141,38 @@ public class Battle : MonoBehaviour
     {
         canvas.SetActive(false);
         ScreenText.text = $"Choose the enemy to attack";
-        waitingforclick = true;
-        // StartCoroutine(AttackIE());
+        waitingforclick = true;    
     }
     public void DefendButton()
     {
         canvas.SetActive(false);
         StartCoroutine(Defend(playerS));
     }
-    IEnumerator AttackIE()
+    IEnumerator AttackIE(GameObject enemy)
     {
         double damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
         yield return new WaitForSeconds(2f);
+        enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);
         if (dead)
         {
-            state = BattleState.WON;
-            StartCoroutine(EndBattle());
+            enemyCount -= 1;
+            Instantiate(DPart, enemy.transform.position, Quaternion.identity);
+            Destroy(enemy);
+            ScreenText.text = $"Enemy is dead...";
+            yield return new WaitForSeconds(1f);
+            if (enemyCount == 0)
+            {
+                state = BattleState.WON;
+                StartCoroutine(EndBattle());
+            }
+            else 
+            {
+                state = BattleState.ETURN;
+                StartCoroutine(EnemyTurn());
+            }
+
         }
         else
         {
@@ -187,7 +207,9 @@ public class Battle : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100f, layers))
         {
+            StartCoroutine(AttackIE(hit.transform.gameObject));
             print($"o kurva {hit.transform.gameObject.name}");
         }
+
     }
 }

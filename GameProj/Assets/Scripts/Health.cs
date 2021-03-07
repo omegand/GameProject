@@ -13,15 +13,18 @@ public class Health : MonoBehaviour
     Gradient gradient;
     private TextMeshProUGUI LVLTextP;
 
-    void Start()
+    private void Awake()
     {
-        LVLTextP = GameObject.Find("Level_Text").GetComponent<TextMeshProUGUI>();
-        LVLTextP.text = stats.level.ToString();
         stats = GetComponent<Stats>();
+        LVLTextP = GameObject.Find("Level_Text").GetComponent<TextMeshProUGUI>();
         slider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
         healthImage = GameObject.Find("Health_Bar").GetComponent<Image>();
-        gradient = new Gradient();
+        LVLTextP.text = stats.level.ToString();
 
+    }
+    void Start()
+    {
+        gradient = new Gradient();
         GradientColorKey[] colorKeys;
         GradientAlphaKey[] alphaKey;
 
@@ -40,9 +43,10 @@ public class Health : MonoBehaviour
         gradient.SetKeys(colorKeys, alphaKey);
 
     }
+    float nextHealth;
     private void Update()
     {
-        float nextHealth = stats.currenthp / stats.maxhp;
+        nextHealth = stats.currenthp / stats.maxhp;
         Color color = gradient.Evaluate(nextHealth) * 255;
         color.r = (float)Math.Round(color.r, 0);
         color.g = (float)Math.Round(color.g, 0);
