@@ -22,7 +22,8 @@ public class Battle : MonoBehaviour
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
     private BattleState state;
-    private Object[] enemies;
+    private Object[] prefabenemies;
+    private List<GameObject> loadedenemies = new List<GameObject>();
     bool waitingforclick = false;
     public int enemyCount;
     Random rand;
@@ -30,15 +31,16 @@ public class Battle : MonoBehaviour
     {
         rand = new Random();
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
-        enemies = Resources.LoadAll("Enemies", typeof(GameObject));
+        prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
         Vector3 pos = enemyStation.position;
         pos.x -= enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {
 
-            Instantiate(enemies[rand.Next(0, enemies.Length)], pos, Quaternion.identity);
+            loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity) );
             pos.x += enemyCount;
         }
+
     }
     void Start()
     {
@@ -141,7 +143,7 @@ public class Battle : MonoBehaviour
     {
         canvas.SetActive(false);
         ScreenText.text = $"Choose the enemy to attack";
-        waitingforclick = true;    
+        waitingforclick = true;
     }
     public void DefendButton()
     {
@@ -167,7 +169,7 @@ public class Battle : MonoBehaviour
                 state = BattleState.WON;
                 StartCoroutine(EndBattle());
             }
-            else 
+            else
             {
                 state = BattleState.ETURN;
                 StartCoroutine(EnemyTurn());

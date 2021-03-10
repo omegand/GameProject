@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 466264712968729805}
   - component: {fileID: 466264712968729794}
   - component: {fileID: 466264712968729795}
+  - component: {fileID: 1210586395}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -430,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd17b7e76e9b63a4c941862431a13db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Namee: Hero
+  objectname: Hero
   level: 1
   dmg: 555
   maxhp: 150
@@ -454,6 +455,18 @@ MonoBehaviour:
   speed: 8
   JumpForce: 4
   gravity: -50
+--- !u!114 &1210586395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466264712968729792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5783ca4d8ff51e4a88d36770a7a2864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &668980148282835700
 GameObject:
   m_ObjectHideFlags: 0

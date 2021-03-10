@@ -814,6 +814,7 @@ Transform:
   m_Children:
   - {fileID: 1810618885764079538}
   - {fileID: 922746680155910823}
+  - {fileID: 664687914883530321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -829,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd17b7e76e9b63a4c941862431a13db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectname: Tavo Mama
+  objectname: Tavo Brolis
   level: 2
   dmg: 12
   maxhp: 100
@@ -900,7 +901,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924140706066250789}
-  m_Mesh: {fileID: 4300000, guid: 65a171ea06543b04fa7aa086cd66702d, type: 3}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1611075337227827815
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -940,3 +941,138 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &2708925496874512806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8407295323425218114}
+    m_Modifications:
+    - target: {fileID: 1557919720086215112, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_AllowRoll
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: RotationModule.x.scalar
+      value: 0.7853981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: RotationModule.y.scalar
+      value: 0.7853981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: RotationModule.curve.scalar
+      value: 0.7853981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691603505052832200, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936312815655031521, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_Name
+      value: RingParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936312815655031521, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2abe6bfca543f14c8bd01ee37a4f707, type: 3}
+--- !u!4 &664687914883530321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3215987123745492983, guid: f2abe6bfca543f14c8bd01ee37a4f707,
+    type: 3}
+  m_PrefabInstance: {fileID: 2708925496874512806}
+  m_PrefabAsset: {fileID: 0}
