@@ -30,7 +30,10 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Grounded = Physics.CheckSphere(Ground.position, GCheckRadius, WhatIsGround);
-        if (Grounded && VVel.y < 0) { Debug.Log("Huh"); VVel.y = -1f; Jumps = 2; animator.SetBool("jumping", false); }
+        if (Grounded && VVel.y < 0) {
+            Debug.Log("Huh"); VVel.y = -1f;
+            Jumps = 2; animator.SetBool("jumping", false);
+        }
 
         Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         if (movement.magnitude > 0)
