@@ -115,7 +115,7 @@ ModelImporter:
       name: Jump
       takeName: metarig|metarigAction.002
       internalID: 0
-      firstFrame: 140
+      firstFrame: 160
       lastFrame: 200
       wrapMode: 0
       orientationOffsetY: 0
