@@ -12,6 +12,7 @@ public class EnemyHP : MonoBehaviour
     private Stats stats;
     private TextMeshProUGUI nameText;
     private GameObject POSuNITY;
+    private GameObject particles;
 
 
     void Start()
@@ -19,6 +20,8 @@ public class EnemyHP : MonoBehaviour
         //Unity doesn't allow you to traverse tree of children wtf
         POSuNITY = transform.Find("Canvas").gameObject;
         stats = gameObject.GetComponent<Stats>();
+        particles = transform.Find("RingParticles").gameObject;
+        particles.SetActive(false);
         hpSlider = POSuNITY.transform.Find("EnemyHpSlider").GetComponent<Slider>();
         hpText =   POSuNITY.transform.Find("EnemyHpText").GetComponent<TextMeshProUGUI>();
         lvlText =  POSuNITY.transform.Find("EnemyLVLText").GetComponent<TextMeshProUGUI>();
@@ -31,5 +34,13 @@ public class EnemyHP : MonoBehaviour
     {
         hpText.text = stats.currenthp + " / " + stats.maxhp;
         hpSlider.value = stats.currenthp / stats.maxhp;
+    }
+    private void OnMouseEnter()
+    {
+        particles.SetActive(true);
+    }
+    private void OnMouseExit()
+    {
+        particles.SetActive(false);
     }
 }

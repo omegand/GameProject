@@ -10,7 +10,6 @@ using Random = System.Random;
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
-    GameObject selectedEnemy;
     private GameObject player;
     private Vector3 savedPos;
     private Transform playerStation;
@@ -24,11 +23,14 @@ public class Battle : MonoBehaviour
     private BattleState state;
     private Object[] prefabenemies;
     private List<GameObject> loadedenemies = new List<GameObject>();
-    bool waitingforclick = false;
+    private Random rand;
+    private bool waitingforclick = false;
     public int enemyCount;
-    Random rand;
+
+    private Animator playeranim;
     private void Awake()
     {
+        enemyCount = PassingValues.enemycount;
         rand = new Random();
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
@@ -36,24 +38,19 @@ public class Battle : MonoBehaviour
         pos.x -= enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {
-
-            loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity) );
+            loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity));
             pos.x += enemyCount;
         }
 
     }
     void Start()
     {
-        startingAct();
-
-    }
-    void startingAct()
-    {
         state = BattleState.START;
 
         player = GameObject.FindGameObjectWithTag("Player");
         savedPos = player.transform.position;
         player.GetComponent<Movement>().SetIdle();
+        playeranim = player.GetComponent<Animator>();
         tracks = GameObject.Find("Camera").GetComponent<TrackSwitcher>();
 
 
@@ -71,6 +68,7 @@ public class Battle : MonoBehaviour
         ScreenText.text = "The battle has started.";
         state = BattleState.PTURN;
         StartCoroutine(PlayerTurn());
+
     }
     void Update()
     {
@@ -96,7 +94,7 @@ public class Battle : MonoBehaviour
         {
             ScreenText.text = "You won!";
             yield return new WaitForSeconds(1f);
-            foreach (var item in SceneManager.GetSceneByBuildIndex(0).GetRootGameObjects())
+            foreach (var item in SceneManager.GetSceneByBuildIndex(PassingValues.sceneindex).GetRootGameObjects())
             {
                 item.SetActive(true);
             }
@@ -110,7 +108,6 @@ public class Battle : MonoBehaviour
             Instantiate(DPart, playerStation.position, Quaternion.identity);
             ScreenText.text = "You lost.";
             yield return new WaitForSeconds(1f);
-
         }
 
     }
@@ -154,7 +151,8 @@ public class Battle : MonoBehaviour
     {
         double damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
-        yield return new WaitForSeconds(2f);
+        playeranim.Play("Attack");
+        yield return new WaitForSeconds(0.8f);
         enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);
         if (dead)
@@ -209,8 +207,8 @@ public class Battle : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100f, layers))
         {
+            waitingforclick = false;
             StartCoroutine(AttackIE(hit.transform.gameObject));
-            print($"o kurva {hit.transform.gameObject.name}");
         }
 
     }

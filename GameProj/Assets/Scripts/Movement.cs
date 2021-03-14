@@ -9,14 +9,15 @@ public class Movement : MonoBehaviour
     public float speed = 8f;
     public float JumpForce = 4f;
     public float gravity = -35f;
-    CharacterController cont;
-    Vector3 VVel;
-    Transform Ground;
-    Transform Cam;
-    bool Grounded;
-    float GCheckRadius = 0.4f;
-    int Jumps = 0;
-    Animator animator;
+    private CharacterController cont;
+    private Vector3 VVel;
+    private Transform Ground;
+    private Transform Cam;
+    private bool Grounded;
+    private float GCheckRadius = 0.4f;
+    private int Jumps = 0;
+    private Animator anim;
+    bool attacking = false;
 
 
     void Start()
@@ -24,15 +25,16 @@ public class Movement : MonoBehaviour
         cont = GetComponent<CharacterController>();
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         Ground = GameObject.Find("GroundCheck").GetComponent<Transform>();
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         Grounded = Physics.CheckSphere(Ground.position, GCheckRadius, WhatIsGround);
-        if (Grounded && VVel.y < 0) {
-            Debug.Log("Huh"); VVel.y = -1f;
-            Jumps = 2; animator.SetBool("jumping", false);
+        if (Grounded && VVel.y < 0)
+        {
+            VVel.y = -1f;
+            Jumps = 2;
         }
 
         Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -42,25 +44,21 @@ public class Movement : MonoBehaviour
             Vector3 FMov = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             transform.rotation = Quaternion.LookRotation(FMov * -1);
             cont.Move(FMov * speed * Time.deltaTime);
-            animator.SetBool("walking", true);
+            anim.SetBool("run", true);
         }
-        else
-        {
-            animator.SetBool("walking", false);
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && Jumps > 0)
+        else anim.SetBool("run", false);
+
+        if (Input.GetKeyDown(KeyCode.Space) && Jumps > 0 && !attacking)
         {
             VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
-            animator.SetBool("jumping", true);
+            anim.SetTrigger("jump");
             Jumps--;
         }
-        if(Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && !attacking)
         {
-            if(!animator.GetBool("attacking"))
-            {
-                animator.SetBool("attacking", true);
-                StartCoroutine(StopAttack());
-            }
+            attacking = true;
+            anim.SetTrigger("attack");
+            Invoke("resetattbool", 0.72f);
         }
 
         VVel.y += gravity * Time.deltaTime;
@@ -69,12 +67,14 @@ public class Movement : MonoBehaviour
     }
     public void SetIdle()
     {
-        animator.SetBool("walking", false);
+        anim.SetBool("run", false);
+        Transform rotation = GetComponent<Transform>();
+        rotation.rotation = Quaternion.Euler(0, 180, 0);
         this.enabled = false;
     }
-    public IEnumerator StopAttack()
+
+    public void resetattbool()
     {
-        yield return new WaitForSeconds(2.0f);
-        animator.SetBool("attacking", false);
+        attacking = !attacking;
     }
 }
