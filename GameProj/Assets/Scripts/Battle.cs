@@ -50,6 +50,7 @@ public class Battle : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         savedPos = player.transform.position;
         player.GetComponent<Movement>().SetIdle();
+        playeranim = player.GetComponent<Animator>();
         tracks = GameObject.Find("Camera").GetComponent<TrackSwitcher>();
 
 
@@ -71,23 +72,12 @@ public class Battle : MonoBehaviour
     }
     void Update()
     {
-        if (waitingforclick)
+        if (waitingforclick && Input.GetMouseButtonDown(0))
         {
-            if ( Input.GetMouseButtonDown(0)) GetMouseInfo();
+            GetMouseInfo();
         }
 
     }
-    //void MouseHoverOn() 
-    //{
-    //    RaycastHit hit;
-    //    Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
-    //    if (Physics.Raycast(ray, out hit, 100f, layers))
-    //    {
-            
-    //        selectedobject = hit.transform.Find("RingParticles");
-    //        selectedobject.gameObject.SetActive(true);
-    //    }
-    //}
     IEnumerator PlayerTurn()
     {
         yield return new WaitForSeconds(2f);
@@ -161,8 +151,8 @@ public class Battle : MonoBehaviour
     {
         double damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
-
-        yield return new WaitForSeconds(2f);
+        playeranim.Play("Attack");
+        yield return new WaitForSeconds(0.8f);
         enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);
         if (dead)
