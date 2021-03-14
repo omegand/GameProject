@@ -29,6 +29,7 @@ public class Battle : MonoBehaviour
     Random rand;
     private void Awake()
     {
+        enemyCount = PassingValues.enemycount;
         rand = new Random();
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
@@ -36,18 +37,12 @@ public class Battle : MonoBehaviour
         pos.x -= enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {
-
             loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity) );
             pos.x += enemyCount;
         }
 
     }
     void Start()
-    {
-        startingAct();
-
-    }
-    void startingAct()
     {
         state = BattleState.START;
 
@@ -71,6 +66,7 @@ public class Battle : MonoBehaviour
         ScreenText.text = "The battle has started.";
         state = BattleState.PTURN;
         StartCoroutine(PlayerTurn());
+
     }
     void Update()
     {
@@ -96,7 +92,7 @@ public class Battle : MonoBehaviour
         {
             ScreenText.text = "You won!";
             yield return new WaitForSeconds(1f);
-            foreach (var item in SceneManager.GetSceneByBuildIndex(0).GetRootGameObjects())
+            foreach (var item in SceneManager.GetSceneByBuildIndex(PassingValues.sceneindex).GetRootGameObjects())
             {
                 item.SetActive(true);
             }
@@ -110,7 +106,6 @@ public class Battle : MonoBehaviour
             Instantiate(DPart, playerStation.position, Quaternion.identity);
             ScreenText.text = "You lost.";
             yield return new WaitForSeconds(1f);
-
         }
 
     }
@@ -209,8 +204,8 @@ public class Battle : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100f, layers))
         {
+            waitingforclick = false;
             StartCoroutine(AttackIE(hit.transform.gameObject));
-            print($"o kurva {hit.transform.gameObject.name}");
         }
 
     }

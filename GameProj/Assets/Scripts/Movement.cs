@@ -67,7 +67,9 @@ public class Movement : MonoBehaviour
     }
     public void SetIdle()
     {
-        anim.SetBool("walking", false);
+        anim.SetBool("run", false);
+        Transform rotation = GetComponent<Transform>();
+        rotation.rotation = Quaternion.Euler(0, 180, 0);
         this.enabled = false;
     }
 
