@@ -10,7 +10,6 @@ using Random = System.Random;
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
-    GameObject selectedEnemy;
     private GameObject player;
     private Vector3 savedPos;
     private Transform playerStation;
@@ -24,9 +23,11 @@ public class Battle : MonoBehaviour
     private BattleState state;
     private Object[] prefabenemies;
     private List<GameObject> loadedenemies = new List<GameObject>();
-    bool waitingforclick = false;
+    private Random rand;
+    private bool waitingforclick = false;
     public int enemyCount;
-    Random rand;
+
+    private Animator playeranim;
     private void Awake()
     {
         enemyCount = PassingValues.enemycount;
@@ -37,7 +38,7 @@ public class Battle : MonoBehaviour
         pos.x -= enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {
-            loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity) );
+            loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity));
             pos.x += enemyCount;
         }
 
@@ -70,12 +71,23 @@ public class Battle : MonoBehaviour
     }
     void Update()
     {
-        if (waitingforclick && Input.GetMouseButtonDown(0))
+        if (waitingforclick)
         {
-            GetMouseInfo();
+            if ( Input.GetMouseButtonDown(0)) GetMouseInfo();
         }
 
     }
+    //void MouseHoverOn() 
+    //{
+    //    RaycastHit hit;
+    //    Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    if (Physics.Raycast(ray, out hit, 100f, layers))
+    //    {
+            
+    //        selectedobject = hit.transform.Find("RingParticles");
+    //        selectedobject.gameObject.SetActive(true);
+    //    }
+    //}
     IEnumerator PlayerTurn()
     {
         yield return new WaitForSeconds(2f);
@@ -149,6 +161,7 @@ public class Battle : MonoBehaviour
     {
         double damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
+
         yield return new WaitForSeconds(2f);
         enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);
