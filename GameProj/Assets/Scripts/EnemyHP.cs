@@ -11,27 +11,28 @@ public class EnemyHP : MonoBehaviour
     private TextMeshProUGUI lvlText;
     private Stats stats;
     private TextMeshProUGUI nameText;
-    private GameObject POSuNITY;
+    private Transform ok;
     private GameObject particles;
 
 
     void Start()
     {
-        //Unity doesn't allow you to traverse tree of children wtf
-        POSuNITY = transform.Find("Canvas").gameObject;
-        stats = gameObject.GetComponent<Stats>();
         particles = transform.Find("RingParticles").gameObject;
         particles.SetActive(false);
-        hpSlider = POSuNITY.transform.Find("EnemyHpSlider").GetComponent<Slider>();
-        hpText =   POSuNITY.transform.Find("EnemyHpText").GetComponent<TextMeshProUGUI>();
-        lvlText =  POSuNITY.transform.Find("EnemyLVLText").GetComponent<TextMeshProUGUI>();
-        nameText = POSuNITY.transform.Find("EnemyNameText").GetComponent<TextMeshProUGUI>();
+        //Unity doesn't allow you to traverse tree of children wtf
+        ok = transform.Find("Canvas") ;
+        stats = gameObject.GetComponent<Stats>();
+        hpSlider = ok.Find("EnemyHpSlider").GetComponent<Slider>();
+        hpText =   ok.Find("EnemyHpText").GetComponent<TextMeshProUGUI>();
+        lvlText =  ok.Find("EnemyLVLText").GetComponent<TextMeshProUGUI>();
+        nameText = ok.Find("EnemyNameText").GetComponent<TextMeshProUGUI>();
 
         lvlText.text = "LVL - " + stats.level.ToString();
         nameText.text = stats.objectname;
     }
     void Update()
     {
+        Debug.Log("ok buddy");
         hpText.text = stats.currenthp + " / " + stats.maxhp;
         hpSlider.value = stats.currenthp / stats.maxhp;
     }
