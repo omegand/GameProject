@@ -80,7 +80,7 @@ public class Battle : MonoBehaviour
     }
     IEnumerator PlayerTurn()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         tracks.ChangeLookAt(playerStation);
         ScreenText.text = "Choose an action.";
         canvas.SetActive(true);
@@ -133,7 +133,7 @@ public class Battle : MonoBehaviour
                 StartCoroutine(EndBattle());
                 yield break;
             }
-
+            yield return new WaitForSeconds(1f);
         }
         state = BattleState.PTURN;
         StartCoroutine(PlayerTurn());
