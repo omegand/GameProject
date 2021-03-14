@@ -144,7 +144,7 @@ ModelImporter:
       name: Attack
       takeName: metarig|metarigAction.002
       internalID: 0
-      firstFrame: 200
+      firstFrame: 210
       lastFrame: 259
       wrapMode: 0
       orientationOffsetY: 0
