@@ -113,27 +113,30 @@ public class Battle : MonoBehaviour
     }
     IEnumerator EnemyTurn()
     {
-        double damage = DamageModifier(enemyS.dmg);
-        ScreenText.text = $"Enemy attacks...";
-        tracks.ChangeLookAt(enemyStation);
-        yield return new WaitForSeconds(2f);
-        if (playerS.defending)
+        foreach (var item in loadedenemies)
         {
-            playerS.defending = false;
-            damage = damage / rand.Next(5, 10);
+            enemyS = item.GetComponent<Stats>();
+            double damage = DamageModifier(enemyS.dmg);
+            ScreenText.text = $"Enemy attacks...";
+            tracks.ChangeLookAt(enemyStation);
+            yield return new WaitForSeconds(2f);
+            if (playerS.defending)
+            {
+                playerS.defending = false;
+                damage = damage / rand.Next(5, 10);
+            }
+            ScreenText.text = $"Took {damage:0.0} damage.";
+            bool dead = playerS.Damage((float)damage);
+            if (dead)
+            {
+                state = BattleState.LOST;
+                StartCoroutine(EndBattle());
+                yield break;
+            }
+
         }
-        ScreenText.text = $"Took {damage:0.0} damage.";
-        bool dead = playerS.Damage((float)damage);
-        if (dead)
-        {
-            state = BattleState.LOST;
-            StartCoroutine(EndBattle());
-        }
-        else
-        {
-            state = BattleState.PTURN;
-            StartCoroutine(PlayerTurn());
-        }
+        state = BattleState.PTURN;
+        StartCoroutine(PlayerTurn());
     }
 
     public void AttackButton()
@@ -158,6 +161,7 @@ public class Battle : MonoBehaviour
         if (dead)
         {
             enemyCount -= 1;
+            loadedenemies.Remove(enemy);
             Instantiate(DPart, enemy.transform.position, Quaternion.identity);
             Destroy(enemy);
             ScreenText.text = $"Enemy is dead...";
