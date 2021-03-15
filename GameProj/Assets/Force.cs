@@ -5,6 +5,7 @@ using UnityEngine;
 public class Force : MonoBehaviour
 {
     private bool shouldForce = false;
+    private bool leaping = false;
     float mass = 1.0F;
     Vector3 impact = Vector3.zero;
     private CharacterController character;
@@ -16,11 +17,9 @@ public class Force : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(impact.magnitude);
-        if (impact.magnitude > 0.2F)
+        if (impact.magnitude > 0.2F && leaping)
         {
             character.Move(impact * Time.deltaTime);
-            Debug.Log("Y" + impact.y);
             impact = Vector3.Lerp(impact, Vector3.zero, 1f * Time.deltaTime);
         }
     }
@@ -34,9 +33,14 @@ public class Force : MonoBehaviour
                 Vector3 positionTo = position;
                 positionTo.y += 30;
                 Vector3 dir = positionTo - position;
-                AddImpact(dir, 50.0f);
-                shouldForce = false;
+                AddImpact(dir, 80.0f);
                 Debug.Log("Push");
+                leaping = true;
+                shouldForce = false;
+            }
+            else
+            {  
+                impact = Vector3.zero;
             }
        }
     }
@@ -44,7 +48,7 @@ public class Force : MonoBehaviour
     {
         if (other.tag.Equals("J_Activate"))
         {
-            if(other.isTrigger)
+            if(!shouldForce)
             {
                 if(impact.magnitude < 0.2f)
                 shouldForce = true;
@@ -52,7 +56,8 @@ public class Force : MonoBehaviour
         }
         else if(other.tag.Equals("J_Deactivate"))
         {
-            shouldForce = false;
+            leaping = false;
+            impact = Vector3.zero;
         }
     }
     public void AddImpact(Vector3 dir, float force)
