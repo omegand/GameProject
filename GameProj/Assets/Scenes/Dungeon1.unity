@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 52147267}
   - component: {fileID: 52147269}
   - component: {fileID: 52147268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jump_Deactivate (1)
   m_TagString: J_Deactivate
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52147266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0146, y: -0.0514, z: 0.0398}
+  m_LocalPosition: {x: -0.0146, y: -0.0514, z: 0.0639}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 932044638276144916}
@@ -30658,7 +30658,7 @@ GameObject:
   - component: {fileID: 1810205505}
   - component: {fileID: 1810205506}
   - component: {fileID: 1810205507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jump_Deactivate
   m_TagString: J_Deactivate
   m_Icon: {fileID: 0}
@@ -34713,7 +34713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102124663}
   - component: {fileID: 2102124664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jump_Activate
   m_TagString: J_Activate
   m_Icon: {fileID: 0}
@@ -35364,7 +35364,7 @@ GameObject:
   - component: {fileID: 2063886085236077691}
   - component: {fileID: 550733303648458160}
   - component: {fileID: 550733303648458159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Jump_Block
   m_TagString: Jump_Pad
   m_Icon: {fileID: 0}
