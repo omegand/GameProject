@@ -63,6 +63,7 @@ public class Movement : MonoBehaviour
 
         VVel.y += gravity * Time.deltaTime;
         cont.Move(VVel * Time.deltaTime);
+        Debug.Log(VVel.y);
 
     }
     public void SetIdle()
@@ -77,4 +78,17 @@ public class Movement : MonoBehaviour
     {
         attacking = !attacking;
     }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == ("Jump_Pad"))
+        {
+            VVel.y *= -1;
+            VVel.y += Mathf.Sqrt(JumpForce * -2f * gravity);
+            VVel.y += gravity * Time.deltaTime;
+            if (VVel.y > 20) VVel.y = 20;
+            cont.Move(VVel *Time.deltaTime);
+        }
+    }
+
 }

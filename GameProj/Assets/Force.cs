@@ -14,7 +14,6 @@ public class Force : MonoBehaviour
         character = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (impact.magnitude > 0.2F && leaping)
