@@ -8,6 +8,9 @@ TagManager:
   - MP
   - Health
   - Screentext
+  - Jump_Pad
+  - J_Activate
+  - J_Deactivate
   layers:
   - Default
   - TransparentFX
