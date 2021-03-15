@@ -497,7 +497,7 @@ ModelImporter:
       name: Run
       takeName: Armature|CharacterAnimation
       internalID: 0
-      firstFrame: 0
+      firstFrame: 210
       lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
