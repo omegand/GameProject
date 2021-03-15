@@ -32,7 +32,6 @@ public class EnemyHP : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("ok buddy");
         hpText.text = stats.currenthp + " / " + stats.maxhp;
         hpSlider.value = stats.currenthp / stats.maxhp;
     }
