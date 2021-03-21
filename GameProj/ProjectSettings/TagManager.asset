@@ -13,6 +13,7 @@ TagManager:
   - J_Deactivate
   - Sword
   - Collectable
+  - Enemy
   layers:
   - Default
   - TransparentFX
