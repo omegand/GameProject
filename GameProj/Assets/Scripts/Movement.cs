@@ -63,8 +63,6 @@ public class Movement : MonoBehaviour
 
         VVel.y += gravity * Time.deltaTime;
         cont.Move(VVel * Time.deltaTime);
-        Debug.Log(VVel.y);
-
     }
     public void SetIdle()
     {

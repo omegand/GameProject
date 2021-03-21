@@ -13,10 +13,9 @@ public class Box_Destroyed : MonoBehaviour
         boxExplode = Resources.Load<ParticleSystem>("Particles/BoxDestroy");
         boxCenter = GetComponent<BoxCollider>().center;
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Sword"))
         {
             Vector3 newPosition = new Vector3();
             newPosition.x = Mathf.Clamp(transform.position.x, transform.position.x, transform.position.x + boxCenter.x);
