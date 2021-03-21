@@ -17,11 +17,13 @@ public class Movement : MonoBehaviour
     private float GCheckRadius = 0.4f;
     private int Jumps = 0;
     private Animator anim;
+    private Transform swordhitbox;
     bool attacking = false;
 
 
     void Start()
     {
+        swordhitbox = transform.Find("SwordHitbox");
         cont = GetComponent<CharacterController>();
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         Ground = GameObject.Find("GroundCheck").GetComponent<Transform>();
@@ -58,6 +60,7 @@ public class Movement : MonoBehaviour
         {
             attacking = true;
             anim.SetTrigger("attack");
+            StartCoroutine("AttackBox");
             Invoke("resetattbool", 0.72f);
         }
 
@@ -76,17 +79,30 @@ public class Movement : MonoBehaviour
     {
         attacking = !attacking;
     }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    IEnumerator AttackBox() 
     {
-        if (hit.gameObject.tag == ("Jump_Pad"))
+        yield return new WaitForSeconds(0.3f);
+        var colliders = Physics.OverlapBox(swordhitbox.position,Vector3.one * 1.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
+        foreach (var item in colliders)
         {
-            VVel.y *= -1;
-            VVel.y += Mathf.Sqrt(JumpForce * -2f * gravity);
-            VVel.y += gravity * Time.deltaTime;
-            if (VVel.y > 20) VVel.y = 20;
-            cont.Move(VVel *Time.deltaTime);
+            if (item.CompareTag("Collectable")) item.GetComponent<Box_Destroyed>().DestroyBox();
+            else {
+            }
+
         }
+        yield return new WaitForSeconds(0.42f);
     }
 
+    //Unused for now
+    //void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.tag == ("Jump_Pad"))
+    //    {
+    //        VVel.y *= -1;
+    //        VVel.y += Mathf.Sqrt(JumpForce * -2f * gravity);
+    //        VVel.y += gravity * Time.deltaTime;
+    //        if (VVel.y > 20) VVel.y = 20;
+    //        cont.Move(VVel *Time.deltaTime);
+    //    }
+    //}
 }

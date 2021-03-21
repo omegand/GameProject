@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 634807073333300019}
   - component: {fileID: 634807073333299980}
   - component: {fileID: 634807073333299981}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Character10
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -174,6 +174,7 @@ Transform:
   - {fileID: 6475904405252812139}
   - {fileID: 4408528019761443892}
   - {fileID: 2262119285601319261}
+  - {fileID: 1543951516160501415}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1355,6 +1356,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2964398307933420629}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2804321337904189850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543951516160501415}
+  m_Layer: 11
+  m_Name: SwordHitbox
+  m_TagString: Sword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543951516160501415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804321337904189850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.744, z: -0.802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 253495738147770804}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2875590425719723510
 GameObject:
