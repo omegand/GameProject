@@ -1,11 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BattleSwitcher : MonoBehaviour
 {
     public int EnemyCount;
+    Camera cam;
+    TextMeshPro text;
+
+    private void Start()
+    {
+        cam = Camera.main;
+        text = transform.Find("enemyCountText").GetComponent<TextMeshPro>();
+        text.text = EnemyCount.ToString();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -22,6 +30,11 @@ public class BattleSwitcher : MonoBehaviour
 
 
         }
+    }
+    private void LateUpdate()
+    {
+        transform.LookAt(cam.transform);
+        transform.rotation = Quaternion.LookRotation(cam.transform.forward);
     }
 
 
