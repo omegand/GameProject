@@ -15,6 +15,7 @@ TagManager:
   - Collectable
   - Enemy
   - Prop
+  - Reward
   layers:
   - Default
   - TransparentFX
