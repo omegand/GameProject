@@ -11,7 +11,6 @@ public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
     private GameObject player;
-    private Vector3 savedPos;
     private Transform playerStation;
     private Transform enemyStation;
     private Stats enemyS;
@@ -48,7 +47,6 @@ public class Battle : MonoBehaviour
         state = BattleState.START;
 
         player = GameObject.FindGameObjectWithTag("Player");
-        savedPos = player.transform.position;
         player.GetComponent<Movement>().SetIdle();
         playeranim = player.GetComponent<Animator>();
         tracks = GameObject.Find("Camera").GetComponent<TrackSwitcher>();
@@ -98,7 +96,7 @@ public class Battle : MonoBehaviour
             {
                 item.SetActive(true);
             }
-            player.transform.position = savedPos;
+            player.transform.position = PassingValues.savedpos;
             player.GetComponent<Movement>().enabled = true;
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
 

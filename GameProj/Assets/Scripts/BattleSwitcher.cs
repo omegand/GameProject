@@ -20,6 +20,7 @@ public class BattleSwitcher : MonoBehaviour
         {
             PassingValues.enemycount = EnemyCount;
             PassingValues.sceneindex = SceneManager.GetActiveScene().buildIndex;
+            PassingValues.savedpos = transform.position;
             foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
             {
                 if (!item.CompareTag("Player"))
