@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     private Slider slider;
     Gradient gradient;
     private TextMeshProUGUI LVLTextP;
-
+    float nextHealth;
     private void Awake()
     {
         stats = GetComponent<Stats>();
@@ -43,7 +43,6 @@ public class Health : MonoBehaviour
         gradient.SetKeys(colorKeys, alphaKey);
 
     }
-    float nextHealth;
     private void Update()
     {
         nextHealth = stats.currenthp / stats.maxhp;
