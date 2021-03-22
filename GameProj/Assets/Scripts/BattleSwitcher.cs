@@ -34,8 +34,8 @@ public class BattleSwitcher : MonoBehaviour
     }
     private void LateUpdate()
     {
-        transform.LookAt(cam.transform);
-        transform.rotation = Quaternion.LookRotation(cam.transform.forward);
+       text.transform.LookAt(cam.transform);
+        text.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
     }
 
 
