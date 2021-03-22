@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.01444643, g: 0.10805025, b: 0.33612078, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -146,17 +146,17 @@ PrefabInstance:
     - target: {fileID: 951193993003970170, guid: e14e96cee61455342999db71c1912719,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 179
+      value: 193
       objectReference: {fileID: 0}
     - target: {fileID: 951193993003970170, guid: e14e96cee61455342999db71c1912719,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 951193993003970170, guid: e14e96cee61455342999db71c1912719,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 76
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 951193993003970170, guid: e14e96cee61455342999db71c1912719,
         type: 3}
@@ -233,6 +233,32 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4383839595291161244, guid: e14e96cee61455342999db71c1912719,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383839595291161244, guid: e14e96cee61455342999db71c1912719,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616769927548335104, guid: e14e96cee61455342999db71c1912719,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'forearm.R'\n\tTransform 'thumb.02.L'\n\tTransform
+        'thigh.L'\n\tTransform 'upper_arm.L'\n\tTransform 'f_pinky.01.L'\n\tTransform
+        'shin.R'\n\tTransform 'spine.003'\n\tTransform 'spine.001'\n\tTransform 'upper_arm.R'\n\tTransform
+        'hand.R'\n\tand more ...\n\tFrom animation clip 'Jump'\n\tFrom animation
+        clip 'Attack'\n\tFrom animation clip 'Walk'\n\tFrom animation clip 'Idle'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616769927548335104, guid: e14e96cee61455342999db71c1912719,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e14e96cee61455342999db71c1912719, type: 3}
 --- !u!4 &646978315 stripped
@@ -282,6 +308,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 667977643}
     m_Modifications:
+    - target: {fileID: 4701419661901573929, guid: ef68de2b302e31648b30e7a4462e44e3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.973249
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701419661901573929, guid: ef68de2b302e31648b30e7a4462e44e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.22975296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4766835121609118147, guid: ef68de2b302e31648b30e7a4462e44e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.22975294
+      objectReference: {fileID: 0}
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
       propertyPath: m_RootOrder
@@ -290,17 +331,17 @@ PrefabInstance:
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 179
+      value: 193
       objectReference: {fileID: 0}
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.979162
+      value: -4.9791627
       objectReference: {fileID: 0}
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.93738
+      value: 68.93738
       objectReference: {fileID: 0}
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
@@ -366,6 +407,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687336687464729215, guid: ef68de2b302e31648b30e7a4462e44e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.22975294
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998370707144264916, guid: ef68de2b302e31648b30e7a4462e44e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.22975294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef68de2b302e31648b30e7a4462e44e3, type: 3}
