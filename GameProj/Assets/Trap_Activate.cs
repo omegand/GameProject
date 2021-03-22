@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Trap_Activate : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     [Range(0, 1)]
     private float ChanceToActivate;
@@ -32,7 +31,6 @@ public class Trap_Activate : MonoBehaviour
     {
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
     }
-    // Update is called once per frame
     void Update()
     {
         if (!Active)
@@ -53,16 +51,16 @@ public class Trap_Activate : MonoBehaviour
         if (!Active)
             return;
         GameObject gobject = other.gameObject;
-        if(gobject.tag.Equals("Reward"))
+        if (other.CompareTag("Reward")) 
         {
             if (!rewards.Contains(gobject.transform.parent.gameObject))
             {
                 rewards.Add(gobject.transform.parent.gameObject);
             }
         }
-        if(gobject.tag.Equals("Player"))
+        if (other.CompareTag("Player")) 
         {
-            if(PlayerPrefs.GetInt("InTrap") == 1)
+            if (PlayerPrefs.GetInt("InTrap") == 1)
             {
                 PlayerPrefs.DeleteAll();
                 gameObject.transform.GetChild(0).transform.gameObject.SetActive(false);
@@ -78,7 +76,7 @@ public class Trap_Activate : MonoBehaviour
             gameObject.transform.GetChild(0).transform.gameObject.SetActive(true);
             Suprise();
         }
-        if(gobject.tag.Equals("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             gobject.GetComponent<BattleSwitcher>().enabled = true;
             gobject.GetComponent<NavMeshAgent>().enabled = true;
