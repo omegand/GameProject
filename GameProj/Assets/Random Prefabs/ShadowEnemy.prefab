@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f05d2e285836845abc765ac614e9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyCount: 3
+  EnemyCount: 1
 --- !u!195 &8785553310592159452
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -424,7 +424,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 7
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc2866641a79a64aa13e4b502071c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightRange: 8
+  sightRange: 15
   patrolVariance: 5
 --- !u!1 &4484987598959133485
 GameObject:

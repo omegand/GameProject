@@ -26,12 +26,14 @@ public class EnemyBehaviour : MonoBehaviour
         seen = Physics.CheckSphere(transform.position, sightRange, LayerMask.GetMask("Player"));
         if (!seen && !patrolling)
         {
-            InvokeRepeating("Patrolling", 0, 4f);
+            InvokeRepeating("Patrolling", 0, 5f);
             patrolling = true;
             anim.SetBool("moving", false);
             light.color = Color.cyan;
+            enemy.speed = 3;
         }
         if (seen) {
+            enemy.speed = 7;
             Chasing();
             anim.SetBool("moving", true);
             light.color = Color.red;
