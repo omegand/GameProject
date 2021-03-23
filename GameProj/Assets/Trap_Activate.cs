@@ -87,7 +87,6 @@ public class Trap_Activate : MonoBehaviour
     }
     private void Suprise()
     {
-        PlayerPrefs.SetInt("InTrap", 1);
         if(enemy != null)
         {
             Instantiate(enemy);
