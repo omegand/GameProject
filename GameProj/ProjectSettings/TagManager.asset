@@ -20,6 +20,7 @@ TagManager:
   - Actions
   - Dynamic_Spawn
   - Dynamic_Enemy
+  - Crate
   layers:
   - Default
   - TransparentFX
