@@ -44,13 +44,4 @@ public class Dynamic_Spawn : MonoBehaviour
             Spawned = true;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.tag.Equals("Dynamic_Enemy") && Spawned)
-        {
-            collision.gameObject.GetComponent<NavMeshAgent>().enabled = true;
-            collision.gameObject.GetComponent<EnemyBehaviour>().enabled = true;
-            Spawned = false;
-        }
-    }
 }
