@@ -30,6 +30,7 @@ public class Trap_Activate : MonoBehaviour
     private void Start()
     {
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
+        PassingValues.WonBattle = 0;
     }
     void Update()
     {
@@ -60,10 +61,11 @@ public class Trap_Activate : MonoBehaviour
         }
         if (other.CompareTag("Player")) 
         {
-            if (PlayerPrefs.GetInt("InTrap") == 1)
+            if(PassingValues.WonBattle == 1)
             {
                 PlayerPrefs.DeleteAll();
                 gameObject.transform.GetChild(0).transform.gameObject.SetActive(false);
+                PassingValues.WonBattle = 0;
                 Active = false;
                 return;
             }
