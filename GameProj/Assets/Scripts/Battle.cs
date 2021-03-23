@@ -63,11 +63,30 @@ public class Battle : MonoBehaviour
 
         DPart = Resources.Load<ParticleSystem>("Particles/Explosion");
         ScreenText = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
-        ScreenText.text = "The battle has started.";
-        state = BattleState.PTURN;
-        StartCoroutine(PlayerTurn());
+
+        StartCoroutine(FirstTurn());
 
     }
+
+     IEnumerator FirstTurn()
+    {
+
+        if (PassingValues.first)
+        {
+            ScreenText.text = "You hit the enemy, first turn is yours!";
+            yield return new WaitForSeconds(1.5f);
+            state = BattleState.PTURN;
+            StartCoroutine(PlayerTurn());
+        }
+        else
+        {
+            ScreenText.text = "Enemy got the sneak attack on you...";
+            yield return new WaitForSeconds(1.5f);
+            state = BattleState.ETURN;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
     void Update()
     {
         if (waitingforclick && Input.GetMouseButtonDown(0))

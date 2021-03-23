@@ -33,7 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
             enemy.speed = 3;
         }
         if (seen) {
-            enemy.speed = 7;
+            enemy.speed = 1;
             Chasing();
             anim.SetBool("moving", true);
             light.color = Color.red;

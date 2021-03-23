@@ -79,14 +79,15 @@ public class Movement : MonoBehaviour
     {
         attacking = !attacking;
     }
-    IEnumerator AttackBox() 
+    IEnumerator AttackBox()
     {
         yield return new WaitForSeconds(0.3f);
-        var colliders = Physics.OverlapBox(swordhitbox.position,Vector3.one * 1.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
+        var colliders = Physics.OverlapBox(swordhitbox.position, Vector3.one * 1.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
         foreach (var item in colliders)
         {
             if (item.CompareTag("Collectable")) item.GetComponent<Box_Destroyed>().DestroyBox();
-            else {
+            else
+            { item.GetComponent<BattleSwitcher>().StartBattle(true);
             }
 
         }
