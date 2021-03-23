@@ -16,6 +16,10 @@ TagManager:
   - Enemy
   - Prop
   - Reward
+  - SpawnStatic
+  - Actions
+  - Dynamic_Spawn
+  - Dynamic_Enemy
   layers:
   - Default
   - TransparentFX

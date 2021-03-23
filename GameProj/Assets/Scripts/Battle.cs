@@ -116,6 +116,7 @@ public class Battle : MonoBehaviour
                 item.SetActive(true);
             }
             player.transform.position = PassingValues.savedpos;
+            PassingValues.WonBattle = 1;
             player.GetComponent<Movement>().enabled = true;
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
 
