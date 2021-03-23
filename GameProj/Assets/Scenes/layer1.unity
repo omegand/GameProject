@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 3e998938b3a9adc479fb8072f5aa5236
+  m_OcclusionCullingData: {fileID: 36300000, guid: f9c8bdd7daa571e4980719c8ec69ba02,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -38,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.01444643, g: 0.10805025, b: 0.33612078, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -188,6 +189,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain
       objectReference: {fileID: 0}
+    - target: {fileID: 2902142568458420111, guid: 566dea339bd43624baa0e5eeb5b1fb32,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566dea339bd43624baa0e5eeb5b1fb32, type: 3}
 --- !u!4 &231768763 stripped
@@ -196,38 +202,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1107783333}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &667977642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 667977643}
-  m_Layer: 0
-  m_Name: NotDungeons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &667977643
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667977642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1458531665}
-  - {fileID: 1829577784}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &846591184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4890511474995252000, guid: ef68de2b302e31648b30e7a4462e44e3,
         type: 3}
@@ -438,7 +412,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &891925474
 Mesh:
@@ -446,7 +420,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh45818
+  m_Name: pb_Mesh60804
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -856,8 +830,8 @@ Transform:
   m_LocalPosition: {x: -246.47635, y: -330.73447, z: -149.39746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 667977643}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 156.14, y: -30, z: 0}
 --- !u!114 &1458531666
 MonoBehaviour:
@@ -1043,8 +1017,8 @@ Transform:
   m_LocalPosition: {x: -246.47635, y: -333.73447, z: -149.39746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 667977643}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1846425782 stripped
 Transform:
@@ -3642,7 +3616,7 @@ Transform:
   m_Children:
   - {fileID: 5987159964209941439}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2057683704
 MonoBehaviour:
@@ -3666,7 +3640,7 @@ PrefabInstance:
     - target: {fileID: 4484987598958911243, guid: 988e3da7b61904a4aa89d59bccfcb081,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4484987598958911243, guid: 988e3da7b61904a4aa89d59bccfcb081,
         type: 3}
