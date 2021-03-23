@@ -371,7 +371,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh408122
+  m_Name: pb_Mesh45818
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -994,16 +994,17 @@ GameObject:
   - component: {fileID: 2057683702}
   - component: {fileID: 2057683701}
   - component: {fileID: 2057683700}
+  - component: {fileID: 2057683704}
   - component: {fileID: 2057683699}
   m_Layer: 0
-  m_Name: Arch
+  m_Name: Entrance1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!64 &2057683699
-MeshCollider:
+--- !u!135 &2057683699
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1012,10 +1013,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 891925474}
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: -7.000002, y: 3.4999998, z: 2.62}
 --- !u!33 &2057683700
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -3574,6 +3574,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2057683704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057683698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29151c94298455848b55aa9e7f9b2d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1300203624550123708
 PrefabInstance:
   m_ObjectHideFlags: 0
