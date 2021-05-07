@@ -1,21 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
     public string objectname;
     public int level;
-    public int dmg;
+    public float dmg;
     public float maxhp;
     public float currenthp;
     public bool defending = false;
-    public bool Damage(float dmg) 
+    public float xp;
+
+    private void Start()
     {
-        Debug.Log(dmg.ToString() + " bruh");
+        UpdateStats();
+    }
+
+    private void UpdateStats()
+    {
+        dmg = 10 * Mathf.Pow(1.1f, level);
+        maxhp = 100 * Mathf.Pow(1.1f, level);
+    }
+
+    public bool Damage(float dmg)
+    {
         currenthp -= dmg;
         if (currenthp <= 0) return true;
-        else return false; 
+        else return false;
     }
     public void Heal(int value)
     {
@@ -24,5 +34,24 @@ public class Stats : MonoBehaviour
             currenthp = maxhp;
         }
         else currenthp += value;
+    }
+    public void Save()
+    {
+        PlayerPrefs.SetFloat("xp", xp);
+        PlayerPrefs.SetInt("lvl", level);
+    }
+    public void Load()
+    {
+        if (PlayerPrefs.HasKey("xp"))
+        {
+            xp = PlayerPrefs.GetFloat("xp");
+            level = PlayerPrefs.GetInt("lvl");
+            UpdateStats();
+        }
+    }
+    public void GainXp(float amount)
+    {
+        xp += amount;
+        if (xp > 100) { xp = 0; level++; }
     }
 }

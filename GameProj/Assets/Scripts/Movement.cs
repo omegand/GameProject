@@ -85,12 +85,11 @@ public class Movement : MonoBehaviour
         var colliders = Physics.OverlapBox(swordhitbox.position, Vector3.one * 1.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
         foreach (var item in colliders)
         {
-            if (item.CompareTag("Crate")) item.GetComponent<OnHit>().MoveBox();
-            //if (item.CompareTag("Collectable")) item.GetComponent<Box_Destroyed>().DestroyBox();
-            //else
-            //{ 
-            //    item.GetComponent<BattleSwitcher>().StartBattle(true);
-            //}
+            if (item.CompareTag("Collectable")) item.GetComponent<Box_Destroyed>().DestroyBox();
+            else
+            {
+                item.GetComponent<BattleSwitcher>().StartBattle(true);
+            }
 
         }
         yield return new WaitForSeconds(0.42f);

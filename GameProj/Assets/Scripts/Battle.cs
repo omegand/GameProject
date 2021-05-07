@@ -170,7 +170,7 @@ public class Battle : MonoBehaviour
     }
     IEnumerator AttackIE(GameObject enemy)
     {
-        double damage = DamageModifier(playerS.dmg);
+        float damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
         playeranim.Play("Attack");
         yield return new WaitForSeconds(0.8f);
@@ -212,13 +212,13 @@ public class Battle : MonoBehaviour
     }
 
 
-    private double DamageModifier(int basedmg)
+    private float DamageModifier(float basedmg)
     {
         int increase = rand.Next(0, 2);
         int chance = rand.Next(1, 25);
-        double damage;
-        if (increase == 1) damage = basedmg * (1 + (double)chance / 100);
-        else damage = basedmg * (1 - (double)chance / 100);
+        float damage;
+        if (increase == 1) damage = basedmg * (1 + (float)chance / 100);
+        else damage = basedmg * (1 - (float)chance / 100);
         return damage;
     }
     public LayerMask layers;
