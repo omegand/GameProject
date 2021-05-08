@@ -15,7 +15,7 @@ public class Stats : MonoBehaviour
         UpdateStats();
     }
 
-    private void UpdateStats()
+    public void UpdateStats()
     {
         dmg = 10 * Mathf.Pow(1.1f, level);
         maxhp = 100 * Mathf.Pow(1.1f, level);
@@ -34,28 +34,5 @@ public class Stats : MonoBehaviour
             currenthp = maxhp;
         }
         else currenthp += value;
-    }
-    public void Save()
-    {
-        PlayerPrefs.SetFloat("xp", xp);
-        PlayerPrefs.SetInt("lvl", level);
-        PlayerPrefs.SetFloat("PlayerX", transform.position.x);
-        PlayerPrefs.SetFloat("PlayerY", transform.position.y);
-        PlayerPrefs.SetFloat("PlayerZ", transform.position.z);
-    }
-    public void Load()
-    {
-        if (PlayerPrefs.HasKey("xp"))
-        {
-            xp = PlayerPrefs.GetFloat("xp");
-            level = PlayerPrefs.GetInt("lvl");
-            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
-            UpdateStats();
-        }
-    }
-    public void GainXp(float amount)
-    {
-        xp += amount;
-        if (xp > 100) { xp = 0; level++; }
     }
 }
