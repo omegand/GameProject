@@ -20,4 +20,16 @@ public class Menu_Options : MonoBehaviour
     {
         SceneManager.LoadScene("HubArea");
     }
+    public void Options()
+    {
+        SceneManager.LoadScene("OptionSlot");
+    }
+    public void BackClick()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
