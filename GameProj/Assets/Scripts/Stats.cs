@@ -39,6 +39,9 @@ public class Stats : MonoBehaviour
     {
         PlayerPrefs.SetFloat("xp", xp);
         PlayerPrefs.SetInt("lvl", level);
+        PlayerPrefs.SetFloat("PlayerX", transform.position.x);
+        PlayerPrefs.SetFloat("PlayerY", transform.position.y);
+        PlayerPrefs.SetFloat("PlayerZ", transform.position.z);
     }
     public void Load()
     {
@@ -46,6 +49,7 @@ public class Stats : MonoBehaviour
         {
             xp = PlayerPrefs.GetFloat("xp");
             level = PlayerPrefs.GetInt("lvl");
+            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
             UpdateStats();
         }
     }
