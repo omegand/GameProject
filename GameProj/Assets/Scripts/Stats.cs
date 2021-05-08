@@ -12,7 +12,18 @@ public class Stats : MonoBehaviour
 
     private void Start()
     {
+        Tryloading();
         UpdateStats();
+    }
+
+    private void Tryloading()
+    {
+        if (PlayerPrefs.HasKey("xp"))
+        {
+            xp = PlayerPrefs.GetFloat("xp");
+            level = PlayerPrefs.GetInt("lvl");
+            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
+        }
     }
 
     public void UpdateStats()
@@ -20,7 +31,7 @@ public class Stats : MonoBehaviour
         dmg = 10 * Mathf.Pow(1.1f, level);
         maxhp = 100 * Mathf.Pow(1.1f, level);
     }
-
+    
     public bool Damage(float dmg)
     {
         currenthp -= dmg;
@@ -34,5 +45,10 @@ public class Stats : MonoBehaviour
             currenthp = maxhp;
         }
         else currenthp += value;
+    }
+    public void GainXp(float amount)
+    {
+        xp += amount;
+        if (xp > 100) { xp = 0; level++; }
     }
 }
