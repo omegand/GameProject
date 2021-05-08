@@ -20,11 +20,13 @@ public class MenuGame : MonoBehaviour
             {
                 transform.Find("MenuGame").gameObject.SetActive(false);
                 inMenu = false;
+                Time.timeScale = 1;
             }
             else
             {
                 OpenMenu();
                 inMenu = true;
+                Time.timeScale = 0;
             }
         }
     }

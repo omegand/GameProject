@@ -8,7 +8,7 @@ public class Menu_Options : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,11 +22,13 @@ public class Menu_Options : MonoBehaviour
     }
     public void Options()
     {
-        SceneManager.LoadScene("OptionSlot");
+        Menu_Display.ActivateOption(true);
+        Menu_Display.ActivateMain(false);
     }
     public void BackClick()
     {
-        SceneManager.LoadScene("Menu");
+        Menu_Display.ActivateOption(false);
+        Menu_Display.ActivateMain(true);
     }
     public void ExitGame()
     {
