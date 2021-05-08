@@ -6,9 +6,13 @@ public class MenuGame : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool inMenu = false;
+    GameObject menuMain;
     void Start()
     {
-
+        Menu_Display.ActivateMain(false);
+        Menu_Display.ActivateOption(false);
+        menuMain = GameObject.Find("MenuGame");
+        menuMain.SetActive(false);
     }
 
     // Update is called once per frame
@@ -18,12 +22,15 @@ public class MenuGame : MonoBehaviour
         {
             if(inMenu)
             {
-                transform.Find("MenuGame").gameObject.SetActive(false);
+                Menu_Display.ActivateMain(false);
+                Menu_Display.ActivateOption(false);
+                menuMain.SetActive(false);
                 inMenu = false;
                 Time.timeScale = 1;
             }
             else
             {
+                menuMain.SetActive(true);
                 OpenMenu();
                 inMenu = true;
                 Time.timeScale = 0;
@@ -32,6 +39,6 @@ public class MenuGame : MonoBehaviour
     }
     private void OpenMenu()
     {
-        transform.Find("MenuGame").gameObject.SetActive(true);
+        Menu_Display.ActivateMain(true);
     }
 }
