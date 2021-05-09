@@ -10,22 +10,22 @@ public class Menu_Display : MonoBehaviour
     private GameObject image;
     private ScrollingText text;
     private bool inMenu = false;
+    private bool StartingScreen;
+
     void Awake()
     {
+        StartingScreen = SceneManager.GetActiveScene().name == "Menu";
         Debug.Log("Dumbass");
         main = transform.Find("Menu").gameObject;
         option = transform.Find("OptionMenu").gameObject;
         image = transform.Find("Image").gameObject;
-        main.SetActive(false);
-        option.SetActive(false);
-        image.SetActive(false);
-
         text = GameObject.Find("MainScreenText").GetComponent<ScrollingText>();
 
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        Debug.Log(StartingScreen);
+        if (Input.GetKeyDown(KeyCode.Escape) && !StartingScreen)
         {
             if (inMenu)
             {
