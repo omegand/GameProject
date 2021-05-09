@@ -22,6 +22,13 @@ public class BattleSwitcher : MonoBehaviour
             StartBattle(false);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player") && !stop)
+        {
+            StartBattle(false);
+        }
+    }
     private void LateUpdate()
     {
         text.transform.LookAt(cam.transform);
