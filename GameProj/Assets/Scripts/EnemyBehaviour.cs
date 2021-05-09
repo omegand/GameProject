@@ -19,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
         anim = GetComponent<Animator>();
         startPos = transform.position;
         enemy = GetComponent<NavMeshAgent>();
+        enemy.updateRotation = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
@@ -33,10 +34,17 @@ public class EnemyBehaviour : MonoBehaviour
             enemy.speed = 3;
         }
         if (seen) {
-            enemy.speed = 1;
+            enemy.speed = 5;
             Chasing();
             anim.SetBool("moving", true);
             light.color = Color.red;
+        }
+    }
+    private void LateUpdate()
+    {
+        if (enemy.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(enemy.velocity.normalized);
         }
     }
     void Patrolling()

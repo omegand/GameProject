@@ -12,20 +12,8 @@ public class Stats : MonoBehaviour
 
     private void Start()
     {
-        Tryloading();
         UpdateStats();
     }
-
-    private void Tryloading()
-    {
-        if (PlayerPrefs.HasKey("xp"))
-        {
-            xp = PlayerPrefs.GetFloat("xp");
-            level = PlayerPrefs.GetInt("lvl");
-            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
-        }
-    }
-
     public void UpdateStats()
     {
         dmg = 10 * Mathf.Pow(1.1f, level);

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Movement : MonoBehaviour
 {
-
+    [SerializeField]
+    private VisualEffect effect;
     public LayerMask WhatIsGround;
     public float speed = 8f;
     public float JumpForce = 4f;
@@ -23,6 +25,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        effect.Stop();
         swordhitbox = transform.Find("SwordHitbox");
         cont = GetComponent<CharacterController>();
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
@@ -40,7 +43,7 @@ public class Movement : MonoBehaviour
         }
 
         Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        if (movement.magnitude > 0)
+        if (movement.magnitude > 0 && !attacking)
         {
             float angle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + Cam.eulerAngles.y;
             Vector3 FMov = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
@@ -59,6 +62,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) && !attacking)
         {
             attacking = true;
+            effect.Play();
             anim.SetTrigger("attack");
             StartCoroutine("AttackBox");
             Invoke("resetattbool", 0.72f);
@@ -78,6 +82,8 @@ public class Movement : MonoBehaviour
     public void resetattbool()
     {
         attacking = !attacking;
+        effect.Reinit();
+        effect.Stop();
     }
     IEnumerator AttackBox()
     {
