@@ -59,6 +59,7 @@ public class ScrollingText : MonoBehaviour
 
     public void StartSentence(string[] values)
     {
+        Debug.Log(values[0]);
         if (!DialogCanvas.activeSelf)
         {
             sentences = values;
