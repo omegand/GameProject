@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class AudioM : MonoBehaviour
 {
@@ -14,6 +14,19 @@ public class AudioM : MonoBehaviour
     {
         init = this;
         backgroundM.loop = true;
+        Scene current = SceneManager.GetActiveScene();
+        switch (current.name)
+        {
+            case "HubArea":
+                PlaySound(Resources.Load<AudioClip>("Sounds/hub"), true);
+                break;
+            case "layer1":
+                PlaySound(Resources.Load<AudioClip>("Sounds/layer1"), true);
+                break;
+            default:
+                PlaySound(Resources.Load<AudioClip>("Sounds/Chilly"), true);
+                break;
+        }
     }
     public static void PlaySound(AudioClip au, bool background)
     {
