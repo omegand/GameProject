@@ -57,7 +57,6 @@ public class Battle : MonoBehaviour
         playerStation = GameObject.Find("PlayerStation").GetComponent<Transform>();
         tracks.ChangeLookAt(playerStation);
         player.transform.position = playerStation.position;
-        player.transform.rotation = Quaternion.identity;
         playerS = player.GetComponent<Stats>();
 
         DPart = Resources.Load<ParticleSystem>("Particles/Explosion");
