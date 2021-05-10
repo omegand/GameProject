@@ -56,7 +56,6 @@ public class ScrollingText : MonoBehaviour
     static IEnumerator Pause()
     {
         yield return new WaitForSeconds(2f);
-        Reset();
     }
 
     public static void StartSentence(string[] values, string[] UInames)
