@@ -49,14 +49,17 @@ public class ScrollingText : MonoBehaviour
                 yield return new WaitForSeconds(instance.TypingSpeed);
             }
         }
-        sentences.Clear();
         instance.StartCoroutine(Pause());
+    }
+    public void Reset()
+    {
+        sentences.Clear();
+        texts.ForEach(t => t.text = "");
+        texts.Clear();
     }
     static IEnumerator Pause()
     {
         yield return new WaitForSeconds(2f);
-        texts.ForEach(t => t.text = "");
-        texts.Clear();
         allowed = true;
     }
     public void NextSentence()
@@ -89,6 +92,7 @@ public class ScrollingText : MonoBehaviour
          
         }
     }
+    /*
     void Reset() 
     {
         TextMesh.text = "";
@@ -96,4 +100,5 @@ public class ScrollingText : MonoBehaviour
         allowed = false;
         DialogCanvas.SetActive(false);
     }
+    */
 }
