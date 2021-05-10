@@ -90,6 +90,7 @@ public class Menu_Display : MonoBehaviour
             Debug.Log(SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.SetFloat("xp", st.xp);
             PlayerPrefs.SetInt("lvl", st.level);
+            PlayerPrefs.SetFloat("hp", st.currenthp);
             PlayerPrefs.SetFloat("PlayerX", st.transform.position.x);
             PlayerPrefs.SetFloat("PlayerY", st.transform.position.y);
             PlayerPrefs.SetFloat("PlayerZ", st.transform.position.z);
@@ -116,8 +117,9 @@ public class Menu_Display : MonoBehaviour
             else
             {
                 Stats st = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
-                st.xp = PlayerPrefs.GetFloat("xp");
-                st.level = PlayerPrefs.GetInt("lvl");
+                st.xp = PlayerPrefs.GetFloat("xp",0);
+                st.level = PlayerPrefs.GetInt("lvl",1);
+                st.currenthp = PlayerPrefs.GetFloat("hp",100);
                 st.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
                 st.UpdateStats();
                 ScrollingText.StartSentence(new string[] { "Loaded progress." }, new string[] { "Main" });

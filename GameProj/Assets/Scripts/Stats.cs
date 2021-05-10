@@ -31,14 +31,16 @@ public class Stats : MonoBehaviour
 
     public void UpdateStats()
     {
+
+        currenthp = maxhp;
         if (PlayerPrefs.HasKey("xp"))
         {
             xp = PlayerPrefs.GetFloat("xp");
             level = PlayerPrefs.GetInt("lvl");
+            currenthp = PlayerPrefs.GetFloat("hp");
         }
         dmg = 10 * Mathf.Pow(1.1f, level);
         maxhp = 100 * Mathf.Pow(1.1f, level);
-        currenthp = maxhp;
     }
 
     public bool Damage(float dmg)
