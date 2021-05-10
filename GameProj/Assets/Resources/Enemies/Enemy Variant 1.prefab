@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 68395266758584245, guid: 3218785084316064088236e7591aa0e2,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 2613628391450895350, guid: 3218785084316064088236e7591aa0e2,
         type: 3}
@@ -26,6 +26,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973767502777413811, guid: 3218785084316064088236e7591aa0e2,
+        type: 3}
+      propertyPath: dmg
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973767502777413811, guid: 3218785084316064088236e7591aa0e2,
+        type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973767502777413811, guid: 3218785084316064088236e7591aa0e2,
+        type: 3}
+      propertyPath: maxhp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973767502777413811, guid: 3218785084316064088236e7591aa0e2,
+        type: 3}
+      propertyPath: currenthp
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4973767502777413811, guid: 3218785084316064088236e7591aa0e2,
         type: 3}

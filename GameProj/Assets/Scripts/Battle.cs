@@ -111,7 +111,9 @@ public class Battle : MonoBehaviour
         if (state == BattleState.WON)
         {
             ScreenText.text = "You won!";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
+            ScreenText.text = $"You gain {PassingValues.xp} experience.";
+            yield return new WaitForSeconds(0.7f);
             foreach (var item in SceneManager.GetSceneByBuildIndex(PassingValues.sceneindex).GetRootGameObjects())
             {
                 item.SetActive(true);

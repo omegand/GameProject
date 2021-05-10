@@ -830,12 +830,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd17b7e76e9b63a4c941862431a13db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectname: Tavo Mama
-  level: 2
-  dmg: 12
-  maxhp: 100
-  currenthp: 99
+  objectname: Sphere
+  level: 1
+  dmg: 3
+  maxhp: 20
+  currenthp: 20
   defending: 0
+  xp: 0
 --- !u!136 &1482632469
 CapsuleCollider:
   m_ObjectHideFlags: 0
