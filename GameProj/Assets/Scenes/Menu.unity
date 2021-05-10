@@ -633,6 +633,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8990997279174756438, guid: 3310164457e6bde4c838464cf0b23f39,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3310164457e6bde4c838464cf0b23f39, type: 3}
 --- !u!1001 &7013953542618653245
@@ -642,6 +647,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 585049342735187985, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049342735187985, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049342735187985, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049343053255099, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049343053255099, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049343053255099, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
     - target: {fileID: 585049343200900097, guid: 99c93cc57e273a043a29fb8f4b261c7c,
         type: 3}
       propertyPath: m_Name
@@ -751,6 +786,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049343200900110, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049344287414497, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049344287414497, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049344287414497, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049344531162054, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049344531162054, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585049344531162054, guid: 99c93cc57e273a043a29fb8f4b261c7c,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5849056
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 585049343200900102, guid: 99c93cc57e273a043a29fb8f4b261c7c, type: 3}
