@@ -14,7 +14,7 @@ public class AudioM : MonoBehaviour
     private void Start()
     {
         init = this;
-        //backgroundM.loop = true;
+        backgroundM.loop = true;
     }
     public static void NewMethod()
     {
@@ -27,6 +27,9 @@ public class AudioM : MonoBehaviour
                 break;
             case "layer1":
                 PlaySound(Resources.Load<AudioClip>("Sounds/layer1"), true);
+                break;
+            case "Dungeon1":
+                PlaySound(Resources.Load<AudioClip>("Sounds/dungeon"), true);
                 break;
             default:
                 PlaySound(Resources.Load<AudioClip>("Sounds/Chilly"), true);

@@ -10,10 +10,17 @@ public class Teleportal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Stats st = other.GetComponent<Stats>();
-            PlayerPrefs.SetFloat("xp", st.xp);
-            PlayerPrefs.SetInt("lvl", st.level);
-            SceneManager.LoadScene(teleportscene);
+
+            StartCoroutine(DoIt(other));
         }
+    }
+    IEnumerator DoIt(Collider other) 
+    {
+        AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/teleport"), false);
+        yield return new WaitForSeconds(0.5f);
+        Stats st = other.GetComponent<Stats>();
+        PlayerPrefs.SetFloat("xp", st.xp);
+        PlayerPrefs.SetInt("lvl", st.level);
+        SceneManager.LoadScene(teleportscene);
     }
 }
