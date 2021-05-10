@@ -23,7 +23,6 @@ public class Menu_Display : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(StartingScreen);
         if (Input.GetKeyDown(KeyCode.Escape) && !StartingScreen)
         {
             if (inMenu)

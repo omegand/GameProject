@@ -35,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (!seen && !patrolling)
             {
-                InvokeRepeating("Patrolling", 0, 5f);
+                StartCoroutine(Patrolling());
                 patrolling = true;
                 anim.SetBool("moving", false);
                 light.color = Color.cyan;
@@ -60,7 +60,7 @@ public class EnemyBehaviour : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(enemy.velocity.normalized);
         }
     }
-    void Patrolling()
+    IEnumerator Patrolling()
     {
         Vector3 dist = transform.position - startPos;
         if (dist.magnitude > 1f)
@@ -76,6 +76,8 @@ public class EnemyBehaviour : MonoBehaviour
                 );
         }
         enemy.SetDestination(patrolPos);
+        yield return new WaitForSeconds(5f);
+        patrolling = false;
     }
 
     void Chasing()
