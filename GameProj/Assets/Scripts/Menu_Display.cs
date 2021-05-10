@@ -15,7 +15,6 @@ public class Menu_Display : MonoBehaviour
     void Awake()
     {
         StartingScreen = SceneManager.GetActiveScene().name == "Menu";
-        Debug.Log("Dumbass");
         main = transform.Find("Menu").gameObject;
         option = transform.Find("OptionMenu").gameObject;
         image = transform.Find("Image").gameObject;
@@ -111,6 +110,7 @@ public class Menu_Display : MonoBehaviour
             Scene current = SceneManager.GetActiveScene();
             if (current.buildIndex != PlayerPrefs.GetInt("stage"))
             {
+                PlayerPrefs.SetInt("Load", 1);
                 SceneManager.LoadScene(PlayerPrefs.GetInt("stage"), LoadSceneMode.Single);
             }
             else

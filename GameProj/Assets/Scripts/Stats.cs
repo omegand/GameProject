@@ -13,6 +13,14 @@ public class Stats : MonoBehaviour
     private void Start()
     {
         UpdateStats();
+        if (gameObject.CompareTag("Player") && PlayerPrefs.GetInt("Load") == 1)
+        {
+            PlayerPrefs.SetInt("Load", 0);
+            xp = PlayerPrefs.GetFloat("xp");
+            level = PlayerPrefs.GetInt("lvl");
+            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
+            UpdateStats();
+        }
     }
     public void UpdateStats()
     {

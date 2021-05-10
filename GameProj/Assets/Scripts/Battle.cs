@@ -10,6 +10,7 @@ using Random = System.Random;
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
+    private AudioM audiom;
     private GameObject player;
     private Transform playerStation;
     private Transform enemyStation;
@@ -25,10 +26,10 @@ public class Battle : MonoBehaviour
     private Random rand;
     private bool waitingforclick = false;
     public int enemyCount;
-
     private Animator playeranim;
     private void Awake()
     {
+        audiom = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioM>();
         enemyCount = PassingValues.enemycount;
         rand = new Random();
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
@@ -136,6 +137,7 @@ public class Battle : MonoBehaviour
             enemyS = item.GetComponent<Stats>();
             double damage = DamageModifier(enemyS.dmg);
             ScreenText.text = $"Enemy attacks...";
+            audiom.PlaySound(Resources.Load<AudioClip>("Sounds/punch"));
             tracks.ChangeLookAt(enemyStation);
             yield return new WaitForSeconds(2f);
             if (playerS.defending)
@@ -151,7 +153,7 @@ public class Battle : MonoBehaviour
                 StartCoroutine(EndBattle());
                 yield break;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.6f);
         }
         state = BattleState.PTURN;
         StartCoroutine(PlayerTurn());
@@ -173,6 +175,7 @@ public class Battle : MonoBehaviour
         float damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
         playeranim.Play("Attack");
+        audiom.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
         yield return new WaitForSeconds(0.8f);
         enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);

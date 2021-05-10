@@ -9,8 +9,10 @@ public class HealthPickup : MonoBehaviour
     [SerializeField]
     private int HPHeal;
     private ScrollingText Text;
+    AudioM audiom;
     void Start()
     {
+        audiom = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioM>();
         playerHealth = GameObject.Find("Character").GetComponent<Stats>();
         Text = GameObject.Find("MainScreenText").GetComponent<ScrollingText>();
     }
@@ -18,8 +20,9 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            audiom.PlaySound(Resources.Load<AudioClip>("Sounds/health"));
             playerHealth.Heal(HPHeal);
-            string[] sakiniai = { $"Picked up {HPHeal} HP potion" , "Bandymas" };
+            string[] sakiniai = { $"Picked up {HPHeal} HP potion" };
             Text.StartSentence(sakiniai);
             Destroy(gameObject);
         }
