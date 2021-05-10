@@ -119,10 +119,10 @@ public class Battle : MonoBehaviour
             }
             player.transform.position = PassingValues.savedpos;
             PassingValues.WonBattle = 1;
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
             playerS.GainXp(PassingValues.xp);
             PassingValues.xp = 0;
             player.GetComponent<Movement>().enabled = true;
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
 
         }
         if (state == BattleState.LOST)

@@ -29,7 +29,6 @@ public class ScrollingText : MonoBehaviour
         texts = new List<TextMeshProUGUI>();
         instance = this;
         allowed = false;
-        //Reset();
     }
     private static IEnumerator Typing(bool keep)
     {
@@ -64,6 +63,7 @@ public class ScrollingText : MonoBehaviour
     {
         if (!instance.isActive)
         {
+            Debug.Log(values[0]);
             instance.isActive = true;
             UItexts = UInames;
             List<string> list = new List<string>(values);
