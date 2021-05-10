@@ -25,6 +25,7 @@ public class ScrollingText : MonoBehaviour
     {
         DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
         sentences = new Queue<string>();
+        texts = new List<TextMeshProUGUI>();
         instance = this;
         allowed = false;
         DialogCanvas.SetActive(false);
