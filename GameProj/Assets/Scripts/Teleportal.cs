@@ -10,6 +10,9 @@ public class Teleportal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Stats st = other.GetComponent<Stats>();
+            PlayerPrefs.SetFloat("xp", st.xp);
+            PlayerPrefs.SetInt("lvl", st.level);
             SceneManager.LoadScene(teleportscene);
         }
     }

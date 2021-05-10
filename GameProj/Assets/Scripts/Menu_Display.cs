@@ -63,6 +63,7 @@ public class Menu_Display : MonoBehaviour
     }
     public void NewGame()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("HubArea");
     }
     public void Options()

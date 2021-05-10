@@ -13,17 +13,22 @@ public class Stats : MonoBehaviour
     private void Start()
     {
         UpdateStats();
+        TryLoading();
+    }
+
+    private void TryLoading()
+    {
         if (gameObject.CompareTag("Player") && PlayerPrefs.GetInt("Load") == 1)
         {
             PlayerPrefs.SetInt("Load", 0);
-            xp = PlayerPrefs.GetFloat("xp");
-            level = PlayerPrefs.GetInt("lvl");
             transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
-            UpdateStats();
         }
     }
+
     public void UpdateStats()
     {
+        xp = PlayerPrefs.GetFloat("xp");
+        level = PlayerPrefs.GetInt("lvl");
         dmg = 10 * Mathf.Pow(1.1f, level);
         maxhp = 100 * Mathf.Pow(1.1f, level);
     }
