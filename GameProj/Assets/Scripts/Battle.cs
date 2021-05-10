@@ -10,8 +10,6 @@ using Random = System.Random;
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource audioSourceSFX, audioSourceBack;
     private GameObject player;
     private Transform playerStation;
     private Transform enemyStation;
@@ -66,10 +64,10 @@ public class Battle : MonoBehaviour
         ScreenText = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
 
         StartCoroutine(FirstTurn());
-
+        AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/mindwarp"), true);
     }
 
-     IEnumerator FirstTurn()
+    IEnumerator FirstTurn()
     {
 
         if (PassingValues.first)
@@ -130,6 +128,7 @@ public class Battle : MonoBehaviour
         if (state == BattleState.LOST)
         {
             Instantiate(DPart, playerStation.position, Quaternion.identity);
+            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
             //ScreenText.text = "You lost.";
             Death.Dead();
             Destroy(player);
@@ -144,8 +143,7 @@ public class Battle : MonoBehaviour
             enemyS = item.GetComponent<Stats>();
             double damage = DamageModifier(enemyS.dmg);
             ScreenText.text = $"Enemy attacks...";
-            audioSourceSFX.clip = Resources.Load<AudioClip>("Sounds/punch");
-            audioSourceSFX.Play();
+            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/punch"), false);
             tracks.ChangeLookAt(enemyStation);
             yield return new WaitForSeconds(2f);
             if (playerS.defending)
@@ -183,8 +181,7 @@ public class Battle : MonoBehaviour
         float damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
         playeranim.Play("Attack");
-        audioSourceSFX.clip = Resources.Load<AudioClip>("Sounds/swordhit");
-        audioSourceSFX.Play();
+        AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"), false);
         yield return new WaitForSeconds(0.8f);
         enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);
@@ -193,6 +190,8 @@ public class Battle : MonoBehaviour
             enemyCount -= 1;
             loadedenemies.Remove(enemy);
             Instantiate(DPart, enemy.transform.position, Quaternion.identity);
+            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
+
             Destroy(enemy);
             ScreenText.text = $"Enemy is dead...";
             yield return new WaitForSeconds(1f);
