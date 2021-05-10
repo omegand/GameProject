@@ -10,16 +10,19 @@ public class ScrollingText : MonoBehaviour
     [SerializeField]
     bool auto;
 
-    GameObject DialogCanvas;
-    bool allowed;
-    int index = 0;
-    TextMeshProUGUI TextMesh;
-    string[] sentences;
+    static GameObject DialogCanvas;
+    static bool allowed;
+    static int index = 0;
+    static TextMeshProUGUI TextMesh;
+    static string[] sentences;
+
+    private static ScrollingText instance;
 
     void Awake()
     {
         DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
         TextMesh = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        instance = this;
         Reset();
     }
     private void Update()
@@ -27,17 +30,17 @@ public class ScrollingText : MonoBehaviour
         if (auto && allowed) NextSentence();
         if (Input.GetKeyDown(KeyCode.C) && allowed) NextSentence();
     }
-    IEnumerator Typing()
+    private static IEnumerator Typing()
     {
         string sentence = sentences[index];
         foreach (var item in sentence)
         {
             TextMesh.text += item;
-            yield return new WaitForSeconds(TypingSpeed);
+            yield return new WaitForSeconds(instance.TypingSpeed);
         }
-        StartCoroutine(Pause());
+        instance.StartCoroutine(Pause());
     }
-    IEnumerator Pause()
+    static IEnumerator Pause()
     {
         yield return new WaitForSeconds(1f);
         allowed = true;
@@ -57,14 +60,15 @@ public class ScrollingText : MonoBehaviour
         }
     }
 
-    public void StartSentence(string[] values)
+    public static void StartSentence(string[] values)
     {
         Debug.Log(values[0]);
         if (!DialogCanvas.activeSelf)
         {
             sentences = values;
             DialogCanvas.SetActive(true);
-            StartCoroutine(Typing());
+            instance.StartCoroutine(Typing());
+         
         }
     }
     void Reset() 

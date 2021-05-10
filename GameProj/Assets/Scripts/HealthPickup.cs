@@ -23,7 +23,7 @@ public class HealthPickup : MonoBehaviour
             audiom.PlaySound(Resources.Load<AudioClip>("Sounds/health"));
             playerHealth.Heal(HPHeal);
             string[] sakiniai = { $"Picked up {HPHeal} HP potion" };
-            Text.StartSentence(sakiniai);
+            ScrollingText.StartSentence(sakiniai);
             Destroy(gameObject);
         }
     }
