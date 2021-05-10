@@ -24,13 +24,27 @@ public class Mixer : MonoBehaviour
     private float BackgroundVolume;
 
 
+
     void Start()
     {
         EffectVolume = PlayerPrefs.GetFloat(effectVolumePar, 1f);
         BackgroundVolume = PlayerPrefs.GetFloat(backgroundVolumePar, 1f);
-        EffectSlider.onValueChanged.AddListener(delegate { SetEffectVol();  });
-        BackgroundSlider.onValueChanged.AddListener(delegate { SetBackgroundVol(); });
-        UpdateSlider();
+        if(EffectSlider != null && BackgroundSlider != null)
+        {
+            EffectSlider.onValueChanged.AddListener(delegate { SetEffectVol(); });
+            BackgroundSlider.onValueChanged.AddListener(delegate { SetBackgroundVol(); });
+            UpdateSlider();
+            UpdateMixer();
+        }
+        else
+        {
+            UpdateMixer();
+        }
+    }
+    public void UpdateMixer()
+    {
+        SetVol(effectVolumePar, EffectVolume);
+        SetVol(backgroundVolumePar, BackgroundVolume);
     }
     public void UpdateSlider()
     {
@@ -59,7 +73,7 @@ public class Mixer : MonoBehaviour
         var mixerVol = volume <= 0 ? -80 : Mathf.Log(volume) * 20;
         mixer.SetFloat(param, mixerVol);
     }
-    public void SaveVol(string param, float vol)
+    public static void SaveVol(string param, float vol)
     {
         PlayerPrefs.SetFloat(param, vol);
     }

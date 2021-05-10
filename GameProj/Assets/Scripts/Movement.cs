@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Jumps > 0 && !attacking)
         {
             VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
-            AudioM.PlaySound(jumping);
+            AudioM.PlaySound(jumping, false);
             anim.SetTrigger("jump");
             Jumps--;
         }
@@ -97,13 +97,13 @@ public class Movement : MonoBehaviour
         {
             if (item.CompareTag("Collectable"))
             {
-                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/woodhit"));
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/woodhit"), false);
                 item.GetComponent<Box_Destroyed>().DestroyBox();
 
             }
             else
             {
-                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"), false);
                 item.GetComponent<EnemyBehaviour>().StartBattle(true);
             }
 

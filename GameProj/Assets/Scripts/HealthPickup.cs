@@ -18,10 +18,10 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/health"));
+            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/health"), false);
             playerHealth.Heal(HPHeal);
             string[] sakiniai = { $"Picked up {HPHeal} HP potion" };
-            ScrollingText.StartSentence(sakiniai, new string[] { "Health_Pickup"});
+            ScrollingText.StartSentence(sakiniai, new string[] { "Main"});
             Destroy(gameObject);
         }
     }

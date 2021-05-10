@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class AudioM : MonoBehaviour
 {
+    [SerializeField]
+    public AudioSource backgroundM;
+    [SerializeField]
+    public AudioSource sfxM;
     public static float volumeSFX = 1;
-    private static AudioSource AS;
+    public static AudioM init;
     private void Awake()
     {
-        AS = GetComponent<AudioSource>();
+        init = this;
+        backgroundM.loop = true;
     }
-    public static void PlaySound(AudioClip au)
+    public static void PlaySound(AudioClip au, bool background)
     {
-        AS.PlayOneShot(au, volumeSFX);
+        init.backgroundM.clip = au;
+        if (background)
+            init.backgroundM.Play();
+        else
+            init.sfxM.Play();
     }
-    public static AudioSource createAS(AudioClip au, bool loop, float volume)
+    public static void StopSound(bool background)
     {
-        var newAS = GameObject.FindGameObjectWithTag("Player").AddComponent<AudioSource>();
-        newAS.clip = au;
-        newAS.loop = loop;
-        newAS.playOnAwake = false;
-        newAS.volume = volume;
-        return newAS;
+        if (background)
+            init.backgroundM.Stop();
     }
 }

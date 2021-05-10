@@ -15,12 +15,10 @@ public class EnemyBehaviour : MonoBehaviour
     private bool patrolling = false;
     private Animator anim;
     private Light light;
-    private AudioSource AS;
     [SerializeField] private float sightRange, patrolVariance, givenXP;
     public int EnemyCount;
     private void Start()
     {
-        AS = AudioM.createAS(Resources.Load<AudioClip>("Sounds/chase"), true, AudioM.volumeSFX);
         light = transform.Find("Spot Light").GetComponent<Light>();
         anim = GetComponent<Animator>();
         startPos = transform.position;
@@ -40,11 +38,13 @@ public class EnemyBehaviour : MonoBehaviour
                 anim.SetBool("moving", false);
                 light.color = Color.cyan;
                 enemy.speed = 3;
-                if (AS.isPlaying) AS.Stop();
+                if (AudioM.init.backgroundM.isPlaying)
+                    AudioM.StopSound(true);
             }
             if (seen)
             {
-                if (!AS.isPlaying) AS.Play();
+                if(!AudioM.init.backgroundM.isPlaying)
+                    AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/chase"), true);
                 enemy.speed = 5;
                 Chasing();
                 anim.SetBool("moving", true);
@@ -109,7 +109,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void StartBattle(bool initiative)
     {
-        AS.Stop();
+        AudioM.StopSound(true);
         stop = true;
         PassingValues.enemycount = EnemyCount;
         PassingValues.sceneindex = SceneManager.GetActiveScene().buildIndex;
