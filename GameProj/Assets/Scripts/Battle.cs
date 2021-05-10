@@ -109,6 +109,7 @@ public class Battle : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (state == BattleState.WON)
         {
+            AudioM.NewMethod();
             ScreenText.text = "You won!";
             yield return new WaitForSeconds(0.7f);
             ScreenText.text = $"You gain {PassingValues.xp} experience.";
