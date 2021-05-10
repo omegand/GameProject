@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 
 public class AudioM : MonoBehaviour
@@ -10,11 +11,15 @@ public class AudioM : MonoBehaviour
     public AudioSource sfxM;
     public static float volumeSFX = 1;
     public static AudioM init;
-    private void Awake()
+    private void Start()
     {
         init = this;
-        backgroundM.loop = true;
+        //backgroundM.loop = true;
+    }
+    public static void NewMethod()
+    {
         Scene current = SceneManager.GetActiveScene();
+
         switch (current.name)
         {
             case "HubArea":
@@ -28,6 +33,7 @@ public class AudioM : MonoBehaviour
                 break;
         }
     }
+
     public static void PlaySound(AudioClip au, bool background)
     {
         if (background)

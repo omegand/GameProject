@@ -38,12 +38,12 @@ public class EnemyBehaviour : MonoBehaviour
                 anim.SetBool("moving", false);
                 light.color = Color.cyan;
                 enemy.speed = 3;
-                if (AudioM.init.backgroundM.isPlaying)
-                    AudioM.StopSound(true);
+                if (AudioM.init.backgroundM.clip == null || AudioM.init.backgroundM.clip.name == "chase")
+                    AudioM.NewMethod();
             }
             if (seen)
             {
-                if(!AudioM.init.backgroundM.isPlaying)
+                if(!AudioM.init.backgroundM.isPlaying || AudioM.init.backgroundM.clip.name != "chase")
                     AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/chase"), true);
                 enemy.speed = 5;
                 Chasing();
