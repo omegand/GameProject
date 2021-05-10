@@ -97,6 +97,14 @@ public class EnemyBehaviour : MonoBehaviour
             StartBattle(false);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Player") && !stop)
+        {
+            StartBattle(false);
+
+        }
+    }
     public void StartBattle(bool initiative)
     {
         AS.Stop();

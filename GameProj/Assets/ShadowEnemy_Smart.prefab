@@ -791,7 +791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1121086475796978520}
   - component: {fileID: 1121086475803915446}
-  - component: {fileID: 1121086475796481917}
   - component: {fileID: 5215036910698728079}
   - component: {fileID: 5215036910698728078}
   - component: {fileID: 435721240868899128}
@@ -841,19 +840,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1121086475796481917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121086475796481912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f05d2e285836845abc765ac614e9fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyCount: 1
 --- !u!195 &5215036910698728079
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -890,6 +876,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 3
   patrolVariance: 5
+  givenXP: 150
+  EnemyCount: 1
 --- !u!54 &435721240868899128
 Rigidbody:
   m_ObjectHideFlags: 0

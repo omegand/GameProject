@@ -18,7 +18,6 @@ public class ColliderTouch : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Touch");
         transform.GetComponent<NavMeshAgent>().enabled = true;
         transform.GetComponent<EnemyBehaviour>().enabled = true;
     }
