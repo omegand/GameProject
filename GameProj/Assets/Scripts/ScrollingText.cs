@@ -21,14 +21,14 @@ public class ScrollingText : MonoBehaviour
     private static ScrollingText instance;
     private static List<TextMeshProUGUI> texts;
 
+    private bool isActive = false;
+
     void Awake()
     {
-        DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
         sentences = new Queue<string>();
         texts = new List<TextMeshProUGUI>();
         instance = this;
         allowed = false;
-        DialogCanvas.SetActive(false);
         //Reset();
     }
     private static IEnumerator Typing()
@@ -51,6 +51,7 @@ public class ScrollingText : MonoBehaviour
         sentences.Clear();
         texts.ForEach(t => t.text = "");
         texts.Clear();
+        instance.isActive = false;
     }
     static IEnumerator Pause()
     {
@@ -60,10 +61,13 @@ public class ScrollingText : MonoBehaviour
 
     public static void StartSentence(string[] values, string[] UInames)
     {
-        UItexts = UInames;
-        List<string> list = new List<string>(values);
-        list.ForEach(s => sentences.Enqueue(s));
-        DialogCanvas.SetActive(true);
-        instance.StartCoroutine(Typing());
+        if (!instance.isActive)
+        {
+            instance.isActive = true;
+            UItexts = UInames;
+            List<string> list = new List<string>(values);
+            list.ForEach(s => sentences.Enqueue(s));
+            instance.StartCoroutine(Typing());
+        }
     }
 }
