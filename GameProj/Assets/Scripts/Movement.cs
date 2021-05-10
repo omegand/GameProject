@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
         cont = GetComponent<CharacterController>();
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         Ground = GameObject.Find("GroundCheck").GetComponent<Transform>();
+
         anim = GetComponent<Animator>();
     }
 
