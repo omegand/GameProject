@@ -12,7 +12,6 @@ public class Death : MonoBehaviour
     private static GameObject menu;
     void Start()
     {
-        GameObject.Find("Effects").GetComponent<Volume>().profile.TryGet<UnityEngine.Rendering.HighDefinition.DepthOfField>(out blur);
         menu = GameObject.Find("DeadMenu");
         menu.SetActive(false);
     }
