@@ -61,12 +61,12 @@ PrefabInstance:
     - target: {fileID: 3084218562217572562, guid: 6239981257f523a4d901edcf05d5f573,
         type: 3}
       propertyPath: m_TagString
-      value: Screentext
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3084218562217572565, guid: 6239981257f523a4d901edcf05d5f573,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3084218562217572566, guid: 6239981257f523a4d901edcf05d5f573,
         type: 3}
@@ -177,6 +177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084218562688814660, guid: 6239981257f523a4d901edcf05d5f573,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3084218563465481574, guid: 6239981257f523a4d901edcf05d5f573,
         type: 3}
