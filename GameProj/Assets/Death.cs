@@ -12,6 +12,7 @@ public class Death : MonoBehaviour
     void Start()
     {
         GameObject.Find("Effects").GetComponent<Volume>().profile.TryGet<UnityEngine.Rendering.HighDefinition.DepthOfField>(out blur);
+        Dead();
     }
 
     // Update is called once per frame
@@ -22,5 +23,6 @@ public class Death : MonoBehaviour
     public static void Dead()
     {
         blur.focusMode.value = DepthOfFieldMode.Manual;
+        ScrollingText.StartSentence(new string[] {"1000000000000000", "1000000000000000"}, new string[] {"LevelMessage", "XPMessage"});
     }
 }

@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class ScrollingText : MonoBehaviour
 {
@@ -14,16 +15,20 @@ public class ScrollingText : MonoBehaviour
     static bool allowed;
     static int index = 0;
     static TextMeshProUGUI TextMesh;
-    static string[] sentences;
+    static Queue<string> sentences;
+    static string[] UItexts;
 
     private static ScrollingText instance;
+    private static List<TextMeshProUGUI> texts;
 
     void Awake()
     {
         DialogCanvas = GameObject.FindGameObjectWithTag("Screentext");
-        TextMesh = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        sentences = new Queue<string>();
         instance = this;
-        Reset();
+        allowed = false;
+        DialogCanvas.SetActive(false);
+        //Reset();
     }
     private void Update()
     {
@@ -32,21 +37,30 @@ public class ScrollingText : MonoBehaviour
     }
     private static IEnumerator Typing()
     {
-        string sentence = sentences[index];
-        foreach (var item in sentence)
+        foreach(var UI in UItexts)
         {
-            TextMesh.text += item;
-            yield return new WaitForSeconds(instance.TypingSpeed);
+            string item = sentences.Dequeue();
+            TextMesh = GameObject.Find(UI).GetComponent<TextMeshProUGUI>();
+            texts.Add(TextMesh);
+            foreach (var sentence in item)
+            {
+                TextMesh.text += sentence;
+                yield return new WaitForSeconds(instance.TypingSpeed);
+            }
         }
+        sentences.Clear();
         instance.StartCoroutine(Pause());
     }
     static IEnumerator Pause()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+        texts.ForEach(t => t.text = "");
+        texts.Clear();
         allowed = true;
     }
     public void NextSentence()
     {
+        /*
         allowed = false;
         if (index < sentences.Length - 1)
         {
@@ -58,14 +72,17 @@ public class ScrollingText : MonoBehaviour
         {
             Reset();
         }
+        */
     }
 
-    public static void StartSentence(string[] values)
+    public static void StartSentence(string[] values, string[] UInames)
     {
         Debug.Log(values[0]);
         if (!DialogCanvas.activeSelf)
         {
-            sentences = values;
+            UItexts = UInames;
+            List<string> list = new List<string>(values);
+            list.ForEach(s => sentences.Enqueue(s));
             DialogCanvas.SetActive(true);
             instance.StartCoroutine(Typing());
          
