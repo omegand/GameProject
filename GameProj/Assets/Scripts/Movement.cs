@@ -20,11 +20,13 @@ public class Movement : MonoBehaviour
     private int Jumps = 0;
     private Animator anim;
     private Transform swordhitbox;
+    private AudioClip jumping;
     bool attacking = false;
 
 
     void Start()
     {
+        jumping = Resources.Load<AudioClip>("Sounds/jump");
         effect.Stop();
         swordhitbox = transform.Find("SwordHitbox");
         cont = GetComponent<CharacterController>();
@@ -57,6 +59,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Jumps > 0 && !attacking)
         {
             VVel.y = Mathf.Sqrt(JumpForce * -2f * gravity);
+            AudioM.PlaySound(jumping);
             anim.SetTrigger("jump");
             Jumps--;
         }

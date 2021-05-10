@@ -107,7 +107,7 @@ public class Battle : MonoBehaviour
 
     IEnumerator EndBattle()
     {
-        DestroyImmediate(GameObject.Find("Directional light"));
+        Destroy(GameObject.Find("Directional Light"));
         yield return new WaitForSeconds(0.1f);
         if (state == BattleState.WON)
         {
