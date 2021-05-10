@@ -19,8 +19,6 @@ public class Health : MonoBehaviour
         LVLTextP = GameObject.Find("Level_Text").GetComponent<TextMeshProUGUI>();
         slider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
         healthImage = GameObject.Find("Health_Bar").GetComponent<Image>();
-        LVLTextP.text = stats.level.ToString();
-
     }
     void Start()
     {
@@ -53,6 +51,7 @@ public class Health : MonoBehaviour
         color.a = (float)Math.Round(color.a, 0);
         healthImage.color = new Color32((byte)color.r, (byte)color.g, (byte)color.b, (byte)color.a);
         slider.value = stats.currenthp / stats.maxhp;
+        LVLTextP.text = stats.level.ToString();
     }
 
 }

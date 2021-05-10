@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OptionSlot.unity
     guid: 4de3516d9913d1c4590e1772153cd511
+  - enabled: 1
+    path: Assets/Scenes/layer1.unity
+    guid: 3e998938b3a9adc479fb8072f5aa5236
   m_configObjects: {}
