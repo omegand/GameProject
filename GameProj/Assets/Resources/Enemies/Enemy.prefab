@@ -832,7 +832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectname: Sphere
   level: 1
-  dmg: 30000
+  dmg: 3
   maxhp: 20
   currenthp: 20
   defending: 0

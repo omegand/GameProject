@@ -26,7 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
         enemy.updateRotation = false;
         player = GameObject.FindGameObjectWithTag("Player");
         EnemyCount = Random.Range(1, 4);
-        givenXP = Random.Range(15, 40);
+        givenXP = Random.Range((150 *EnemyCount), (400*EnemyCount));
     }
     private void Update()
     {
