@@ -7,16 +7,17 @@ using UnityEngine.SceneManagement;
 public class EnemyBehaviour : MonoBehaviour
 {
     private NavMeshAgent enemy;
-    public int EnemyCount;
-    bool stop = false;
+    private bool stop = false;
     private GameObject player;
-    [SerializeField] private float sightRange, patrolVariance;
+  
     private bool seen = false;
     private Vector3 patrolPos, startPos;
     private bool patrolling = false;
     private Animator anim;
     private Light light;
-    AudioSource AS;
+    private AudioSource AS;
+    [SerializeField] private float sightRange, patrolVariance, givenXP;
+    public int EnemyCount;
     private void Start()
     {
         AS = AudioM.createAS(Resources.Load<AudioClip>("Sounds/chase"), true, AudioM.volumeSFX);
@@ -104,6 +105,7 @@ public class EnemyBehaviour : MonoBehaviour
         PassingValues.sceneindex = SceneManager.GetActiveScene().buildIndex;
         PassingValues.savedpos = transform.position;
         PassingValues.first = initiative;
+        PassingValues.xp = givenXP;
         foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
         {
             if (!item.CompareTag("Player"))

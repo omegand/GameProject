@@ -9,5 +9,6 @@ public class PassingValues : MonoBehaviour
     public static int WonBattle = 1;
     public static Vector3 savedpos = Vector3.zero;
     public static bool first;
+    public static float xp;
 
 }

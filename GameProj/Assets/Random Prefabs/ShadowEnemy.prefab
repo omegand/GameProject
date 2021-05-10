@@ -341,7 +341,6 @@ GameObject:
   - component: {fileID: 4484987598958911243}
   - component: {fileID: 4484987598949626085}
   - component: {fileID: 4484987598959133480}
-  - component: {fileID: 4484987598959133486}
   - component: {fileID: 8785553310592159452}
   - component: {fileID: 8785553310592159453}
   m_Layer: 12
@@ -401,19 +400,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.15, z: 0}
---- !u!114 &4484987598959133486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4484987598959133483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f05d2e285836845abc765ac614e9fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyCount: 1
 --- !u!195 &8785553310592159452
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -448,7 +434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc2866641a79a64aa13e4b502071c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightRange: 15
+  EnemyCount: 2
+  sightRange: 10
   patrolVariance: 5
 --- !u!1 &4484987598959133485
 GameObject:

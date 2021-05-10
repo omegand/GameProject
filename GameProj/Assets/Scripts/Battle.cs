@@ -118,6 +118,8 @@ public class Battle : MonoBehaviour
             }
             player.transform.position = PassingValues.savedpos;
             PassingValues.WonBattle = 1;
+            playerS.GainXp(PassingValues.xp);
+            PassingValues.xp = 0;
             player.GetComponent<Movement>().enabled = true;
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
 
