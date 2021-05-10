@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     private NavMeshAgent enemy;
+    public int EnemyCount;
+    bool stop = false;
     private GameObject player;
     [SerializeField] private float sightRange, patrolVariance;
     private bool seen = false;
@@ -13,8 +16,10 @@ public class EnemyBehaviour : MonoBehaviour
     private bool patrolling = false;
     private Animator anim;
     private Light light;
+    AudioSource AS;
     private void Start()
     {
+        AS = AudioM.createAS(Resources.Load<AudioClip>("Sounds/chase"), true, AudioM.volumeSFX);
         light = transform.Find("Spot Light").GetComponent<Light>();
         anim = GetComponent<Animator>();
         startPos = transform.position;
@@ -25,20 +30,27 @@ public class EnemyBehaviour : MonoBehaviour
     private void Update()
     {
         seen = Physics.CheckSphere(transform.position, sightRange, LayerMask.GetMask("Player"));
-        if (!seen && !patrolling)
+        if (!stop)
         {
-            InvokeRepeating("Patrolling", 0, 5f);
-            patrolling = true;
-            anim.SetBool("moving", false);
-            light.color = Color.cyan;
-            enemy.speed = 3;
+            if (!seen && !patrolling)
+            {
+                InvokeRepeating("Patrolling", 0, 5f);
+                patrolling = true;
+                anim.SetBool("moving", false);
+                light.color = Color.cyan;
+                enemy.speed = 3;
+                if (AS.isPlaying) AS.Stop();
+            }
+            if (seen)
+            {
+                if (!AS.isPlaying) AS.Play();
+                enemy.speed = 5;
+                Chasing();
+                anim.SetBool("moving", true);
+                light.color = Color.red;
+            }
         }
-        if (seen) {
-            enemy.speed = 5;
-            Chasing();
-            anim.SetBool("moving", true);
-            light.color = Color.red;
-        }
+
     }
     private void LateUpdate()
     {
@@ -75,5 +87,29 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, sightRange);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !stop)
+        {
+            StartBattle(false);
+        }
+    }
+    public void StartBattle(bool initiative)
+    {
+        AS.Stop();
+        stop = true;
+        PassingValues.enemycount = EnemyCount;
+        PassingValues.sceneindex = SceneManager.GetActiveScene().buildIndex;
+        PassingValues.savedpos = transform.position;
+        PassingValues.first = initiative;
+        foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (!item.CompareTag("Player"))
+                item.SetActive(false);
+        }
+        SceneManager.LoadSceneAsync("Combat", LoadSceneMode.Additive);
+        Destroy(this.gameObject);
     }
 }

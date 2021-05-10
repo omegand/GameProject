@@ -21,6 +21,7 @@ TagManager:
   - Dynamic_Spawn
   - Dynamic_Enemy
   - Crate
+  - Audio
   layers:
   - Default
   - TransparentFX

@@ -20,11 +20,13 @@ public class Movement : MonoBehaviour
     private int Jumps = 0;
     private Animator anim;
     private Transform swordhitbox;
+    AudioM audiom;
     bool attacking = false;
 
 
     void Start()
     {
+        audiom = GetComponent<AudioM>();
         effect.Stop();
         swordhitbox = transform.Find("SwordHitbox");
         cont = GetComponent<CharacterController>();
@@ -91,10 +93,16 @@ public class Movement : MonoBehaviour
         var colliders = Physics.OverlapBox(swordhitbox.position, Vector3.one * 1.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
         foreach (var item in colliders)
         {
-            if (item.CompareTag("Collectable")) item.GetComponent<Box_Destroyed>().DestroyBox();
+            if (item.CompareTag("Collectable"))
+            {
+                audiom.PlaySound(Resources.Load<AudioClip>("Sounds/woodhit"));
+                item.GetComponent<Box_Destroyed>().DestroyBox();
+
+            }
             else
             {
-                item.GetComponent<BattleSwitcher>().StartBattle(true);
+                audiom.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
+                item.GetComponent<EnemyBehaviour>().StartBattle(true);
             }
 
         }

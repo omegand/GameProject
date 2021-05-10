@@ -80,7 +80,6 @@ public class Trap_Activate : MonoBehaviour
         }
         if (other.CompareTag("Enemy"))
         {
-            gobject.GetComponent<BattleSwitcher>().enabled = true;
             gobject.GetComponent<NavMeshAgent>().enabled = true;
             gobject.GetComponent<EnemyBehaviour>().enabled = true;
         }
