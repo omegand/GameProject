@@ -17,11 +17,17 @@ public class AudioM : MonoBehaviour
     }
     public static void PlaySound(AudioClip au, bool background)
     {
-        init.backgroundM.clip = au;
         if (background)
+        {
+            init.backgroundM.clip = au;
             init.backgroundM.Play();
+        }
         else
+        {
+            init.sfxM.clip = au;
             init.sfxM.Play();
+        }
+
     }
     public static void StopSound(bool background)
     {
