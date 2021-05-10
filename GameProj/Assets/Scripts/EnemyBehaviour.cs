@@ -118,7 +118,7 @@ public class EnemyBehaviour : MonoBehaviour
         PassingValues.xp = givenXP;
         foreach (var item in SceneManager.GetActiveScene().GetRootGameObjects())
         {
-            if (!item.CompareTag("Player") && !item.name.Equals("Effects"))
+            if (!item.CompareTag("Player") && !item.name.Equals("Screen_Blur"))
                 item.SetActive(false);
         }
         SceneManager.LoadSceneAsync("Combat", LoadSceneMode.Additive);

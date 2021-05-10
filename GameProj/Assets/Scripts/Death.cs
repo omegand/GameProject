@@ -14,11 +14,16 @@ public class Death : MonoBehaviour
     void Start()
     {
         menu = GameObject.Find("DeadMenu");
-        GameObject.Find("Effects").GetComponent<Volume>().profile.TryGet<UnityEngine.Rendering.HighDefinition.DepthOfField>(out blur);
         stats = gameObject.GetComponent<Stats>();
         menu.SetActive(false);
+        StartCoroutine(Delay());
     }
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        GameObject.Find("Screen_Blur").GetComponent<Volume>().profile.TryGet<UnityEngine.Rendering.HighDefinition.DepthOfField>(out blur);
 
+    }
     // Update is called once per frame
     public static void Dead()
     {

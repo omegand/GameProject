@@ -130,9 +130,8 @@ public class Battle : MonoBehaviour
         {
             Instantiate(DPart, playerStation.position, Quaternion.identity);
             AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
-            //ScreenText.text = "You lost.";
             Death.Dead();
-            Destroy(player);
+            GameObject.Find("Model").SetActive(false);
             yield return new WaitForSeconds(1f);
         }
 
