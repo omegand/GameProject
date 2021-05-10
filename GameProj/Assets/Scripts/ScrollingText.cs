@@ -62,13 +62,11 @@ public class ScrollingText : MonoBehaviour
 
     public static void StartSentence(string[] values)
     {
-        Debug.Log(values[0]);
         if (!DialogCanvas.activeSelf)
         {
             sentences = values;
             DialogCanvas.SetActive(true);
             instance.StartCoroutine(Typing());
-         
         }
     }
     void Reset() 

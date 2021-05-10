@@ -61,6 +61,8 @@ public class Stats : MonoBehaviour
         {
             xp = 0;
             level++;
+            ScrollingText.StartSentence(new string[] { "You leveled up!" });
+            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/level"));
         }
     }
 }
