@@ -93,12 +93,12 @@ public class Menu_Display : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerX", st.transform.position.x);
             PlayerPrefs.SetFloat("PlayerY", st.transform.position.y);
             PlayerPrefs.SetFloat("PlayerZ", st.transform.position.z);
-            ScrollingText.StartSentence(new string[] { "Saved progress." }, new string[] { "Progress" });
+            ScrollingText.StartSentence(new string[] { "Saved progress." });
             Close();
         }
         else
         {
-            ScrollingText.StartSentence(new string[] { "Cannot save in combat." }, new string[] { "Progress" });
+            ScrollingText.StartSentence(new string[] { "Cannot save in combat." });
             Close();
         }
 
@@ -120,13 +120,13 @@ public class Menu_Display : MonoBehaviour
                 st.level = PlayerPrefs.GetInt("lvl");
                 st.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
                 st.UpdateStats();
-                ScrollingText.StartSentence(new string[] { "Loaded progress." }, new string[] { "Progress" });
+                ScrollingText.StartSentence(new string[] { "Loaded progress." });
                 Close();
             }
         }
         else
         {
-            ScrollingText.StartSentence(new string[] { "No saved data." }, new string[] { "Progress" });
+            ScrollingText.StartSentence(new string[] { "No saved data." });
             Close();
         }
     }

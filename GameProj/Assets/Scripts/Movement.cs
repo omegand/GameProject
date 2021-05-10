@@ -20,13 +20,11 @@ public class Movement : MonoBehaviour
     private int Jumps = 0;
     private Animator anim;
     private Transform swordhitbox;
-    AudioM audiom;
     bool attacking = false;
 
 
     void Start()
     {
-        audiom = GetComponent<AudioM>();
         effect.Stop();
         swordhitbox = transform.Find("SwordHitbox");
         cont = GetComponent<CharacterController>();
@@ -96,13 +94,13 @@ public class Movement : MonoBehaviour
         {
             if (item.CompareTag("Collectable"))
             {
-                audiom.PlaySound(Resources.Load<AudioClip>("Sounds/woodhit"));
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/woodhit"));
                 item.GetComponent<Box_Destroyed>().DestroyBox();
 
             }
             else
             {
-                audiom.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
                 item.GetComponent<EnemyBehaviour>().StartBattle(true);
             }
 

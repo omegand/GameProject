@@ -5,12 +5,12 @@ using UnityEngine;
 public class AudioM : MonoBehaviour
 {
     public static float volumeSFX = 1;
-    private AudioSource AS;
+    private static AudioSource AS;
     private void Awake()
     {
         AS = GetComponent<AudioSource>();
     }
-    public void PlaySound(AudioClip au)
+    public static void PlaySound(AudioClip au)
     {
         AS.PlayOneShot(au, volumeSFX);
     }

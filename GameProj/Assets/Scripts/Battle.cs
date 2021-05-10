@@ -12,7 +12,6 @@ public class Battle : MonoBehaviour
 {
     [SerializeField]
     private AudioSource audioSourceSFX, audioSourceBack;
-
     private GameObject player;
     private Transform playerStation;
     private Transform enemyStation;
@@ -108,7 +107,8 @@ public class Battle : MonoBehaviour
 
     IEnumerator EndBattle()
     {
-
+        DestroyImmediate(GameObject.Find("Directional light"));
+        yield return new WaitForSeconds(0.1f);
         if (state == BattleState.WON)
         {
             ScreenText.text = "You won!";
@@ -183,7 +183,6 @@ public class Battle : MonoBehaviour
         float damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
         playeranim.Play("Attack");
-        //audiom.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
         audioSourceSFX.clip = Resources.Load<AudioClip>("Sounds/swordhit");
         audioSourceSFX.Play();
         yield return new WaitForSeconds(0.8f);

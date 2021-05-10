@@ -81,7 +81,6 @@ public class ScrollingText : MonoBehaviour
 
     public static void StartSentence(string[] values, string[] UInames)
     {
-        Debug.Log(values[0]);
         if (!DialogCanvas.activeSelf)
         {
             UItexts = UInames;
@@ -89,7 +88,6 @@ public class ScrollingText : MonoBehaviour
             list.ForEach(s => sentences.Enqueue(s));
             DialogCanvas.SetActive(true);
             instance.StartCoroutine(Typing());
-         
         }
     }
     /*
