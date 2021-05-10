@@ -10,7 +10,9 @@ using Random = System.Random;
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
 {
-    private AudioM audiom;
+    [SerializeField]
+    private AudioSource audioSourceSFX, audioSourceBack;
+
     private GameObject player;
     private Transform playerStation;
     private Transform enemyStation;
@@ -29,7 +31,6 @@ public class Battle : MonoBehaviour
     private Animator playeranim;
     private void Awake()
     {
-        audiom = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioM>();
         enemyCount = PassingValues.enemycount;
         rand = new Random();
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
@@ -129,7 +130,9 @@ public class Battle : MonoBehaviour
         if (state == BattleState.LOST)
         {
             Instantiate(DPart, playerStation.position, Quaternion.identity);
-            ScreenText.text = "You lost.";
+            //ScreenText.text = "You lost.";
+            Death.Dead();
+            Destroy(player);
             yield return new WaitForSeconds(1f);
         }
 
@@ -141,7 +144,8 @@ public class Battle : MonoBehaviour
             enemyS = item.GetComponent<Stats>();
             double damage = DamageModifier(enemyS.dmg);
             ScreenText.text = $"Enemy attacks...";
-            audiom.PlaySound(Resources.Load<AudioClip>("Sounds/punch"));
+            audioSourceSFX.clip = Resources.Load<AudioClip>("Sounds/punch");
+            audioSourceSFX.Play();
             tracks.ChangeLookAt(enemyStation);
             yield return new WaitForSeconds(2f);
             if (playerS.defending)
@@ -179,7 +183,9 @@ public class Battle : MonoBehaviour
         float damage = DamageModifier(playerS.dmg);
         ScreenText.text = $"Attacking for {damage:0.0} damage";
         playeranim.Play("Attack");
-        audiom.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
+        //audiom.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"));
+        audioSourceSFX.clip = Resources.Load<AudioClip>("Sounds/swordhit");
+        audioSourceSFX.Play();
         yield return new WaitForSeconds(0.8f);
         enemyS = enemy.GetComponent<Stats>();
         bool dead = enemyS.Damage((float)damage);

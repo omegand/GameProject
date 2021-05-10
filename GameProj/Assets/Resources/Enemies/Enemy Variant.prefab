@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 7977678029957432027, guid: 95ba95f7f89135b41913d032cd71ea2a,
         type: 3}
       propertyPath: dmg
-      value: 4
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 7977678029957432027, guid: 95ba95f7f89135b41913d032cd71ea2a,
         type: 3}
