@@ -31,11 +31,6 @@ public class ScrollingText : MonoBehaviour
         DialogCanvas.SetActive(false);
         //Reset();
     }
-    private void Update()
-    {
-        if (auto && allowed) NextSentence();
-        if (Input.GetKeyDown(KeyCode.C) && allowed) NextSentence();
-    }
     private static IEnumerator Typing()
     {
         foreach(var UI in UItexts)
@@ -51,7 +46,7 @@ public class ScrollingText : MonoBehaviour
         }
         instance.StartCoroutine(Pause());
     }
-    public void Reset()
+    public static void Reset()
     {
         sentences.Clear();
         texts.ForEach(t => t.text = "");
@@ -60,43 +55,15 @@ public class ScrollingText : MonoBehaviour
     static IEnumerator Pause()
     {
         yield return new WaitForSeconds(2f);
-        allowed = true;
-    }
-    public void NextSentence()
-    {
-        /*
-        allowed = false;
-        if (index < sentences.Length - 1)
-        {
-            index++;
-            TextMesh.text = "";
-            StartCoroutine(Typing());
-        }
-        else
-        {
-            Reset();
-        }
-        */
+        Reset();
     }
 
     public static void StartSentence(string[] values, string[] UInames)
     {
-        if (!DialogCanvas.activeSelf)
-        {
-            UItexts = UInames;
-            List<string> list = new List<string>(values);
-            list.ForEach(s => sentences.Enqueue(s));
-            DialogCanvas.SetActive(true);
-            instance.StartCoroutine(Typing());
-        }
+        UItexts = UInames;
+        List<string> list = new List<string>(values);
+        list.ForEach(s => sentences.Enqueue(s));
+        DialogCanvas.SetActive(true);
+        instance.StartCoroutine(Typing());
     }
-    /*
-    void Reset() 
-    {
-        TextMesh.text = "";
-        index = 0;
-        allowed = false;
-        DialogCanvas.SetActive(false);
-    }
-    */
 }
