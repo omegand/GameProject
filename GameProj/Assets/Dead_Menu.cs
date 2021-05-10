@@ -29,21 +29,8 @@ public class Dead_Menu : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("xp"))
         {
-            Scene current = SceneManager.GetActiveScene();
-            if (current.buildIndex != PlayerPrefs.GetInt("stage"))
-            {
-                PlayerPrefs.SetInt("Load", 1);
-                SceneManager.LoadScene(PlayerPrefs.GetInt("stage"), LoadSceneMode.Single);
-            }
-            else
-            {
-                Stats st = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
-                st.xp = PlayerPrefs.GetFloat("xp");
-                st.level = PlayerPrefs.GetInt("lvl");
-                st.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
-                st.UpdateStats();
-                ScrollingText.StartSentence(new string[] { "Loaded progress." }, new string[] { "Main" });
-            }
+            PlayerPrefs.SetInt("Load", 1);
+            SceneManager.LoadScene(PlayerPrefs.GetInt("stage"), LoadSceneMode.Single);
         }
         else
         {

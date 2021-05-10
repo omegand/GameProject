@@ -31,7 +31,7 @@ public class ScrollingText : MonoBehaviour
         allowed = false;
         //Reset();
     }
-    private static IEnumerator Typing()
+    private static IEnumerator Typing(bool keep)
     {
         foreach(var UI in UItexts)
         {
@@ -44,7 +44,7 @@ public class ScrollingText : MonoBehaviour
                 yield return new WaitForSeconds(instance.TypingSpeed);
             }
         }
-        instance.StartCoroutine(Pause());
+        instance.StartCoroutine(Pause(keep));
     }
     public static void Reset()
     {
@@ -53,12 +53,14 @@ public class ScrollingText : MonoBehaviour
         texts.Clear();
         instance.isActive = false;
     }
-    static IEnumerator Pause()
+    static IEnumerator Pause(bool keep)
     {
         yield return new WaitForSeconds(2f);
+        if(!keep)
+        Reset();
     }
 
-    public static void StartSentence(string[] values, string[] UInames)
+    public static void StartSentence(string[] values, string[] UInames, bool keep = false)
     {
         if (!instance.isActive)
         {
@@ -66,7 +68,7 @@ public class ScrollingText : MonoBehaviour
             UItexts = UInames;
             List<string> list = new List<string>(values);
             list.ForEach(s => sentences.Enqueue(s));
-            instance.StartCoroutine(Typing());
+            instance.StartCoroutine(Typing(keep));
         }
     }
 }

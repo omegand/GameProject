@@ -29,6 +29,6 @@ public class Death : MonoBehaviour
     {
         menu.SetActive(true);
         blur.focusMode.value = DepthOfFieldMode.Manual;
-        ScrollingText.StartSentence(new string[] {stats.level.ToString(), stats.xp.ToString()}, new string[] {"LevelMessage", "XPMessage"});
+        ScrollingText.StartSentence(new string[] {stats.level.ToString(), stats.xp.ToString()}, new string[] {"LevelMessage", "XPMessage"}, true);
     }
 }
