@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     private NavMeshAgent enemy;
     private bool stop = false;
     private GameObject player;
-  
+
     private bool seen = false;
     private Vector3 patrolPos, startPos;
     private bool patrolling = false;
@@ -25,6 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
         enemy = GetComponent<NavMeshAgent>();
         enemy.updateRotation = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        EnemyCount = Random.Range(1, 4);
+        givenXP = Random.Range(15, 40);
     }
     private void Update()
     {
