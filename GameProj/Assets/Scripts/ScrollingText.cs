@@ -10,10 +10,6 @@ public class ScrollingText : MonoBehaviour
     float TypingSpeed;
     [SerializeField]
     bool auto;
-
-    static GameObject DialogCanvas;
-    static bool allowed;
-    static int index = 0;
     static TextMeshProUGUI TextMesh;
     static Queue<string> sentences;
     static string[] UItexts;
@@ -28,7 +24,6 @@ public class ScrollingText : MonoBehaviour
         sentences = new Queue<string>();
         texts = new List<TextMeshProUGUI>();
         instance = this;
-        allowed = false;
     }
     private static IEnumerator Typing(bool keep)
     {

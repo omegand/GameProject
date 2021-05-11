@@ -14,18 +14,18 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector3 patrolPos, startPos;
     private bool patrolling = false;
     private Animator anim;
-    private Light light;
+    private Light enemylight;
     [SerializeField] private float sightRange, patrolVariance, givenXP;
     public int EnemyCount;
     private void Start()
     {
-        light = transform.Find("Spot Light").GetComponent<Light>();
+        enemylight = transform.Find("Spot Light").GetComponent<Light>();
         anim = GetComponent<Animator>();
         startPos = transform.position;
         enemy = GetComponent<NavMeshAgent>();
         enemy.updateRotation = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        EnemyCount = Random.Range(1, 4);
+        EnemyCount = 3;
         givenXP = Random.Range((15 *EnemyCount), (40*EnemyCount));
     }
     private void Update()
@@ -38,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
                 StartCoroutine(Patrolling());
                 patrolling = true;
                 anim.SetBool("moving", false);
-                light.color = Color.cyan;
+                enemylight.color = Color.cyan;
                 enemy.speed = 3;
                 if (AudioM.init.backgroundM.clip == null || AudioM.init.backgroundM.clip.name == "chase")
                     AudioM.NewMethod();
@@ -50,7 +50,7 @@ public class EnemyBehaviour : MonoBehaviour
                 enemy.speed = 5;
                 Chasing();
                 anim.SetBool("moving", true);
-                light.color = Color.red;
+                enemylight.color = Color.red;
             }
         }
 

@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Random = System.Random;
 
 public enum BattleState { START, PTURN, ETURN, WON, LOST }
 public class Battle : MonoBehaviour
@@ -19,25 +17,22 @@ public class Battle : MonoBehaviour
     private TextMeshProUGUI ScreenText;
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
-    public ParticleSystem IPart;
     private BattleState state;
     private Object[] prefabenemies;
     private List<GameObject> loadedenemies = new List<GameObject>();
-    private Random rand;
     private bool waitingforclick = false;
     public int enemyCount;
     private Animator playeranim;
     private void Awake()
     {
         enemyCount = PassingValues.enemycount;
-        rand = new Random();
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
         Vector3 pos = enemyStation.position;
         pos.x -= enemyCount;
         for (int i = 0; i < enemyCount; i++)
         {
-            loadedenemies.Add((GameObject)Instantiate(prefabenemies[rand.Next(0, prefabenemies.Length)], pos, Quaternion.identity));
+            loadedenemies.Add((GameObject)Instantiate(prefabenemies[Random.Range(0, prefabenemies.Length)], pos, Quaternion.identity));
             pos.x += enemyCount;
         }
 
@@ -149,7 +144,7 @@ public class Battle : MonoBehaviour
             if (playerS.defending)
             {
                 playerS.defending = false;
-                damage = damage / rand.Next(5, 10);
+                damage = damage / Random.Range(5, 10);
             }
             ScreenText.text = $"Took {damage:0.0} damage.";
             bool dead = playerS.Damage((float)damage);
@@ -221,6 +216,13 @@ public class Battle : MonoBehaviour
         StartCoroutine(Implosion());
 
     }
+    public void Skill2Button()
+    {
+        canvas.SetActive(false);
+        ScreenText.text = $"Casting Skill...";
+        StartCoroutine(Meteor());
+
+    }
     IEnumerator Defend(Stats stats)
     {
         stats.defending = true;
@@ -228,31 +230,83 @@ public class Battle : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(EnemyTurn());
     }
-    IEnumerator Implosion()
+    IEnumerator Meteor()
     {
-        Vector3 pos = enemyStation.position;
-        pos.x -= 10;
-        for (int i = 0; i < 100; i++)
+        var particles = Resources.Load<ParticleSystem>("Particles/Meteorite");
+
+        for (int i = 0; i < 10; i++)
         {
-            Instantiate(IPart, pos, Quaternion.identity);
-            yield return new WaitForSeconds(0.02f);
-            pos.x += 0.2f;
+            Vector3 rand = Random.insideUnitSphere * 10;
+            Instantiate(particles, rand, Quaternion.identity);
+            yield return new WaitForSeconds(0.2f);
         }
-        for (int i = 0; i < loadedenemies.Count + 2; i++)
+        yield return new WaitForSeconds(1f);
+        int count = loadedenemies.Count;
+        for (int i = 0; i < count; i++)
         {
-            var enemy = loadedenemies[0];
-            float damage = DamageModifier(playerS.dmg * 5f);
+            int index = 0;
+            var enemy = loadedenemies[index];
+            float damage = DamageModifier(playerS.dmg * 4f);
             enemyS = enemy.GetComponent<Stats>();
             bool dead = enemyS.Damage((float)damage);
             if (dead)
             {
                 enemyCount -= 1;
-                loadedenemies.RemoveAt(0);
+                Destroy(enemy);
+                loadedenemies.RemoveAt(index);
                 Instantiate(DPart, enemy.transform.position, Quaternion.identity);
                 AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
-                Destroy(enemy);
             }
-            else Debug.Log("test");
+            else 
+            {
+                ScreenText.text = $"Enemy took {damage} damage and survived...";
+                index++;
+            }
+            yield return new WaitForSeconds(0.5f);
+        }       
+        if (enemyCount == 0)
+        {
+            state = BattleState.WON;
+            StartCoroutine(EndBattle());
+        }
+        else
+        {
+            state = BattleState.ETURN;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+    IEnumerator Implosion()
+    {
+        Vector3 pos = enemyStation.position;
+        pos.x -= 10;
+        var particles = Resources.Load<ParticleSystem>("Particles/Energy");
+        for (int i = 0; i < 100; i++)
+        {
+            Instantiate(particles, pos, Quaternion.identity);
+            yield return new WaitForSeconds(0.02f);
+            pos.x += 0.2f;
+        }
+        int count = loadedenemies.Count;
+        for (int i = 0; i < count; i++)
+        {
+            int index = 0;
+            var enemy = loadedenemies[index];
+            float damage = DamageModifier(playerS.dmg * 4f);
+            enemyS = enemy.GetComponent<Stats>();
+            bool dead = enemyS.Damage((float)damage);
+            if (dead)
+            {
+                enemyCount -= 1;
+                Destroy(enemy);
+                loadedenemies.RemoveAt(index);
+                Instantiate(DPart, enemy.transform.position, Quaternion.identity);
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
+            }
+            else
+            {
+                ScreenText.text = $"Enemy took {damage} damage and survived...";
+                index++;
+            }
             yield return new WaitForSeconds(0.5f);
         }
         if (enemyCount == 0)
@@ -270,8 +324,8 @@ public class Battle : MonoBehaviour
 
     private float DamageModifier(float basedmg)
     {
-        int increase = rand.Next(0, 2);
-        int chance = rand.Next(1, 25);
+        int increase = Random.Range(1, 3);
+        int chance = Random.Range(1, 25);
         float damage;
         if (increase == 1) damage = basedmg * (1 + (float)chance / 100);
         else damage = basedmg * (1 - (float)chance / 100);
