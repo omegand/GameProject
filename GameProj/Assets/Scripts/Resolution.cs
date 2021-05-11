@@ -12,8 +12,13 @@ public class Resolution : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Toggle toggle;
     UnityEngine.Resolution[] resolutions;
+    List<UnityEngine.Resolution> Resolutions;
     private int currentRez = 0;
     private int FullScreen = 0;
+    private void Awake()
+    {
+        Resolutions = new List<UnityEngine.Resolution>();
+    }
     void Start()
     {
         if (PlayerPrefs.GetInt("Fullscreen") == 1)
@@ -21,30 +26,36 @@ public class Resolution : MonoBehaviour
         else
             toggle.isOn = false;
 
-        resolutions = Screen.resolutions;
-        dropdownMenu.ClearOptions();
-        List<string> options = new List<string>();
-        for(int i =0; i < resolutions.Length; i++)
+        if(dropdownMenu != null)
         {
-            if (Screen.currentResolution.width == resolutions[i].width && Screen.currentResolution.height == resolutions[i].height)
+            resolutions = Screen.resolutions;
+            Resolutions = new List<UnityEngine.Resolution>(resolutions);
+            dropdownMenu.ClearOptions();
+            List<string> options = new List<string>();
+            Resolutions.Reverse();
+            for (int i = 0; i < Resolutions.Count; i++)
             {
-                currentRez = i;
-                continue;
+                if (options.Contains(Resolutions[i].width + "x" + Resolutions[i].height))
+                    continue;
+
+                if (Screen.currentResolution.width == Resolutions[i].width && Screen.currentResolution.height == Resolutions[i].height)
+                {
+                    currentRez = i;
+                    continue;
+                }
+
+                options.Add(Resolutions[i].width + "x" + Resolutions[i].height);
             }
-  
-            options.Add(resolutions[i].width + "x" + resolutions[i].height);
+            dropdownMenu.AddOptions(options);
+            dropdownMenu.value = currentRez;
+            dropdownMenu.RefreshShownValue();
+            dropdownMenu.onValueChanged.AddListener(delegate { ChangeRez(); });
         }
-        options.Reverse();
-        currentRez = options.Count - currentRez;
-        dropdownMenu.AddOptions(options);
-        dropdownMenu.value = currentRez;
-        dropdownMenu.RefreshShownValue();
-        dropdownMenu.onValueChanged.AddListener(delegate { ChangeRez(); });
     }
     private void ChangeRez()
     {
-        UnityEngine.Resolution rez = resolutions[currentRez];
-        Screen.SetResolution(rez.width, rez.height, true);
+        UnityEngine.Resolution rez = Resolutions[dropdownMenu.value + 1];
+        Screen.SetResolution(rez.width, rez.height, toggle.isOn);
     }
     public void ToggleFullScreen(bool yes)
     {
