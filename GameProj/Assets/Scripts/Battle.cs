@@ -19,6 +19,7 @@ public class Battle : MonoBehaviour
     private TextMeshProUGUI ScreenText;
     private TrackSwitcher tracks;
     private ParticleSystem DPart;
+    public ParticleSystem IPart;
     private BattleState state;
     private Object[] prefabenemies;
     private List<GameObject> loadedenemies = new List<GameObject>();
@@ -158,7 +159,7 @@ public class Battle : MonoBehaviour
                 StartCoroutine(EndBattle());
                 yield break;
             }
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.3f);
         }
         state = BattleState.PTURN;
         StartCoroutine(PlayerTurn());
@@ -213,12 +214,57 @@ public class Battle : MonoBehaviour
         }
 
     }
+    public void Skill1Button()
+    {
+        canvas.SetActive(false);
+        ScreenText.text = $"Casting Skill...";
+        StartCoroutine(Implosion());
+
+    }
     IEnumerator Defend(Stats stats)
     {
         stats.defending = true;
         ScreenText.text = $"{stats.objectname} is blocking...";
         yield return new WaitForSeconds(1f);
         StartCoroutine(EnemyTurn());
+    }
+    IEnumerator Implosion()
+    {
+        Vector3 pos = enemyStation.position;
+        pos.x -= 10;
+        for (int i = 0; i < 100; i++)
+        {
+            Instantiate(IPart, pos, Quaternion.identity);
+            yield return new WaitForSeconds(0.02f);
+            pos.x += 0.2f;
+        }
+        for (int i = 0; i < loadedenemies.Count + 2; i++)
+        {
+            var enemy = loadedenemies[0];
+            float damage = DamageModifier(playerS.dmg * 5f);
+            enemyS = enemy.GetComponent<Stats>();
+            bool dead = enemyS.Damage((float)damage);
+            if (dead)
+            {
+                enemyCount -= 1;
+                loadedenemies.RemoveAt(0);
+                Instantiate(DPart, enemy.transform.position, Quaternion.identity);
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
+                Destroy(enemy);
+            }
+            else Debug.Log("test");
+            yield return new WaitForSeconds(0.5f);
+        }
+        if (enemyCount == 0)
+        {
+            state = BattleState.WON;
+            StartCoroutine(EndBattle());
+        }
+        else
+        {
+            state = BattleState.ETURN;
+            StartCoroutine(EnemyTurn());
+        }
     }
 
 
