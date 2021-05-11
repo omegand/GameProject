@@ -25,8 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
         enemy = GetComponent<NavMeshAgent>();
         enemy.updateRotation = false;
         player = GameObject.FindGameObjectWithTag("Player");
-        EnemyCount = 3;
-        givenXP = Random.Range((15 *EnemyCount), (40*EnemyCount));
+        EnemyCount = Random.Range(1, 4);
+        givenXP = Random.Range((15 *EnemyCount), (33*EnemyCount));
     }
     private void Update()
     {
