@@ -22,6 +22,7 @@ TagManager:
   - Dynamic_Enemy
   - Crate
   - Audio
+  - HealthB
   layers:
   - Default
   - TransparentFX

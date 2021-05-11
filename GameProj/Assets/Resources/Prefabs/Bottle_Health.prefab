@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6785434852091909916}
   m_Layer: 0
   m_Name: Bottle_Health
-  m_TagString: Untagged
+  m_TagString: HealthB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

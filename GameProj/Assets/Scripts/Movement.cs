@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
     {
         AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/shwing"), false);
         yield return new WaitForSeconds(0.3f);
-        var colliders = Physics.OverlapBox(swordhitbox.position, Vector3.one * 1.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
+        var colliders = Physics.OverlapBox(swordhitbox.position, Vector3.one * 4.5f, Quaternion.identity, LayerMask.GetMask("Hittable"));
         foreach (var item in colliders)
         {
             if (item.CompareTag("Collectable"))
@@ -105,6 +105,7 @@ public class Movement : MonoBehaviour
             else
             {
                 AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"), false);
+                item.GetComponent<EnemyBehaviour>().Health -= Random.Range(25, 75);
                 item.GetComponent<EnemyBehaviour>().StartBattle(true);
             }
 

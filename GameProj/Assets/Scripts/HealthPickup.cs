@@ -24,5 +24,13 @@ public class HealthPickup : MonoBehaviour
             ScrollingText.StartSentence(sakiniai, new string[] { "Main"});
             Destroy(gameObject);
         }
+        if(other.CompareTag("Enemy"))
+        {
+            EnemyBehaviour beh = other.gameObject.GetComponent<EnemyBehaviour>();
+            beh.Health += 50;
+            beh.FoundHealth = false;
+            beh.healths.Remove(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
