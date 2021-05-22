@@ -18,6 +18,10 @@ public class Stats : MonoBehaviour
             UpdateStats();
             TryLoading();
         }
+        else 
+        {
+            GenerateStats();
+        }
     }
 
     private void TryLoading()
@@ -67,5 +71,11 @@ public class Stats : MonoBehaviour
             ScrollingText.StartSentence(new string[] { "You leveled up!" }, new string[] { "Main" });
             AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/level"), false);
         }
+    }
+    void GenerateStats()
+    {
+        dmg = 7 * Random.Range(1.1f, 2f) * Mathf.Pow(1.1f, level);
+        maxhp = 70 * Random.Range(1.1f, 2f) * Mathf.Pow(1.1f, level);
+        currenthp = maxhp;
     }
 }

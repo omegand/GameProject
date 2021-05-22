@@ -20,7 +20,7 @@ public class EnemyHP : MonoBehaviour
         particles = transform.Find("RingParticles").gameObject;
         particles.SetActive(false);
         //Unity doesn't allow you to traverse tree of children wtf
-        ok = transform.Find("Canvas") ;
+        ok = transform.Find("EnemyCanvas") ;
         stats = gameObject.GetComponent<Stats>();
         hpSlider = ok.Find("EnemyHpSlider").GetComponent<Slider>();
         hpText =   ok.Find("EnemyHpText").GetComponent<TextMeshProUGUI>();
