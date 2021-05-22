@@ -23,6 +23,7 @@ TagManager:
   - Crate
   - Audio
   - HealthB
+  - Chest
   layers:
   - Default
   - TransparentFX

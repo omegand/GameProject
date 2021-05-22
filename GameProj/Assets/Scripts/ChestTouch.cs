@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ChestTouch : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject smartEnemy;
+
+    private bool touchedChest = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +19,20 @@ public class ChestTouch : MonoBehaviour
     {
         
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(hit.collider.name);
+        if(other.tag == "Player")
+        {
+            int number = Random.Range(0, 2);
+            if(number <= 1)
+            {
+            Transform trans = transform;
+            trans.LookAt(other.transform);
+            GameObject chest = Instantiate(smartEnemy, trans, true);
+            chest.transform.parent = null;
+            Destroy(gameObject);
+            }
+        }
+
     }
 }

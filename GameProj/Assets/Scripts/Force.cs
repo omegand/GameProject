@@ -11,6 +11,7 @@ public class Force : MonoBehaviour
     private CharacterController character;
     void Start()
     {
+        shouldForce = true;
         character = GetComponent<CharacterController>();
     }
 
@@ -22,18 +23,18 @@ public class Force : MonoBehaviour
             impact = Vector3.Lerp(impact, Vector3.zero, 1f * Time.deltaTime);
         }
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider hit)
     {
-       if(hit.collider.tag.Equals("Jump_Pad"))
-       {
-            if(shouldForce)
+        if (hit.tag.Equals("Player"))
+        {
+            Debug.Log("Push");
+            if (shouldForce)
             {
-                Vector3 position = hit.controller.transform.position;
+                Vector3 position = hit.transform.position;
                 Vector3 positionTo = position;
                 positionTo.y += 30;
                 Vector3 dir = positionTo - position;
                 AddImpact(dir, 80.0f);
-                Debug.Log("Push");
                 leaping = true;
                 shouldForce = false;
             }
@@ -42,22 +43,6 @@ public class Force : MonoBehaviour
                 impact = Vector3.zero;
             }
        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag.Equals("J_Activate"))
-        {
-            if(!shouldForce)
-            {
-                if(impact.magnitude < 0.2f)
-                shouldForce = true;
-            }
-        }
-        else if(other.tag.Equals("J_Deactivate"))
-        {
-            leaping = false;
-            impact = Vector3.zero;
-        }
     }
     public void AddImpact(Vector3 dir, float force)
     {

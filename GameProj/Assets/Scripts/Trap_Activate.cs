@@ -36,6 +36,7 @@ public class Trap_Activate : MonoBehaviour
     {
         if (!Active)
             return;
+
         if (impact.magnitude > 0.2)
         {
             character.Move(impact * Time.deltaTime);
@@ -49,34 +50,21 @@ public class Trap_Activate : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!Active)
-            return;
+
         GameObject gobject = other.gameObject;
-        if (other.CompareTag("Reward")) 
+        if (other.CompareTag("Player") && Active) 
         {
-            if (!rewards.Contains(gobject.transform.parent.gameObject))
-            {
-                rewards.Add(gobject.transform.parent.gameObject);
-            }
-        }
-        if (other.CompareTag("Player")) 
-        {
-            if(PassingValues.WonBattle == 1)
-            {
-                PlayerPrefs.DeleteAll();
-                gameObject.transform.GetChild(0).transform.gameObject.SetActive(false);
-                PassingValues.WonBattle = 0;
-                Active = false;
-                return;
-            }
             double GetChance = UnityEngine.Random.Range(0, 1);
             if (GetChance > ChanceToActivate)
                 return;
+
+            PlayerPrefs.SetInt("InTrap", 1);
 
             AddImpact(character.velocity.normalized * Force);
 
             gameObject.transform.GetChild(0).transform.gameObject.SetActive(true);
             Suprise();
+            Active = false;
         }
         if (other.CompareTag("Enemy"))
         {

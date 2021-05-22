@@ -86,7 +86,6 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else if (seen && Health >= 50)
             {
-                Debug.Log("Heee");
                 if(!AudioM.init.backgroundM.isPlaying || AudioM.init.backgroundM.clip.name != "chase")
                     AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/chase"), true);
                 enemy.speed = 5;
@@ -167,7 +166,16 @@ public class EnemyBehaviour : MonoBehaviour
             if (!item.CompareTag("Player") && !item.name.Equals("Screen_Blur"))
                 item.SetActive(false);
         }
+
+        if(gameObject.tag.CompareTo("Chest") != 0)
         SceneManager.LoadSceneAsync("Combat", LoadSceneMode.Additive);
+        else
+        {
+            PassingValues.enemycount = 1;
+            PassingValues.xp = 500;
+            SceneManager.LoadSceneAsync("CombatChest", LoadSceneMode.Additive);
+        }
+
         Destroy(this.gameObject);
     }
 }
