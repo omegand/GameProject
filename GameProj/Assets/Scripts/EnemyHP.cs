@@ -17,7 +17,6 @@ public class EnemyHP : MonoBehaviour
 
     void Start()
     {
-// transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
         particles = transform.Find("RingParticles").gameObject;
         particles.SetActive(false);
         //Unity doesn't allow you to traverse tree of children wtf
@@ -33,7 +32,7 @@ public class EnemyHP : MonoBehaviour
     }
     void Update()
     {
-        hpText.text = stats.currenthp + " / " + stats.maxhp;
+        hpText.text = $"{stats.currenthp:0.} / {stats.maxhp:0.}";
         hpSlider.value = stats.currenthp / stats.maxhp;
     }
     private void OnMouseEnter()

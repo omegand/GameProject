@@ -26,7 +26,6 @@ public class Battle : MonoBehaviour
     private void Awake()
     {
         enemyCount = PassingValues.enemycount;
-        enemyCount = 10;
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
         Vector3 pos = enemyStation.position;
@@ -245,9 +244,9 @@ public class Battle : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         int count = loadedenemies.Count;
+        int index = 0;
         for (int i = 0; i < count; i++)
         {
-            int index = 0;
             var enemy = loadedenemies[index];
             float damage = DamageModifier(playerS.dmg * 4f);
             enemyS = enemy.GetComponent<Stats>();
@@ -290,9 +289,9 @@ public class Battle : MonoBehaviour
             pos.x += 0.2f;
         }
         int count = loadedenemies.Count;
+        int index = 0;
         for (int i = 0; i < count; i++)
         {
-            int index = 0;
             var enemy = loadedenemies[index];
             float damage = DamageModifier(playerS.dmg * 4f);
             enemyS = enemy.GetComponent<Stats>();
