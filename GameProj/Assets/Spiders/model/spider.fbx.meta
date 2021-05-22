@@ -1,0 +1,1180 @@
+fileFormatVersion: 2
+guid: 7b12ff0838c1bfc46970414ffe81e813
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: abdomen
+  - first:
+      1: 100002
+    second: ankle1_L
+  - first:
+      1: 100004
+    second: ankle1_R
+  - first:
+      1: 100006
+    second: ankle2_L
+  - first:
+      1: 100008
+    second: ankle2_R
+  - first:
+      1: 100010
+    second: ankle3_L
+  - first:
+      1: 100012
+    second: ankle3_R
+  - first:
+      1: 100014
+    second: ankle4_L
+  - first:
+      1: 100016
+    second: ankle4_R
+  - first:
+      1: 100018
+    second: Armature
+  - first:
+      1: 100020
+    second: Bone
+  - first:
+      1: 100022
+    second: Camera
+  - first:
+      1: 100024
+    second: fang_L
+  - first:
+      1: 100026
+    second: fang_R
+  - first:
+      1: 100028
+    second: foot1_L
+  - first:
+      1: 100030
+    second: foot1_R
+  - first:
+      1: 100032
+    second: foot2_L
+  - first:
+      1: 100034
+    second: foot2_R
+  - first:
+      1: 100036
+    second: foot3_L
+  - first:
+      1: 100038
+    second: foot3_R
+  - first:
+      1: 100040
+    second: foot4_L
+  - first:
+      1: 100042
+    second: foot4_R
+  - first:
+      1: 100044
+    second: hip1_L
+  - first:
+      1: 100046
+    second: hip1_R
+  - first:
+      1: 100048
+    second: hip2_L
+  - first:
+      1: 100050
+    second: hip2_R
+  - first:
+      1: 100052
+    second: hip3_L
+  - first:
+      1: 100054
+    second: hip3_R
+  - first:
+      1: 100056
+    second: hip4_L
+  - first:
+      1: 100058
+    second: hip4_R
+  - first:
+      1: 100060
+    second: knee1_L
+  - first:
+      1: 100062
+    second: knee1_R
+  - first:
+      1: 100064
+    second: knee2_L
+  - first:
+      1: 100066
+    second: knee2_R
+  - first:
+      1: 100068
+    second: knee3_L
+  - first:
+      1: 100070
+    second: knee3_R
+  - first:
+      1: 100072
+    second: knee4_L
+  - first:
+      1: 100074
+    second: knee4_R
+  - first:
+      1: 100076
+    second: Lamp
+  - first:
+      1: 100078
+    second: leg1_L
+  - first:
+      1: 100080
+    second: leg1_R
+  - first:
+      1: 100082
+    second: leg2_L
+  - first:
+      1: 100084
+    second: leg2_R
+  - first:
+      1: 100086
+    second: leg3_L
+  - first:
+      1: 100088
+    second: leg3_R
+  - first:
+      1: 100090
+    second: leg4_L
+  - first:
+      1: 100092
+    second: leg4_R
+  - first:
+      1: 100094
+    second: master
+  - first:
+      1: 100096
+    second: shin1_L
+  - first:
+      1: 100098
+    second: shin1_R
+  - first:
+      1: 100100
+    second: shin2_L
+  - first:
+      1: 100102
+    second: shin2_R
+  - first:
+      1: 100104
+    second: shin3_L
+  - first:
+      1: 100106
+    second: shin3_R
+  - first:
+      1: 100108
+    second: shin4_L
+  - first:
+      1: 100110
+    second: shin4_R
+  - first:
+      1: 100112
+    second: Sphere
+  - first:
+      1: 100114
+    second: //RootNode
+  - first:
+      1: 100116
+    second: thigh1_L
+  - first:
+      1: 100118
+    second: thigh1_R
+  - first:
+      1: 100120
+    second: thigh2_L
+  - first:
+      1: 100122
+    second: thigh2_R
+  - first:
+      1: 100124
+    second: thigh3_L
+  - first:
+      1: 100126
+    second: thigh3_R
+  - first:
+      1: 100128
+    second: thigh4_L
+  - first:
+      1: 100130
+    second: thigh4_R
+  - first:
+      4: 400000
+    second: abdomen
+  - first:
+      4: 400002
+    second: ankle1_L
+  - first:
+      4: 400004
+    second: ankle1_R
+  - first:
+      4: 400006
+    second: ankle2_L
+  - first:
+      4: 400008
+    second: ankle2_R
+  - first:
+      4: 400010
+    second: ankle3_L
+  - first:
+      4: 400012
+    second: ankle3_R
+  - first:
+      4: 400014
+    second: ankle4_L
+  - first:
+      4: 400016
+    second: ankle4_R
+  - first:
+      4: 400018
+    second: Armature
+  - first:
+      4: 400020
+    second: Bone
+  - first:
+      4: 400022
+    second: Camera
+  - first:
+      4: 400024
+    second: fang_L
+  - first:
+      4: 400026
+    second: fang_R
+  - first:
+      4: 400028
+    second: foot1_L
+  - first:
+      4: 400030
+    second: foot1_R
+  - first:
+      4: 400032
+    second: foot2_L
+  - first:
+      4: 400034
+    second: foot2_R
+  - first:
+      4: 400036
+    second: foot3_L
+  - first:
+      4: 400038
+    second: foot3_R
+  - first:
+      4: 400040
+    second: foot4_L
+  - first:
+      4: 400042
+    second: foot4_R
+  - first:
+      4: 400044
+    second: hip1_L
+  - first:
+      4: 400046
+    second: hip1_R
+  - first:
+      4: 400048
+    second: hip2_L
+  - first:
+      4: 400050
+    second: hip2_R
+  - first:
+      4: 400052
+    second: hip3_L
+  - first:
+      4: 400054
+    second: hip3_R
+  - first:
+      4: 400056
+    second: hip4_L
+  - first:
+      4: 400058
+    second: hip4_R
+  - first:
+      4: 400060
+    second: knee1_L
+  - first:
+      4: 400062
+    second: knee1_R
+  - first:
+      4: 400064
+    second: knee2_L
+  - first:
+      4: 400066
+    second: knee2_R
+  - first:
+      4: 400068
+    second: knee3_L
+  - first:
+      4: 400070
+    second: knee3_R
+  - first:
+      4: 400072
+    second: knee4_L
+  - first:
+      4: 400074
+    second: knee4_R
+  - first:
+      4: 400076
+    second: Lamp
+  - first:
+      4: 400078
+    second: leg1_L
+  - first:
+      4: 400080
+    second: leg1_R
+  - first:
+      4: 400082
+    second: leg2_L
+  - first:
+      4: 400084
+    second: leg2_R
+  - first:
+      4: 400086
+    second: leg3_L
+  - first:
+      4: 400088
+    second: leg3_R
+  - first:
+      4: 400090
+    second: leg4_L
+  - first:
+      4: 400092
+    second: leg4_R
+  - first:
+      4: 400094
+    second: master
+  - first:
+      4: 400096
+    second: shin1_L
+  - first:
+      4: 400098
+    second: shin1_R
+  - first:
+      4: 400100
+    second: shin2_L
+  - first:
+      4: 400102
+    second: shin2_R
+  - first:
+      4: 400104
+    second: shin3_L
+  - first:
+      4: 400106
+    second: shin3_R
+  - first:
+      4: 400108
+    second: shin4_L
+  - first:
+      4: 400110
+    second: shin4_R
+  - first:
+      4: 400112
+    second: Sphere
+  - first:
+      4: 400114
+    second: //RootNode
+  - first:
+      4: 400116
+    second: thigh1_L
+  - first:
+      4: 400118
+    second: thigh1_R
+  - first:
+      4: 400120
+    second: thigh2_L
+  - first:
+      4: 400122
+    second: thigh2_R
+  - first:
+      4: 400124
+    second: thigh3_L
+  - first:
+      4: 400126
+    second: thigh3_R
+  - first:
+      4: 400128
+    second: thigh4_L
+  - first:
+      4: 400130
+    second: thigh4_R
+  - first:
+      43: 4300000
+    second: Sphere
+  - first:
+      74: 7400000
+    second: Walk
+  - first:
+      74: 7400002
+    second: Action
+  - first:
+      74: 7400004
+    second: Idle
+  - first:
+      74: 7400006
+    second: Attack
+  - first:
+      74: 7400008
+    second: Death
+  - first:
+      74: 7400010
+    second: Attack
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Sphere
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material__spidertex_tga_001
+    second: {fileID: 2100000, guid: 4d163db31ca19214a8fbf75dd5f5f731, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Default Take
+      internalID: 0
+      firstFrame: 2.5
+      lastFrame: 4
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/master
+        weight: 1
+      - path: Armature/master/ankle1_L
+        weight: 1
+      - path: Armature/master/ankle1_R
+        weight: 1
+      - path: Armature/master/ankle2_L
+        weight: 1
+      - path: Armature/master/ankle2_R
+        weight: 1
+      - path: Armature/master/ankle3_L
+        weight: 1
+      - path: Armature/master/ankle3_R
+        weight: 1
+      - path: Armature/master/ankle4_L
+        weight: 1
+      - path: Armature/master/ankle4_R
+        weight: 1
+      - path: Armature/master/Bone
+        weight: 1
+      - path: Armature/master/Bone/abdomen
+        weight: 1
+      - path: Armature/master/Bone/fang_L
+        weight: 1
+      - path: Armature/master/Bone/fang_R
+        weight: 1
+      - path: Armature/master/Bone/hip1_L
+        weight: 1
+      - path: Armature/master/Bone/hip1_L/thigh1_L
+        weight: 1
+      - path: Armature/master/Bone/hip1_L/thigh1_L/shin1_L
+        weight: 1
+      - path: Armature/master/Bone/hip1_R
+        weight: 1
+      - path: Armature/master/Bone/hip1_R/thigh1_R
+        weight: 1
+      - path: Armature/master/Bone/hip1_R/thigh1_R/shin1_R
+        weight: 1
+      - path: Armature/master/Bone/hip2_L
+        weight: 1
+      - path: Armature/master/Bone/hip2_L/thigh2_L
+        weight: 1
+      - path: Armature/master/Bone/hip2_L/thigh2_L/shin2_L
+        weight: 1
+      - path: Armature/master/Bone/hip2_R
+        weight: 1
+      - path: Armature/master/Bone/hip2_R/thigh2_R
+        weight: 1
+      - path: Armature/master/Bone/hip2_R/thigh2_R/shin2_R
+        weight: 1
+      - path: Armature/master/Bone/hip3_L
+        weight: 1
+      - path: Armature/master/Bone/hip3_L/thigh3_L
+        weight: 1
+      - path: Armature/master/Bone/hip3_L/thigh3_L/shin3_L
+        weight: 1
+      - path: Armature/master/Bone/hip3_R
+        weight: 1
+      - path: Armature/master/Bone/hip3_R/thigh3_R
+        weight: 1
+      - path: Armature/master/Bone/hip3_R/thigh3_R/shin3_R
+        weight: 1
+      - path: Armature/master/Bone/hip4_L
+        weight: 1
+      - path: Armature/master/Bone/hip4_L/thigh4_L
+        weight: 1
+      - path: Armature/master/Bone/hip4_L/thigh4_L/shin4_L
+        weight: 1
+      - path: Armature/master/Bone/hip4_R
+        weight: 1
+      - path: Armature/master/Bone/hip4_R/thigh4_R
+        weight: 1
+      - path: Armature/master/Bone/hip4_R/thigh4_R/shin4_R
+        weight: 1
+      - path: Armature/master/knee1_L
+        weight: 1
+      - path: Armature/master/knee1_R
+        weight: 1
+      - path: Armature/master/knee2_L
+        weight: 1
+      - path: Armature/master/knee2_R
+        weight: 1
+      - path: Armature/master/knee3_L
+        weight: 1
+      - path: Armature/master/knee3_R
+        weight: 1
+      - path: Armature/master/knee4_L
+        weight: 1
+      - path: Armature/master/knee4_R
+        weight: 1
+      - path: Armature/master/leg1_L
+        weight: 1
+      - path: Armature/master/leg1_L/foot1_L
+        weight: 1
+      - path: Armature/master/leg1_R
+        weight: 1
+      - path: Armature/master/leg1_R/foot1_R
+        weight: 1
+      - path: Armature/master/leg2_L
+        weight: 1
+      - path: Armature/master/leg2_L/foot2_L
+        weight: 1
+      - path: Armature/master/leg2_R
+        weight: 1
+      - path: Armature/master/leg2_R/foot2_R
+        weight: 1
+      - path: Armature/master/leg3_L
+        weight: 1
+      - path: Armature/master/leg3_L/foot3_L
+        weight: 1
+      - path: Armature/master/leg3_R
+        weight: 1
+      - path: Armature/master/leg3_R/foot3_R
+        weight: 1
+      - path: Armature/master/leg4_L
+        weight: 1
+      - path: Armature/master/leg4_L/foot4_L
+        weight: 1
+      - path: Armature/master/leg4_R
+        weight: 1
+      - path: Armature/master/leg4_R/foot4_R
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Default Take
+      internalID: 0
+      firstFrame: 3
+      lastFrame: 6.35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/master
+        weight: 1
+      - path: Armature/master/ankle1_L
+        weight: 1
+      - path: Armature/master/ankle1_R
+        weight: 1
+      - path: Armature/master/ankle2_L
+        weight: 1
+      - path: Armature/master/ankle2_R
+        weight: 1
+      - path: Armature/master/ankle3_L
+        weight: 1
+      - path: Armature/master/ankle3_R
+        weight: 1
+      - path: Armature/master/ankle4_L
+        weight: 1
+      - path: Armature/master/ankle4_R
+        weight: 1
+      - path: Armature/master/Bone
+        weight: 1
+      - path: Armature/master/Bone/abdomen
+        weight: 1
+      - path: Armature/master/Bone/fang_L
+        weight: 1
+      - path: Armature/master/Bone/fang_R
+        weight: 1
+      - path: Armature/master/Bone/hip1_L
+        weight: 1
+      - path: Armature/master/Bone/hip1_L/thigh1_L
+        weight: 1
+      - path: Armature/master/Bone/hip1_L/thigh1_L/shin1_L
+        weight: 1
+      - path: Armature/master/Bone/hip1_R
+        weight: 1
+      - path: Armature/master/Bone/hip1_R/thigh1_R
+        weight: 1
+      - path: Armature/master/Bone/hip1_R/thigh1_R/shin1_R
+        weight: 1
+      - path: Armature/master/Bone/hip2_L
+        weight: 1
+      - path: Armature/master/Bone/hip2_L/thigh2_L
+        weight: 1
+      - path: Armature/master/Bone/hip2_L/thigh2_L/shin2_L
+        weight: 1
+      - path: Armature/master/Bone/hip2_R
+        weight: 1
+      - path: Armature/master/Bone/hip2_R/thigh2_R
+        weight: 1
+      - path: Armature/master/Bone/hip2_R/thigh2_R/shin2_R
+        weight: 1
+      - path: Armature/master/Bone/hip3_L
+        weight: 1
+      - path: Armature/master/Bone/hip3_L/thigh3_L
+        weight: 1
+      - path: Armature/master/Bone/hip3_L/thigh3_L/shin3_L
+        weight: 1
+      - path: Armature/master/Bone/hip3_R
+        weight: 1
+      - path: Armature/master/Bone/hip3_R/thigh3_R
+        weight: 1
+      - path: Armature/master/Bone/hip3_R/thigh3_R/shin3_R
+        weight: 1
+      - path: Armature/master/Bone/hip4_L
+        weight: 1
+      - path: Armature/master/Bone/hip4_L/thigh4_L
+        weight: 1
+      - path: Armature/master/Bone/hip4_L/thigh4_L/shin4_L
+        weight: 1
+      - path: Armature/master/Bone/hip4_R
+        weight: 1
+      - path: Armature/master/Bone/hip4_R/thigh4_R
+        weight: 1
+      - path: Armature/master/Bone/hip4_R/thigh4_R/shin4_R
+        weight: 1
+      - path: Armature/master/knee1_L
+        weight: 1
+      - path: Armature/master/knee1_R
+        weight: 1
+      - path: Armature/master/knee2_L
+        weight: 1
+      - path: Armature/master/knee2_R
+        weight: 1
+      - path: Armature/master/knee3_L
+        weight: 1
+      - path: Armature/master/knee3_R
+        weight: 1
+      - path: Armature/master/knee4_L
+        weight: 1
+      - path: Armature/master/knee4_R
+        weight: 1
+      - path: Armature/master/leg1_L
+        weight: 1
+      - path: Armature/master/leg1_L/foot1_L
+        weight: 1
+      - path: Armature/master/leg1_R
+        weight: 1
+      - path: Armature/master/leg1_R/foot1_R
+        weight: 1
+      - path: Armature/master/leg2_L
+        weight: 1
+      - path: Armature/master/leg2_L/foot2_L
+        weight: 1
+      - path: Armature/master/leg2_R
+        weight: 1
+      - path: Armature/master/leg2_R/foot2_R
+        weight: 1
+      - path: Armature/master/leg3_L
+        weight: 1
+      - path: Armature/master/leg3_L/foot3_L
+        weight: 1
+      - path: Armature/master/leg3_R
+        weight: 1
+      - path: Armature/master/leg3_R/foot3_R
+        weight: 1
+      - path: Armature/master/leg4_L
+        weight: 1
+      - path: Armature/master/leg4_L/foot4_L
+        weight: 1
+      - path: Armature/master/leg4_R
+        weight: 1
+      - path: Armature/master/leg4_R/foot4_R
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.2
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 80
+    normalImportMode: 0
+    tangentImportMode: 0
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: spider(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Sphere
+      parentName: spider(Clone)
+      position: {x: -0.0007278323, y: 0.044447184, z: -0.19751434}
+      rotation: {x: 0.00000010677174, y: 0.7071069, z: -0.70710665, w: 1.616683e-12}
+      scale: {x: 0.8530197, y: 0.8530197, z: 0.8530197}
+    - name: Lamp
+      parentName: spider(Clone)
+      position: {x: 0.529422, y: 4.091225, z: -0.76266205}
+      rotation: {x: 0.16907571, y: -0.75588036, z: 0.27217135, w: 0.5709475}
+      scale: {x: 3.4272292, y: 3.427229, z: 3.4272296}
+    - name: Camera
+      parentName: spider(Clone)
+      position: {x: 0.27825162, y: 0.39632872, z: -0.49777314}
+      rotation: {x: 0.7240626, y: 0.12123288, z: -0.5115653, w: -0.44647157}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: spider(Clone)
+      position: {x: -0.0007278323, y: 0.044447184, z: 0.012203813}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 3.4272294, y: 3.4272294, z: 3.4272294}
+    - name: master
+      parentName: Armature
+      position: {x: -0, y: 0.16879311, z: -0.024829239}
+      rotation: {x: 0.3535535, y: -0.3535534, z: -0.61237246, w: 0.6123724}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Bone
+      parentName: master
+      position: {x: 0.088556945, y: -0.0000000072755664, z: -5.089e-12}
+      rotation: {x: -0.35355362, y: 0.61237234, z: -0.35355368, w: 0.61237234}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
+    - name: hip1_R
+      parentName: Bone
+      position: {x: -0.075134195, y: 0.021256736, z: -0.000000022227615}
+      rotation: {x: -0.37817982, y: 0.36776638, z: 0.37817937, w: -0.7607288}
+      scale: {x: 1.0000008, y: 1.0000007, z: 1.0000002}
+    - name: thigh1_R
+      parentName: hip1_R
+      position: {x: -0.06010328, y: 0.000000004998651, z: -0.0000000051421343}
+      rotation: {x: 0.0057689087, y: 0.1978807, z: -0.39744028, w: 0.8960197}
+      scale: {x: 0.9999999, y: 1.0000002, z: 1.0000001}
+    - name: shin1_R
+      parentName: thigh1_R
+      position: {x: -0.05138723, y: 0.0000000017432662, z: 6.70524e-10}
+      rotation: {x: 0.15684533, y: -0.2840113, z: 0.38745493, w: -0.8629112}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.9999999}
+    - name: hip1_L
+      parentName: Bone
+      position: {x: -0.07513418, y: -0.021256726, z: -0.000000023341519}
+      rotation: {x: -0.3781795, y: -0.3677666, z: 0.37818, w: 0.7607285}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000005}
+    - name: thigh1_L
+      parentName: hip1_L
+      position: {x: -0.060103267, y: 0.0000000063082717, z: -0.0000000045116346}
+      rotation: {x: -0.0057683275, y: 0.19788112, z: 0.39744058, w: 0.8960194}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: shin1_L
+      parentName: thigh1_L
+      position: {x: -0.051387228, y: -0.0000000070930684, z: -0.000000005209903}
+      rotation: {x: 0.15684572, y: 0.2840096, z: 0.38745347, w: 0.8629124}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: fang_R
+      parentName: Bone
+      position: {x: -0.0870883, y: 0.0074775033, z: 0.0030031295}
+      rotation: {x: -0.23831011, y: -0.34354958, z: 0.23831047, w: -0.8765787}
+      scale: {x: 1.0000002, y: 1, z: 1.0000005}
+    - name: fang_L
+      parentName: Bone
+      position: {x: -0.0870883, y: -0.0074774907, z: 0.003003129}
+      rotation: {x: -0.23831093, y: 0.34354943, z: 0.23831129, w: 0.87657833}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: hip2_R
+      parentName: Bone
+      position: {x: -0.05421105, y: 0.026433531, z: -0.00000001905038}
+      rotation: {x: -0.5041664, y: 0.16739543, z: 0.15349515, w: -0.8332072}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1.0000006}
+    - name: thigh2_R
+      parentName: hip2_R
+      position: {x: -0.06065277, y: 0.000000004973207, z: 0.000000003291112}
+      rotation: {x: 0.3130825, y: 0.115696564, z: -0.24681884, w: 0.9097661}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000004}
+    - name: shin2_R
+      parentName: thigh2_R
+      position: {x: -0.051387187, y: 0.0000000048791264, z: 0.000000005849313}
+      rotation: {x: 0.37964228, y: -0.07847224, z: 0.47394615, w: -0.7906257}
+      scale: {x: 1.0000007, y: 1.000001, z: 1.0000004}
+    - name: hip2_L
+      parentName: Bone
+      position: {x: -0.05421103, y: -0.026433526, z: -0.000000014475098}
+      rotation: {x: -0.4109782, y: -0.4481959, z: 0.41097844, w: 0.6792011}
+      scale: {x: 0.99999976, y: 1.0000005, z: 1}
+    - name: thigh2_L
+      parentName: hip2_L
+      position: {x: -0.060652733, y: 0.0000000032842071, z: -0.00000000205317}
+      rotation: {x: -0.0032981776, y: 0.11560761, z: 0.42744884, w: 0.89661115}
+      scale: {x: 1, y: 0.9999998, z: 1.0000006}
+    - name: shin2_L
+      parentName: thigh2_L
+      position: {x: -0.05138721, y: 0.0000000021815403, z: 0.0000000036657806}
+      rotation: {x: 0.15684398, y: 0.20111625, z: 0.4362737, w: 0.86291224}
+      scale: {x: 0.9999997, y: 1.0000002, z: 0.99999976}
+    - name: hip3_R
+      parentName: Bone
+      position: {x: -0.033725075, y: 0.02589812, z: -0.0061148806}
+      rotation: {x: -0.4449147, y: 0.63823074, z: 0.44491434, w: -0.44358054}
+      scale: {x: 1.000001, y: 1.0000005, z: 1.0000008}
+    - name: thigh3_R
+      parentName: hip3_R
+      position: {x: -0.060613733, y: 0.000000008447428, z: 0.0000000055412044}
+      rotation: {x: -0.0029864456, y: -0.081139065, z: -0.3875183, w: 0.91827947}
+      scale: {x: 0.99999946, y: 0.99999964, z: 0.9999999}
+    - name: shin3_R
+      parentName: thigh3_R
+      position: {x: -0.051387172, y: 0.000000010590671, z: -0.0000000057093676}
+      rotation: {x: -0.1568446, y: -0.022132382, z: -0.4798878, w: 0.8629123}
+      scale: {x: 1.0000004, y: 0.99999994, z: 0.99999994}
+    - name: hip3_L
+      parentName: Bone
+      position: {x: -0.033725083, y: -0.025898105, z: -0.00611487}
+      rotation: {x: -0.44491452, y: -0.63823086, z: 0.44491494, w: 0.44357997}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000006}
+    - name: thigh3_L
+      parentName: hip3_L
+      position: {x: -0.060613703, y: 0.0000000029681944, z: 0.0000000010578152}
+      rotation: {x: 0.002986222, y: -0.081138894, z: 0.38751876, w: 0.9182793}
+      scale: {x: 1, y: 1.0000002, z: 1.0000002}
+    - name: shin3_L
+      parentName: thigh3_L
+      position: {x: -0.05138721, y: 0.00000001150705, z: -0.0000000026580609}
+      rotation: {x: 0.15684439, y: -0.022132983, z: 0.47988874, w: 0.8629119}
+      scale: {x: 0.9999997, y: 1, z: 0.99999976}
+    - name: hip4_R
+      parentName: Bone
+      position: {x: -0.016544012, y: 0.02029649, z: -0.0061148712}
+      rotation: {x: -0.42258054, y: 0.71074975, z: 0.42258024, w: -0.37106133}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000006}
+    - name: thigh4_R
+      parentName: hip4_R
+      position: {x: -0.06061374, y: -7.8422524e-10, z: 0.0000000028507945}
+      rotation: {x: -0.19100986, y: -0.48745143, z: -0.047439467, w: 0.85067964}
+      scale: {x: 1.0000008, y: 1.0000004, z: 1.0000005}
+    - name: shin4_R
+      parentName: thigh4_R
+      position: {x: -0.051387202, y: 0.0000000026888693, z: 8.15178e-11}
+      rotation: {x: -0.15684463, y: -0.10150219, z: -0.46955204, w: 0.86291254}
+      scale: {x: 0.99999976, y: 1, z: 0.99999976}
+    - name: hip4_L
+      parentName: Bone
+      position: {x: -0.01654402, y: -0.02029649, z: -0.006114872}
+      rotation: {x: -0.42258015, y: -0.7107499, z: 0.4225804, w: 0.37106135}
+      scale: {x: 1, y: 1.0000006, z: 1.0000007}
+    - name: thigh4_L
+      parentName: hip4_L
+      position: {x: -0.060613763, y: 0.00000001961261, z: -0.0000000010423247}
+      rotation: {x: -0.19100964, y: 0.48745131, z: -0.047439497, w: -0.8506797}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000001}
+    - name: shin4_L
+      parentName: thigh4_L
+      position: {x: -0.05138724, y: 0.000000015971489, z: -0.0000000011450468}
+      rotation: {x: -0.15684383, y: 0.10150263, z: -0.46955448, w: -0.8629113}
+      scale: {x: 1.0000001, y: 1.0000008, z: 1.0000006}
+    - name: abdomen
+      parentName: Bone
+      position: {x: 0.000000013312074, y: -1.6e-15, z: -0.000000015384717}
+      rotation: {x: -0.00024300811, y: 1, z: 0.00023223457, w: -0.00000020861623}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: ankle2_R
+      parentName: master
+      position: {x: 0.1029292, y: 0.13120358, z: -0.06546709}
+      rotation: {x: 0.35355422, y: 0.35355282, z: 0.6123715, w: -0.61237323}
+      scale: {x: 0.9999998, y: 0.99999976, z: 0.9999998}
+    - name: knee2_R
+      parentName: master
+      position: {x: -0.0023505243, y: 0.13808462, z: -0.09915537}
+      rotation: {x: 0.4637242, y: 0.18697596, z: 0.32385176, w: -0.8031936}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+    - name: ankle2_L
+      parentName: master
+      position: {x: 0.10292919, y: 0.008905634, z: 0.14635918}
+      rotation: {x: -0.35355383, y: 0.35355306, z: 0.6123714, w: 0.6123735}
+      scale: {x: 1.0000001, y: 0.9999999, z: 0.99999994}
+    - name: knee2_L
+      parentName: master
+      position: {x: -0.002350536, y: -0.016828753, z: 0.16916247}
+      rotation: {x: -0.46372417, y: 0.18697587, z: 0.32385153, w: 0.8031937}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.9999998}
+    - name: leg1_R
+      parentName: master
+      position: {x: 0.16879308, y: 0.15427266, z: -0.03248666}
+      rotation: {x: 0.00000017881393, y: 0.83451205, z: 0.5509898, w: -0.00000014156103}
+      scale: {x: 0.9999997, y: 0.9999999, z: 0.99999994}
+    - name: foot1_R
+      parentName: leg1_R
+      position: {x: 0.00000026226044, y: -0.000000009602563, z: 0.00000002730295}
+      rotation: {x: -0.31622848, y: 0.31622782, z: 0.6324545, w: 0.63245624}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000001}
+    - name: leg1_L
+      parentName: master
+      position: {x: 0.16879307, y: 0.04900205, z: 0.14984737}
+      rotation: {x: 0.00000011920929, y: 0.25881898, z: -0.96592593, w: -0.00000028312206}
+      scale: {x: 0.99999976, y: 0.99999994, z: 0.99999994}
+    - name: foot1_L
+      parentName: leg1_L
+      position: {x: 0.00000047683716, y: -0.000000054170442, z: 0.00000002861845}
+      rotation: {x: -0.50000066, y: -0.50000036, z: 0.4999992, w: -0.49999976}
+      scale: {x: 1, y: 1.0000002, z: 1.0000002}
+    - name: leg2_R
+      parentName: master
+      position: {x: 0.16879308, y: 0.12709896, z: -0.062641405}
+      rotation: {x: -0, y: 0.50000006, z: 0.8660253, w: -0.000000019265608}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: foot2_R
+      parentName: leg2_R
+      position: {x: 0.0000004887581, y: -0.000000018059898, z: -0.000000029091593}
+      rotation: {x: 0.0000002912118, y: -0.00000044703484, z: 0.7071072, w: 0.70710635}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: leg2_L
+      parentName: master
+      position: {x: 0.16879307, y: 0.009300457, z: 0.14139159}
+      rotation: {x: 0.00000008940696, y: 0.50000024, z: 0.8660252, w: 0.000000019265608}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: foot2_L
+      parentName: leg2_L
+      position: {x: 0.00000047683716, y: 0.00000007359502, z: 0.000000074522816}
+      rotation: {x: -0.0000005085967, y: -0.00000053644186, z: -0.7071072, w: 0.7071065}
+      scale: {x: 0.9999999, y: 0.9999997, z: 0.9999999}
+    - name: leg3_R
+      parentName: master
+      position: {x: 0.16879307, y: 0.07061162, z: -0.09720412}
+      rotation: {x: 0.00000035762784, y: 0.99960643, z: 0.028052088, w: -0.00000031292436}
+      scale: {x: 1.0000004, y: 1, z: 1.0000004}
+    - name: foot3_R
+      parentName: leg3_R
+      position: {x: 0.00000047385694, y: 0.00000008007682, z: 0.00000005181271}
+      rotation: {x: -0.60221285, y: 0.60221297, z: 0.3705936, w: 0.37059373}
+      scale: {x: 1.0000002, y: 1, z: 0.99999994}
+    - name: leg3_L
+      parentName: master
+      position: {x: 0.16879307, y: -0.048875418, z: 0.10975354}
+      rotation: {x: 0.000000104308114, y: 0.22754166, z: -0.9737684, w: -0.0000002533197}
+      scale: {x: 0.9999997, y: 0.99999994, z: 1}
+    - name: foot3_L
+      parentName: leg3_L
+      position: {x: 0.00000046491624, y: 0.000000019359042, z: 0.000000058873436}
+      rotation: {x: -0.48361924, y: -0.48361972, z: 0.5158604, w: -0.51586086}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.99999976}
+    - name: leg4_R
+      parentName: master
+      position: {x: 0.16879307, y: 0.03732184, z: -0.10439624}
+      rotation: {x: 0.00000008940696, y: 0.50000006, z: 0.8660254, w: -0.000000017457792}
+      scale: {x: 0.9999998, y: 0.9999999, z: 0.9999999}
+    - name: foot4_R
+      parentName: leg4_R
+      position: {x: 0.0000004053116, y: 0.000000059604584, z: 0.0000000417232}
+      rotation: {x: 0.0000005850199, y: -0.00000062584877, z: 0.70710737, w: 0.70710623}
+      scale: {x: 1.0000004, y: 1, z: 1.0000001}
+    - name: leg4_L
+      parentName: master
+      position: {x: 0.16879307, y: -0.07174886, z: 0.0845198}
+      rotation: {x: -0, y: 0.8660253, z: -0.5000001, w: 0.0000001490116}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: foot4_L
+      parentName: leg4_L
+      position: {x: 0.0000003933907, y: 0.000000058344757, z: 0.000000031851407}
+      rotation: {x: -0.70710623, y: -0.70710737, z: 0.0000007748604, w: -0.0000005662441}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: ankle1_R
+      parentName: master
+      position: {x: 0.10292913, y: 0.15885793, z: -0.0344378}
+      rotation: {x: 0.35355306, y: 0.3535516, z: 0.6123722, w: -0.61237395}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1.0000002}
+    - name: knee1_R
+      parentName: master
+      position: {x: -0.0023505217, y: 0.17152227, z: -0.0798501}
+      rotation: {x: 0.4637242, y: 0.18697652, z: 0.323852, w: -0.8031934}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: ankle1_L
+      parentName: master
+      position: {x: 0.102929115, y: 0.049604975, z: 0.1547939}
+      rotation: {x: -0.35355437, y: 0.35355356, z: 0.6123711, w: 0.6123732}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: knee1_L
+      parentName: master
+      position: {x: -0.0023505334, y: 0.016608931, z: 0.1884677}
+      rotation: {x: -0.46372405, y: 0.18697627, z: 0.32385224, w: 0.80319345}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: ankle3_R
+      parentName: master
+      position: {x: 0.102929175, y: 0.07295619, z: -0.101601325}
+      rotation: {x: 0.35355416, y: 0.35355276, z: 0.61237156, w: -0.6123733}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1.0000002}
+    - name: knee3_R
+      parentName: master
+      position: {x: -0.0023505287, y: 0.07875248, z: -0.1334108}
+      rotation: {x: 0.46372426, y: 0.18697575, z: 0.32385162, w: -0.8031936}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: ankle3_L
+      parentName: master
+      position: {x: 0.102929175, y: -0.051511228, z: 0.11398258}
+      rotation: {x: -0.353554, y: 0.35355318, z: 0.6123713, w: 0.6123735}
+      scale: {x: 0.99999976, y: 0.9999997, z: 0.99999994}
+    - name: knee3_L
+      parentName: master
+      position: {x: -0.0023505406, y: -0.07616088, z: 0.13490705}
+      rotation: {x: -0.46372408, y: 0.18697588, z: 0.32385156, w: 0.8031937}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
+    - name: ankle4_R
+      parentName: master
+      position: {x: 0.102929235, y: 0.038903728, z: -0.109121576}
+      rotation: {x: 0.35355386, y: 0.353553, z: 0.61237204, w: -0.6123728}
+      scale: {x: 1.0000006, y: 1, z: 1.0000001}
+    - name: knee4_R
+      parentName: master
+      position: {x: -0.0023505304, y: 0.05938345, z: -0.14459349}
+      rotation: {x: 0.46372426, y: 0.18697575, z: 0.32385162, w: -0.8031936}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: ankle4_L
+      parentName: master
+      position: {x: 0.10292923, y: -0.07505019, z: 0.08825242}
+      rotation: {x: -0.35355362, y: 0.3535534, z: 0.6123718, w: 0.61237293}
+      scale: {x: 1, y: 0.9999998, z: 1.0000001}
+    - name: knee4_L
+      parentName: master
+      position: {x: -0.0023505418, y: -0.0955299, z: 0.123724334}
+      rotation: {x: -0.4637242, y: 0.186976, z: 0.32385147, w: 0.8031937}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999998}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.2
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
