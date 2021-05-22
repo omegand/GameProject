@@ -29,11 +29,12 @@ public class Battle : MonoBehaviour
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
         Vector3 pos = enemyStation.position;
-        pos.x -= enemyCount;
+        int seperation = 4;
+        pos.x -= seperation*enemyCount/2;
         for (int i = 0; i < enemyCount; i++)
         {
             loadedenemies.Add((GameObject)Instantiate(prefabenemies[Random.Range(0, prefabenemies.Length)], pos, Quaternion.identity));
-            pos.x += enemyCount;
+            pos.x += seperation;
         }
 
     }

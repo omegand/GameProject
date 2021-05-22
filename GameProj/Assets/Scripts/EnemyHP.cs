@@ -17,6 +17,7 @@ public class EnemyHP : MonoBehaviour
 
     void Start()
     {
+// transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
         particles = transform.Find("RingParticles").gameObject;
         particles.SetActive(false);
         //Unity doesn't allow you to traverse tree of children wtf

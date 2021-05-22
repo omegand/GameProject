@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3215987123745492983}
   - component: {fileID: 3691603505052832200}
   - component: {fileID: 1557919720086215112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RingParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
