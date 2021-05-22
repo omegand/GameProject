@@ -26,6 +26,7 @@ public class Battle : MonoBehaviour
     private void Awake()
     {
         enemyCount = PassingValues.enemycount;
+        enemyCount = 10;
         enemyStation = GameObject.Find("EnemyStation").GetComponent<Transform>();
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
         Vector3 pos = enemyStation.position;
@@ -33,7 +34,8 @@ public class Battle : MonoBehaviour
         pos.x -= seperation*enemyCount/2;
         for (int i = 0; i < enemyCount; i++)
         {
-            loadedenemies.Add((GameObject)Instantiate(prefabenemies[Random.Range(0, prefabenemies.Length)], pos, Quaternion.identity));
+            var enem = (GameObject) prefabenemies[Random.Range(0, prefabenemies.Length)];
+            loadedenemies.Add(Instantiate(enem, pos,enem.transform.rotation));
             pos.x += seperation;
         }
 
