@@ -137,17 +137,19 @@ public class Battle : MonoBehaviour
     {
         foreach (var item in loadedenemies)
         {
+            tracks.ChangeLookAt(enemyStation);
             enemyS = item.GetComponent<Stats>();
             double damage = DamageModifier(enemyS.dmg);
             ScreenText.text = $"Enemy attacks...";
-            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/punch"), false);
-            tracks.ChangeLookAt(enemyStation);
+            var anim = item.GetComponent<Animator>();
+            anim.SetTrigger("attack");
             yield return new WaitForSeconds(2f);
             if (playerS.defending)
             {
                 playerS.defending = false;
                 damage = damage / Random.Range(5, 10);
             }
+            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/punch"), false);
             ScreenText.text = $"Took {damage:0.0} damage.";
             bool dead = playerS.Damage((float)damage);
             if (dead)
