@@ -14,8 +14,9 @@ public class EnemyBehaviour : MonoBehaviour
     private bool patrolling = false;
     private Animator anim;
     private Light enemylight;
-    [SerializeField] private float sightRange, patrolVariance, givenXP;
-    public int EnemyCount;
+    [SerializeField] private float sightRange, patrolVariance;
+    private float givenXP;
+    private int EnemyCount;
     private void Start()
     {
         enemylight = transform.Find("Spot Light").GetComponent<Light>();
