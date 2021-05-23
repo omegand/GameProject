@@ -16,6 +16,8 @@ public class HandleRoom : MonoBehaviour
 
     public static bool SpawnedEnemy;
 
+    public static int EnemyCount;
+
     private bool Active;
     private Vector3 impact = Vector3.zero;
     void Start()
@@ -57,11 +59,17 @@ public class HandleRoom : MonoBehaviour
             AddImpact(position, Force);
             if (Rooms.RollRoom() == false)
             {
-                int numb = Random.Range(0, 2);
-
-                spawn.Chest();
+                int numb = Random.Range(0, 100);
+                if(numb < 20)
+                {
+                    spawn.Chest();
+                }
 
                 spawnEnemies.Spawn();
+
+                EnemyCount = spawnEnemies.amount;
+
+                Debug.Log("Yolo");
             }
             SpawnedEnemy = true;
 

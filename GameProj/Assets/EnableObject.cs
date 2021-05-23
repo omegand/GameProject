@@ -8,6 +8,8 @@ public class EnableObject : MonoBehaviour
     private GameObject door;
 
     private bool active;
+
+    private GameObject lastObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +27,15 @@ public class EnableObject : MonoBehaviour
         if (!active || !HandleRoom.SpawnedEnemy)
             return;
 
-        if(other.tag.CompareTo("Enemy") != 0)
+        if((other.tag.CompareTo("Enemy") != 0 || other.tag.CompareTo("Chest") != 0))
         {
-           // Destroy(door);
-           // active = false;
+            Debug.Log("Hehehe");
+            if(lastObject == other.gameObject)
+            {
+                Destroy(door);
+                active = false;
+            }
+            lastObject = other.gameObject;
         }
     }
 }

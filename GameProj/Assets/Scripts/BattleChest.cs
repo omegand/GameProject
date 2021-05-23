@@ -112,7 +112,7 @@ public class BattleChest : MonoBehaviour
             }
             player.transform.position = PassingValues.savedpos;
             PassingValues.WonBattle = 1;
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Combat"));
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("CombatChest"));
             playerS.GainXp(PassingValues.xp);
             PassingValues.xp = 0;
             player.GetComponent<Movement>().enabled = true;

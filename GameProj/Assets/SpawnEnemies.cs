@@ -9,7 +9,7 @@ public class SpawnEnemies : MonoBehaviour
 
     private List<Transform> enemies;
 
-    private int amount;
+    public int amount;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class SpawnEnemies : MonoBehaviour
     }
     public void Spawn()
     {
+        Debug.Log("Hey" + amount);
         for (int i = 0; i < amount; i++)
         {
             Instantiate(enemy, enemies[i].position, enemies[i].rotation);
