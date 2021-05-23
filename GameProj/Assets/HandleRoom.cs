@@ -40,10 +40,15 @@ public class HandleRoom : MonoBehaviour
             character.Move(impact * Time.deltaTime);
             impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
 
-            gameObject.GetComponent<BoxCollider>().isTrigger = false;
-            // Active = false;
+            StartCoroutine(BlockDoor());
+            Active = false;
         }
 
+    }
+    IEnumerator BlockDoor()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.GetComponent<BoxCollider>().isTrigger = false;
     }
     private void OnTriggerEnter(Collider other)
     {

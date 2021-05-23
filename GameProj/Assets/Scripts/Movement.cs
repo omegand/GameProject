@@ -24,6 +24,12 @@ public class Movement : MonoBehaviour
     bool attacking = false;
 
 
+    private bool isSlow;
+
+
+    public static Movement mov;
+
+
     void Start()
     {
         jumping = Resources.Load<AudioClip>("Sounds/jump");
@@ -32,6 +38,7 @@ public class Movement : MonoBehaviour
         cont = GetComponent<CharacterController>();
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         Ground = GameObject.Find("GroundCheck").GetComponent<Transform>();
+        mov = this;
 
         anim = GetComponent<Animator>();
     }
@@ -51,7 +58,13 @@ public class Movement : MonoBehaviour
             float angle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + Cam.eulerAngles.y;
             Vector3 FMov = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             transform.rotation = Quaternion.LookRotation(FMov * -1);
+
+            if(isSlow)
+            cont.Move(FMov * (speed / 4) * Time.deltaTime);
+            else
             cont.Move(FMov * speed * Time.deltaTime);
+
+            isSlow = false;
             anim.SetBool("run", true);
         }
         else anim.SetBool("run", false);
@@ -110,5 +123,9 @@ public class Movement : MonoBehaviour
 
         }
         yield return new WaitForSeconds(0.42f);
+    }
+    public static void TemporarySlow()
+    {
+        mov.isSlow = true;
     }
 }

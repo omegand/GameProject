@@ -32,6 +32,7 @@ public class EnableObject : MonoBehaviour
             Debug.Log("Hehehe");
             if(lastObject == other.gameObject)
             {
+                Debug.Log("Yuuuuu");
                 Destroy(door);
                 active = false;
             }
