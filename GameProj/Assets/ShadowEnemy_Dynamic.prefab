@@ -906,7 +906,6 @@ GameObject:
   - component: {fileID: 1308342974785732084}
   - component: {fileID: 1308342974793241114}
   - component: {fileID: 1308342974785823191}
-  - component: {fileID: 1308342974785823185}
   - component: {fileID: 6195058927908629539}
   - component: {fileID: 6195058927908629538}
   - component: {fileID: 1994306412984004500}
@@ -968,19 +967,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.15, z: 0}
---- !u!114 &1308342974785823185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308342974785823188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f05d2e285836845abc765ac614e9fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyCount: 1
 --- !u!195 &6195058927908629539
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1017,6 +1003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 15
   patrolVariance: 5
+  givenXP: 0
+  EnemyCount: 0
 --- !u!54 &1994306412984004500
 Rigidbody:
   m_ObjectHideFlags: 0
