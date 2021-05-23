@@ -37,6 +37,7 @@ public class ChestTouch : MonoBehaviour
                 ScrollingText.StartSentence(new string[] { "No suprise this time and you receive some juicy loot" }, new string[] { "Reward" });
                 other.GetComponent<Stats>().GainXp(70f);
                 other.GetComponent<Stats>().currenthp += 30;
+                Destroy(gameObject);
             }
         }
 
