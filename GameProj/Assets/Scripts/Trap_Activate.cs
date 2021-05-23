@@ -19,7 +19,11 @@ public class Trap_Activate : MonoBehaviour
 
     private Vector3 impact = Vector3.zero;
 
+    private GameObject lastObject;
+
     private bool Active;
+
+    private bool Spawned;
 
 
     private void Awake()
@@ -51,7 +55,7 @@ public class Trap_Activate : MonoBehaviour
     {
 
         GameObject gobject = other.gameObject;
-        if (other.CompareTag("Player") && Active) 
+        if (other.CompareTag("Player") && !Spawned && Active) 
         {
             double GetChance = UnityEngine.Random.Range(0, 1);
             if (GetChance > ChanceToActivate)
@@ -63,12 +67,37 @@ public class Trap_Activate : MonoBehaviour
 
             gameObject.transform.GetChild(0).transform.gameObject.SetActive(true);
             Suprise();
-            Active = false;
+            Spawned = true;
+
+            StartCoroutine(SetActive());
+
         }
         if (other.CompareTag("Enemy"))
         {
             gobject.GetComponent<NavMeshAgent>().enabled = true;
             gobject.GetComponent<EnemyBehaviour>().enabled = true;
+        }
+    }
+    IEnumerator SetActive()
+    {
+        yield return new WaitForSeconds(2f);
+        Active = false;
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (Active)
+            return;
+
+        if ((other.tag.CompareTo("Enemy") != 0 || other.tag.CompareTo("Chest") != 0))
+        {
+            if (lastObject == other.gameObject)
+            {
+                Debug.Log("Yuuuuu");
+                gameObject.transform.GetChild(0).transform.gameObject.SetActive(false);
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                Active = true;
+            }
+            lastObject = other.gameObject;
         }
     }
     private void Suprise()

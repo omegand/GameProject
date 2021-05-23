@@ -23,14 +23,20 @@ public class ChestTouch : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            int number = Random.Range(0, 2);
-            if(number <= 1)
+            int number = Random.Range(0, 99);
+            if(number <= 20)
             {
-            Transform trans = transform;
-            trans.LookAt(other.transform);
-            GameObject chest = Instantiate(smartEnemy, trans.position, trans.rotation);
-            chest.transform.parent = null;
-            Destroy(gameObject);
+                Transform trans = transform;
+                trans.LookAt(other.transform);
+                GameObject chest = Instantiate(smartEnemy, trans.position, trans.rotation);
+                chest.transform.parent = null;
+                Destroy(gameObject);
+            }
+            else
+            {
+                ScrollingText.StartSentence(new string[] { "No suprise this time and you receive some juicy loot" }, new string[] { "Reward" });
+                other.GetComponent<Stats>().GainXp(70f);
+                other.GetComponent<Stats>().currenthp += 30;
             }
         }
 
