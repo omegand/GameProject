@@ -5,14 +5,12 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour
 {
     private Stats playerHealth;
-    [Range(1, 30)]
+    [Range(1, 50)]
     [SerializeField]
     private int HPHeal;
-    private ScrollingText Text;
     void Start()
     {
         playerHealth = GameObject.Find("Character").GetComponent<Stats>();
-        Text = GameObject.Find("MainScreenText").GetComponent<ScrollingText>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -24,13 +22,6 @@ public class HealthPickup : MonoBehaviour
             ScrollingText.StartSentence(sakiniai, new string[] { "Main"});
             Destroy(gameObject);
         }
-        if(other.CompareTag("Enemy"))
-        {
-            EnemyBehaviour beh = other.gameObject.GetComponent<EnemyBehaviour>();
-            beh.Health += 50;
-            beh.FoundHealth = false;
-            beh.healths.Remove(gameObject);
-            Destroy(gameObject);
-        }
+       
     }
 }

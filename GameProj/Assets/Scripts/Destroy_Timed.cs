@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destroy_Timed : MonoBehaviour
 {
-    public float time = 3f;
+    public float time = 4f;
     void Start()
     {
         StartCoroutine(Byebye());
