@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Force : MonoBehaviour
 {
+    [SerializeField]
+    private float giveForce;
+
     private bool shouldForce = false;
-    private bool leaping = false;
-    float mass = 1.0F;
+    public static bool leaping = false;
     Vector3 impact = Vector3.zero;
     private CharacterController character;
     void Start()
     {
         shouldForce = true;
-        character = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -20,7 +21,8 @@ public class Force : MonoBehaviour
         if (impact.magnitude > 0.2F && leaping)
         {
             character.Move(impact * Time.deltaTime);
-            impact = Vector3.Lerp(impact, Vector3.zero, 1f * Time.deltaTime);
+            impact = Vector3.Lerp(impact, Vector3.zero, 6f * Time.deltaTime);
+       
         }
     }
     private void OnTriggerEnter(Collider hit)
@@ -30,13 +32,13 @@ public class Force : MonoBehaviour
             Debug.Log("Push");
             if (shouldForce)
             {
+                character = hit.GetComponent<CharacterController>();
                 Vector3 position = hit.transform.position;
                 Vector3 positionTo = position;
                 positionTo.y += 30;
                 Vector3 dir = positionTo - position;
-                AddImpact(dir, 80.0f);
+                AddImpact(dir, giveForce);
                 leaping = true;
-                shouldForce = false;
             }
             else
             {  
@@ -48,6 +50,6 @@ public class Force : MonoBehaviour
     {
         dir.Normalize();
         if (dir.y < 0) dir.y = -dir.y;
-        impact += dir.normalized * force / mass;
+        impact += dir.normalized * force;
     }
 }

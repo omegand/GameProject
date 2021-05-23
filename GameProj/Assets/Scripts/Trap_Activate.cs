@@ -45,7 +45,6 @@ public class Trap_Activate : MonoBehaviour
     }
     private void AddImpact(Vector3 force)
     {
-        Debug.Log(force);
         impact += force * force.magnitude;
     }
     private void OnTriggerEnter(Collider other)
