@@ -12,6 +12,7 @@ public class EnableObject : MonoBehaviour
     void Start()
     {
         active = true;
+   
     }
 
     // Update is called once per frame
@@ -21,13 +22,13 @@ public class EnableObject : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!active)
+        if (!active || !HandleRoom.SpawnedEnemy)
             return;
 
         if(other.tag.CompareTo("Enemy") != 0)
         {
-            Destroy(door);
-            active = false;
+           // Destroy(door);
+           // active = false;
         }
     }
 }

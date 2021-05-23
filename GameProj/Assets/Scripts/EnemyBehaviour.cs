@@ -123,7 +123,15 @@ public class EnemyBehaviour : MonoBehaviour
             if (!item.CompareTag("Player") && !item.name.Equals("Screen_Blur"))
                 item.SetActive(false);
         }
-        SceneManager.LoadSceneAsync("Combat", LoadSceneMode.Additive);
+        if(gameObject.tag.CompareTo("Chest") == 0)
+        {
+            PassingValues.xp = 1000;
+            SceneManager.LoadSceneAsync("CombatChest", LoadSceneMode.Additive);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("Combat", LoadSceneMode.Additive);
+        }
         Destroy(this.gameObject);
     }
 }

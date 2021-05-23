@@ -8,8 +8,13 @@ public class HandleRoom : MonoBehaviour
     private float Force;
     [SerializeField]
     private SpawnChest spawn;
+    [SerializeField]
+    private SpawnEnemies spawnEnemies;
 
     private CharacterController character;
+
+
+    public static bool SpawnedEnemy;
 
     private bool Active;
     private Vector3 impact = Vector3.zero;
@@ -18,6 +23,8 @@ public class HandleRoom : MonoBehaviour
         Active = true;
 
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
+
+        SpawnedEnemy = false;
     }
 
     // Update is called once per frame
@@ -26,11 +33,13 @@ public class HandleRoom : MonoBehaviour
         if (!Active)
             return;
 
-        if (impact.magnitude > 0.2)
+        if (impact.magnitude >= 0.2)
         {
             character.Move(impact * Time.deltaTime);
             impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
-            Active = false;
+
+            gameObject.GetComponent<BoxCollider>().isTrigger = false;
+            // Active = false;
         }
 
     }
@@ -43,20 +52,25 @@ public class HandleRoom : MonoBehaviour
 
         if (other.CompareTag("Player") && Active)
         {
-            AddImpact(character.velocity.normalized * Force);
 
-           //if(Rooms.RollRoom() == false)
-          //  {
+            Vector3 position = other.transform.position;
+            AddImpact(position, Force);
+            if (Rooms.RollRoom() == false)
+            {
                 int numb = Random.Range(0, 2);
 
-            spawn.Chest();
+                spawn.Chest();
 
-           // }
-            gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                spawnEnemies.Spawn();
+            }
+            SpawnedEnemy = true;
+
         }
     }
-    private void AddImpact(Vector3 force)
+    private void AddImpact(Vector3 dir, float force)
     {
-        impact += force * force.magnitude;
+        dir.Normalize();
+        if (dir.y < 0) dir.y = -dir.y;
+        impact += dir.normalized * force;
     }
 }

@@ -28,7 +28,7 @@ public class ChestTouch : MonoBehaviour
             {
             Transform trans = transform;
             trans.LookAt(other.transform);
-            GameObject chest = Instantiate(smartEnemy, trans, true);
+            GameObject chest = Instantiate(smartEnemy, trans.position, trans.rotation);
             chest.transform.parent = null;
             Destroy(gameObject);
             }

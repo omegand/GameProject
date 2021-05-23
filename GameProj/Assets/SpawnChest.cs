@@ -21,6 +21,7 @@ public class SpawnChest : MonoBehaviour
     }
     public void Chest()
     {
-        Instantiate(spawnChest.chest, gameObject.GetComponentInChildren<Transform>().position, gameObject.GetComponentInChildren<Transform>().rotation);
+        GameObject chest = Instantiate(spawnChest.chest, gameObject.GetComponentInChildren<Transform>().position, gameObject.GetComponentInChildren<Transform>().rotation);
+        chest.transform.SetParent(gameObject.transform);
     }
 }
