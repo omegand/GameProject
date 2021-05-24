@@ -23,7 +23,7 @@ public class Rooms : MonoBehaviour
             return true;
         }
         int number = Random.Range(0, 2);
-        if (number == 1)
+        if (number >= 0)
         {
             return true;
         }

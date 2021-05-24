@@ -10,6 +10,8 @@ public class HandleRoom : MonoBehaviour
     private SpawnChest spawn;
     [SerializeField]
     private SpawnEnemies spawnEnemies;
+    [SerializeField]
+    private GameObject spawnExit;
 
     private CharacterController character;
 
@@ -27,6 +29,8 @@ public class HandleRoom : MonoBehaviour
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
 
         SpawnedEnemy = false;
+
+        spawnExit.SetActive(false);
     }
 
     // Update is called once per frame
@@ -80,6 +84,7 @@ public class HandleRoom : MonoBehaviour
             {
                 ScrollingText.StartSentence(new string[] { "I found the room with missing item, I need to leave now" }, new string[] { "NoLeave" });
                 PlayerPrefs.SetInt("FinalItem", 1);
+                spawnExit.SetActive(true);
             }
             SpawnedEnemy = true;
 
