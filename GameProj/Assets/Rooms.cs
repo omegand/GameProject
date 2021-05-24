@@ -25,6 +25,7 @@ public class Rooms : MonoBehaviour
         int number = Random.Range(0, 2);
         if (number == 1)
         {
+            TotalRooms -= 1;
             return true;
         }
         TotalRooms -= 1;
