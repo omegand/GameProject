@@ -16,5 +16,9 @@ public class Cheats : MonoBehaviour
         {
             gameObject.GetComponent<Movement>().speed = 8f;
         }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            gameObject.GetComponent<Stats>().GainXp(100);
+        }
     }
 }

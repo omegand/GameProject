@@ -36,9 +36,8 @@ public class Stats : MonoBehaviour
 
     public void UpdateStats()
     {
-
         currenthp = maxhp;
-        if (PlayerPrefs.HasKey("xp"))
+        if (PlayerPrefs.HasKey("hp"))
         {
             xp = PlayerPrefs.GetFloat("xp");
             level = PlayerPrefs.GetInt("lvl");
