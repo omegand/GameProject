@@ -15,10 +15,12 @@ public class AudioM : MonoBehaviour
     {
         init = this;
         backgroundM.loop = true;
+        NewMethod();
     }
     public static void NewMethod()
     {
         Scene current = SceneManager.GetActiveScene();
+
 
         switch (current.name)
         {
@@ -30,6 +32,10 @@ public class AudioM : MonoBehaviour
                 break;
             case "Dungeon1":
                 PlaySound(Resources.Load<AudioClip>("Sounds/dungeon"), true);
+                break;
+            case "GameEnd":
+                Debug.Log(current.name);
+                PlaySound(Resources.Load<AudioClip>("Sounds/Congratulations!"), true);
                 break;
             default:
                 PlaySound(Resources.Load<AudioClip>("Sounds/Chilly"), true);

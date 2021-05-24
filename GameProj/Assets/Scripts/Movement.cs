@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private VisualEffect effect;
     public LayerMask WhatIsGround;
+    public int Jumps = 2;
     public float speed = 8f;
     public float JumpForce = 4f;
     public float gravity = -35f;
@@ -17,7 +18,6 @@ public class Movement : MonoBehaviour
     private Transform Cam;
     private bool Grounded;
     private float GCheckRadius = 0.4f;
-    private int Jumps = 0;
     private Animator anim;
     private Transform swordhitbox;
     private AudioClip jumping;
@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
 
 
     private bool isSlow;
+    private int CurrentJumps;
 
 
     public static Movement mov;
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
         Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         Ground = GameObject.Find("GroundCheck").GetComponent<Transform>();
         mov = this;
+        CurrentJumps = Jumps;
 
         anim = GetComponent<Animator>();
     }
@@ -49,7 +51,7 @@ public class Movement : MonoBehaviour
         if (Grounded && VVel.y < 0)
         {
             VVel.y = -1f;
-            Jumps = 2;
+            Jumps = CurrentJumps;
         }
 
         Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
