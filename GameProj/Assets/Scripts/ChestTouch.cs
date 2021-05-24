@@ -6,26 +6,14 @@ public class ChestTouch : MonoBehaviour
 {
     [SerializeField]
     private GameObject smartEnemy;
-
-    private bool touchedChest = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             int number = Random.Range(0, 99);
-            if(number <= 20)
+            if(number >= 0)
             {
+                ScrollingText.StartSentence(new string[] { "It's a trap!" }, new string[] { "Main" });
                 Transform trans = transform;
                 trans.LookAt(other.transform);
                 GameObject chest = Instantiate(smartEnemy, trans.position, trans.rotation);
@@ -34,7 +22,7 @@ public class ChestTouch : MonoBehaviour
             }
             else
             {
-                ScrollingText.StartSentence(new string[] { "No suprise this time and you receive some juicy loot" }, new string[] { "Reward" });
+                ScrollingText.StartSentence(new string[] { "You recieve loot and health." }, new string[] { "Main" });
                 other.GetComponent<Stats>().GainXp(70f);
                 other.GetComponent<Stats>().currenthp += 30;
                 Destroy(gameObject);
