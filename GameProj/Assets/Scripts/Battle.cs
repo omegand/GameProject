@@ -226,27 +226,39 @@ public class Battle : MonoBehaviour
     {
         canvas.SetActive(false);
         ScreenText.text = $"Casting Skill...";
-        StartCoroutine(Implosion());
+        StartCoroutine(Thunder());
 
     }
     public void Skill2Button()
     {
         canvas.SetActive(false);
         ScreenText.text = $"Casting Skill...";
-        StartCoroutine(Meteor());
+        StartCoroutine(Debil());
 
     }
     public void Skill3Button()
     {
         canvas.SetActive(false);
         ScreenText.text = $"Casting Skill...";
-        StartCoroutine(Debil());
+        StartCoroutine(Healing());
     }
     public void Skill4Button()
     {
         canvas.SetActive(false);
         ScreenText.text = $"Casting Skill...";
-        StartCoroutine(Thunder());
+        StartCoroutine(Buff());
+    }    
+    public void Skill5Button()
+    {
+        canvas.SetActive(false);
+        ScreenText.text = $"Casting Skill...";
+        StartCoroutine(Meteor());
+    }    
+    public void Skill6Button()
+    {
+        canvas.SetActive(false);
+        ScreenText.text = $"Casting Skill...";
+        StartCoroutine(Implosion());
     }
     IEnumerator Defend(Stats stats)
     {
@@ -271,11 +283,12 @@ public class Battle : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var enemy = loadedenemies[index];
-            float damage = DamageModifier(playerS.dmg * 4f);
+            float damage = DamageModifier(playerS.dmg * 3f);
             enemyS = enemy.GetComponent<Stats>();
             bool dead = enemyS.Damage((float)damage);
             if (dead)
             {
+                ScreenText.text = $"Enemy took {damage:0.} damage and died.";
                 enemyCount -= 1;
                 Destroy(enemy);
                 loadedenemies.RemoveAt(index);
@@ -316,7 +329,7 @@ public class Battle : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var enemy = loadedenemies[index];
-            float damage = DamageModifier(playerS.dmg * 4f);
+            float damage = DamageModifier(playerS.dmg * 99f);
             enemyS = enemy.GetComponent<Stats>();
             bool dead = enemyS.Damage((float)damage);
             if (dead)
@@ -326,6 +339,8 @@ public class Battle : MonoBehaviour
                 loadedenemies.RemoveAt(index);
                 Instantiate(DPart, enemy.transform.position, Quaternion.identity);
                 AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
+                ScreenText.text = $"Enemy took {damage:0.} damage and died.";
+
             }
             else
             {
@@ -377,6 +392,32 @@ public class Battle : MonoBehaviour
         state = BattleState.ETURN;
         StartCoroutine(EnemyTurn());
 
+    }   
+    IEnumerator Healing()
+    {
+        Vector3 pos = playerStation.position;
+        pos.z += 1;
+        var particles = Resources.Load<ParticleSystem>("Particles/heal");
+        Instantiate(particles, pos, particles.transform.rotation);
+        int heal = Random.Range(20, 55);
+        playerS.Heal(30);
+        ScreenText.text = $"Your HP has increased by {heal}";
+        yield return new WaitForSeconds(1.3f);
+        state = BattleState.ETURN;
+        StartCoroutine(EnemyTurn());
+
+    }    
+    IEnumerator Buff()
+    {
+        Vector3 pos = playerStation.position;
+        pos.z += 1;
+        var particles = Resources.Load<ParticleSystem>("Particles/buff");
+        Instantiate(particles, pos, particles.transform.rotation);
+        playerS.dmg *= 2; 
+        ScreenText.text = $"Your damage has greatly increased.";
+        yield return new WaitForSeconds(1.3f);
+        state = BattleState.ETURN;
+        StartCoroutine(EnemyTurn());
     }
 
 
