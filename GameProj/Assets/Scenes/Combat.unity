@@ -2889,7 +2889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc9cd6498296bf4d930115d086776fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredlvl: 2
+  requiredlvl: 0
 --- !u!1001 &167686576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6489,7 +6489,7 @@ GameObject:
   - component: {fileID: 384379801}
   - component: {fileID: 384379804}
   m_Layer: 5
-  m_Name: Skill
+  m_Name: Skill - 3 Debilitate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6557,7 +6557,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 384379802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1810302055}
+        m_MethodName: Skill3Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &384379802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6607,7 +6618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc9cd6498296bf4d930115d086776fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredlvl: 99
+  requiredlvl: 2
 --- !u!1001 &392152091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16353,7 +16364,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 136.3, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &955977224
 MonoBehaviour:
@@ -16374,7 +16385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nothing
+  m_text: Shock
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16401,8 +16412,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16933,7 +16944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nothing
+  m_text: Debilitate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16960,8 +16971,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20565,8 +20576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24105,7 +24116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc9cd6498296bf4d930115d086776fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredlvl: 1
+  requiredlvl: 0
 --- !u!1001 &1520123392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32553,7 +32564,7 @@ GameObject:
   - component: {fileID: 2014190761}
   - component: {fileID: 2014190764}
   m_Layer: 5
-  m_Name: Skill
+  m_Name: Skill - Shock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32621,7 +32632,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2014190762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1810302055}
+        m_MethodName: Skill4Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2014190762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32671,7 +32693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc9cd6498296bf4d930115d086776fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredlvl: 99
+  requiredlvl: 4
 --- !u!1001 &2022730932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33602,8 +33624,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

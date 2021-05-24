@@ -30,11 +30,11 @@ public class Battle : MonoBehaviour
         prefabenemies = Resources.LoadAll("Enemies", typeof(GameObject));
         Vector3 pos = enemyStation.position;
         int seperation = 4;
-        pos.x -= seperation*enemyCount/2;
+        pos.x -= seperation * enemyCount / 2;
         for (int i = 0; i < enemyCount; i++)
         {
-            var enem = (GameObject) prefabenemies[Random.Range(0, prefabenemies.Length)];
-            loadedenemies.Add(Instantiate(enem, pos,enem.transform.rotation));
+            var enem = (GameObject)prefabenemies[Random.Range(0, prefabenemies.Length)];
+            loadedenemies.Add(Instantiate(enem, pos, enem.transform.rotation));
             pos.x += seperation;
         }
 
@@ -139,26 +139,35 @@ public class Battle : MonoBehaviour
         {
             tracks.ChangeLookAt(enemyStation);
             enemyS = item.GetComponent<Stats>();
-            double damage = DamageModifier(enemyS.dmg);
-            ScreenText.text = $"Enemy attacks...";
-            var anim = item.GetComponent<Animator>();
-            anim.SetTrigger("attack");
-            yield return new WaitForSeconds(2f);
-            if (playerS.defending)
+            if (!enemyS.stunned)
             {
-                playerS.defending = false;
-                damage = damage / Random.Range(5, 10);
+                double damage = DamageModifier(enemyS.dmg);
+                ScreenText.text = $"Enemy attacks...";
+                var anim = item.GetComponent<Animator>();
+                anim.SetTrigger("attack");
+                yield return new WaitForSeconds(2f);
+                if (playerS.defending)
+                {
+                    playerS.defending = false;
+                    damage = damage / Random.Range(5, 10);
+                }
+                AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/punch"), false);
+                ScreenText.text = $"Took {damage:0.} damage.";
+                bool dead = playerS.Damage((float)damage);
+                if (dead)
+                {
+                    state = BattleState.LOST;
+                    StartCoroutine(EndBattle());
+                    yield break;
+                }
+                yield return new WaitForSeconds(0.3f);
             }
-            AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/punch"), false);
-            ScreenText.text = $"Took {damage:0.0} damage.";
-            bool dead = playerS.Damage((float)damage);
-            if (dead)
-            {
-                state = BattleState.LOST;
-                StartCoroutine(EndBattle());
-                yield break;
+            else {
+                ScreenText.text = $"Stunned...";
+                yield return new WaitForSeconds(0.3f);
+                enemyS.stunned = false;
             }
-            yield return new WaitForSeconds(0.3f);
+
         }
         state = BattleState.PTURN;
         StartCoroutine(PlayerTurn());
@@ -178,7 +187,7 @@ public class Battle : MonoBehaviour
     IEnumerator AttackIE(GameObject enemy)
     {
         float damage = DamageModifier(playerS.dmg);
-        ScreenText.text = $"Attacking for {damage:0.0} damage";
+        ScreenText.text = $"Attacking for {damage:0.} damage";
         playeranim.Play("Attack");
         AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/swordhit"), false);
         yield return new WaitForSeconds(0.8f);
@@ -227,6 +236,18 @@ public class Battle : MonoBehaviour
         StartCoroutine(Meteor());
 
     }
+    public void Skill3Button()
+    {
+        canvas.SetActive(false);
+        ScreenText.text = $"Casting Skill...";
+        StartCoroutine(Debil());
+    }
+    public void Skill4Button()
+    {
+        canvas.SetActive(false);
+        ScreenText.text = $"Casting Skill...";
+        StartCoroutine(Thunder());
+    }
     IEnumerator Defend(Stats stats)
     {
         stats.defending = true;
@@ -261,13 +282,13 @@ public class Battle : MonoBehaviour
                 Instantiate(DPart, enemy.transform.position, Quaternion.identity);
                 AudioM.PlaySound(Resources.Load<AudioClip>("Sounds/oof"), false);
             }
-            else 
+            else
             {
-                ScreenText.text = $"Enemy took {damage} damage and survived...";
+                ScreenText.text = $"Enemy took {damage:0.} damage and survived...";
                 index++;
             }
             yield return new WaitForSeconds(0.5f);
-        }       
+        }
         if (enemyCount == 0)
         {
             state = BattleState.WON;
@@ -308,7 +329,7 @@ public class Battle : MonoBehaviour
             }
             else
             {
-                ScreenText.text = $"Enemy took {damage} damage and survived...";
+                ScreenText.text = $"Enemy took {damage:0.} damage and survived...";
                 index++;
             }
             yield return new WaitForSeconds(0.5f);
@@ -323,6 +344,39 @@ public class Battle : MonoBehaviour
             state = BattleState.ETURN;
             StartCoroutine(EnemyTurn());
         }
+    }
+    IEnumerator Debil()
+    {
+        Vector3 pos = enemyStation.position;
+        var particles = Resources.Load<ParticleSystem>("Particles/debil");
+        Instantiate(particles, pos, Quaternion.identity);
+        foreach (var item in loadedenemies)
+        {
+            enemyS = item.GetComponent<Stats>();
+            enemyS.dmg = enemyS.dmg / 10;
+        }
+        ScreenText.text = $"Enemy damage drastically reduced.";
+        yield return new WaitForSeconds(1.3f);
+        state = BattleState.ETURN;
+        StartCoroutine(EnemyTurn());
+
+    }
+    IEnumerator Thunder()
+    {
+        Vector3 pos = enemyStation.position;
+        pos.y += 15;
+        var particles = Resources.Load<ParticleSystem>("Particles/thunder");
+        Instantiate(particles, pos, particles.transform.rotation);
+        foreach (var item in loadedenemies)
+        {
+            enemyS = item.GetComponent<Stats>();
+            enemyS.stunned = true;
+        }
+        ScreenText.text = $"Enemy has been stunned for one turn.";
+        yield return new WaitForSeconds(1.3f);
+        state = BattleState.ETURN;
+        StartCoroutine(EnemyTurn());
+
     }
 
 

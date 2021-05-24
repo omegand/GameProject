@@ -9,6 +9,7 @@ public class Stats : MonoBehaviour
     public float maxhp;
     public float currenthp;
     [HideInInspector] public bool defending = false;
+    [HideInInspector] public bool stunned = false;
     public float xp;
 
     private void Start()
