@@ -22,11 +22,11 @@ public class GameEnd : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("FinalItem") == 1)
             {
-                PlayerPrefs.SetInt("FinalItem", 1);
+                PlayerPrefs.SetInt("FinalItem", 0);
                 SceneManager.LoadScene("GameEnd");
             }
             else
-                ScrollingText.StartSentence(new string[] { "I need to find the missing item to activate" }, new string[] { "NoLeave" });
+                ScrollingText.StartSentence(new string[] { "I need to find the missing item to activate" }, new string[] { "Main" });
         }
     }
 }
