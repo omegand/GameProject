@@ -20,7 +20,10 @@ public class GameEnd : MonoBehaviour
     {
         if(other.tag.CompareTo("Player") == 0)
         {
+            if(PlayerPrefs.GetInt("FinalItem") == 1)
             SceneManager.LoadScene("GameEnd");
+            else
+            ScrollingText.StartSentence(new string[] { "I need to find the missing item to activate" }, new string[] { "NoLeave" });
         }
     }
 }

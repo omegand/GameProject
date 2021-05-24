@@ -76,6 +76,11 @@ public class HandleRoom : MonoBehaviour
 
                 Debug.Log("Yolo");
             }
+            else
+            {
+                ScrollingText.StartSentence(new string[] { "I found the room with missing item, I need to leave now" }, new string[] { "NoLeave" });
+                PlayerPrefs.SetInt("FinalItem", 1);
+            }
             SpawnedEnemy = true;
 
         }
