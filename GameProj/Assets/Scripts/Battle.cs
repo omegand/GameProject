@@ -58,6 +58,7 @@ public class Battle : MonoBehaviour
         playerS = player.GetComponent<Stats>();
 
         DPart = Resources.Load<ParticleSystem>("Particles/Explosion");
+        Debug.Log(DPart + "HELOOOOOOOOOOOOOOO");
         ScreenText = GameObject.FindGameObjectWithTag("Screentext").GetComponent<TextMeshProUGUI>();
 
         StartCoroutine(FirstTurn());
