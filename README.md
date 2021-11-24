@@ -1,10 +1,10 @@
-# Patent Pending
+# Generic Turn
 
-A game project assignment for KTU
+A game project made for KTU game dev course
 
 ## Installing
 
-Not available
+Download the latest release
 
 ## Built With
 
@@ -14,11 +14,11 @@ Not available
 
 ## Contributing
 
-You can't
+You can't, the project is abandoned.
 
 ## Versioning
 
-* We use [GitHub Desktop](https://desktop.github.com/) for versioning.
+* Using [GitHub Desktop](https://desktop.github.com/) for versioning. (amazing tool btw)
 
 <img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" width="150" />
 
@@ -26,7 +26,3 @@ You can't
 
 * **Šarūnas Kižys** 
 * **Karolis Stasaitis** 
-
-## Acknowledgments
-
-None
