@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -86,7 +87,10 @@ public class Movement : MonoBehaviour
             StartCoroutine("AttackBox");
             Invoke("resetattbool", 0.72f);
         }
-
+        for (int i = 0; i < 1000; i++)
+        {
+            GetComponent<CharacterController>().Move(Vector3.down * Time.deltaTime);
+        } 
         VVel.y += gravity * Time.deltaTime;
         cont.Move(VVel * Time.deltaTime);
     }
