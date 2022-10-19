@@ -1,16 +1,16 @@
-# Generic Turn
+# Ground zero
 
-A game project made for KTU game dev course
+A 3d adventure game project using Unity's HDRP pipeline.
 
 ## Installing
 
-Download the latest release
+Download the latest release and run the executable.
 
 ## Built With
 
 * [Unity](https://unity.com/) - The main game engine.
 
-<img src="https://unity3d.com/files/images/ogimg.jpg" width="150" />
+<img src="https://www.svgrepo.com/show/331626/unity.svg" width="150" />
 
 ## Contributing
 
@@ -20,9 +20,13 @@ You can't, the project is abandoned.
 
 * Using [GitHub Desktop](https://desktop.github.com/) for versioning. (amazing tool btw)
 
-<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" width="150" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/768px-Github-desktop-logo-symbol.svg.png" width="150" />
 
 ## Authors
 
 * **Šarūnas Kižys** 
 * **Karolis Stasaitis** 
+
+## A few sample screenshots
+<img src="https://i.imgur.com/rEYCzqy.png" width="500"/>
+<img src="https://media4.giphy.com/media/sghn5mbPZmXnLffUR1/giphy.gif"/> 
